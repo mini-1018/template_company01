@@ -9,21 +9,18 @@ export default function Section1() {
 
   const slides = [
     {
-      image: "/images/home/main_01.jpg",
+      image: "/images/home/main_section_01_01.jpg",
       title: "Global Business Leader",
-      subtitle: "Website Design",
       description: "여러분의 성공적인 비즈니스를 실현해 드립니다.",
     },
     {
-      image: "/images/home/main_02.jpg",
+      image: "/images/home/main_section_01_02.jpg",
       title: "Innovation & Technology",
-      subtitle: "Digital Solutions",
       description: "최첨단 기술로 미래를 선도합니다.",
     },
     {
-      image: "/images/home/main_03.jpg",
+      image: "/images/home/main_section_01_03.jpg",
       title: "Trusted Partner",
-      subtitle: "Business Growth",
       description: "함께 성장하는 파트너가 되겠습니다.",
     },
   ];
@@ -102,21 +99,18 @@ export default function Section1() {
       </div>
 
       {/* 콘텐츠 */}
-      <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center px-16 text-white">
+      <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center px-8 md:px-16 lg:px-32 xl:px-48 text-white">
         <div className="max-w-4xl">
-          <h1 className="text-7xl font-bold mb-4 animate-fadeIn">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 md:mb-4 animate-fadeIn">
             {slides[currentIndex].title}
           </h1>
-          <h2 className="text-5xl font-bold mb-6 animate-fadeIn">
-            {slides[currentIndex].subtitle}
-          </h2>
-          <p className="text-2xl animate-fadeIn">
+          <p className="text-base md:text-lg lg:text-xl xl:text-2xl animate-fadeIn">
             {slides[currentIndex].description}
           </p>
         </div>
 
         {/* 하단 컨트롤 */}
-        <div className="absolute bottom-12 left-16 flex items-center gap-8">
+        <div className="absolute bottom-60 left-8 md:left-16 lg:left-32 xl:left-48 flex items-center gap-4 md:gap-6 lg:gap-8">
           {/* 이전 버튼 */}
           <button
             onClick={goToPrevious}
@@ -129,7 +123,7 @@ export default function Section1() {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-8 h-8"
+              className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
             >
               <path
                 strokeLinecap="round"
@@ -140,12 +134,12 @@ export default function Section1() {
           </button>
 
           {/* 페이지 인디케이터 */}
-          <div className="flex items-center gap-4 text-white">
+          <div className="flex items-center gap-2 md:gap-3 lg:gap-4 text-white">
             {/* 현재 페이지 */}
-            <span className="text-lg">{currentIndex + 1}</span>
+            <span className="text-base md:text-lg">{currentIndex + 1}</span>
             
             {/* 프로그레스 바 */}
-            <div className="w-32 h-0.5 bg-white/30 rounded-full overflow-hidden">
+            <div className="w-20 md:w-24 lg:w-32 h-0.5 bg-white/30 rounded-full overflow-hidden">
               <div
                 className="h-full bg-white transition-all duration-100 ease-linear"
                 style={{ width: `${progress}%` }}
@@ -153,7 +147,7 @@ export default function Section1() {
             </div>
             
             {/* 전체 페이지 */}
-            <span className="text-lg text-white/70">{slides.length}</span>
+            <span className="text-sm md:text-base lg:text-lg text-white/70">{slides.length}</span>
           </div>
 
           {/* 다음 버튼 */}
@@ -168,7 +162,7 @@ export default function Section1() {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-8 h-8"
+              className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
             >
               <path
                 strokeLinecap="round"
@@ -180,14 +174,14 @@ export default function Section1() {
         </div>
 
         {/* 도트 네비게이션 */}
-        <div className="absolute bottom-12 right-16 flex gap-2">
+        <div className="absolute bottom-8 right-8 md:right-16 flex gap-2">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
+              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all cursor-pointer ${
                 index === currentIndex
-                  ? "bg-white w-8"
+                  ? "bg-white w-6 md:w-8"
                   : "bg-white/50 hover:bg-white/70"
               }`}
               aria-label={`슬라이드 ${index + 1}로 이동`}
