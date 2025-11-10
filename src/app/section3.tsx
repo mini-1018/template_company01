@@ -57,11 +57,6 @@ export default function Section3() {
           >
             {/* Content */}
             <div className="relative h-full">
-              {/* Large Number */}
-              <h1 className="absolute top-1/2 -translate-y-1/2 w-full bg-black/10 text-center m-0 p-0 text-white/20 text-[15rem] border-t-2 border-b-2 border-black/50">
-                {column.title}
-              </h1>
-
               {/* Info Box */}
               <div
                 className={`absolute top-1/2 box-border p-10 bg-white text-center transition-all duration-500 z-10 ${
