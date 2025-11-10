@@ -34,9 +34,9 @@ export default function Nav() {
       }}
     >
       <div className="w-full">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="mx-auto">
           {/* 메인 메뉴바 */}
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 px-12">
             {/* 로고 */}
             <div className="relative w-[100px] h-[30px]">
               <Image
@@ -49,7 +49,7 @@ export default function Nav() {
             </div>
 
             {/* 메뉴 아이템들 */}
-            <div className="flex items-center gap-12">
+            <div className="flex items-center gap-16">
               {menuItems.map((item) => (
                 <div 
                   key={item.name} 
@@ -57,7 +57,7 @@ export default function Nav() {
                   onMouseEnter={() => setHoveredMenu(item.name)}
                 >
                   <button
-                    className={`text-lg font-medium transition-colors duration-300 pb-1 relative w-full ${
+                    className={`text-lg font-medium transition-colors duration-300 relative w-full ${
                       isMenuOpen
                         ? "text-gray-900 hover:text-blue-600"
                         : "text-white hover:text-gray-200"
@@ -66,7 +66,7 @@ export default function Nav() {
                     {item.name}
                     {/* 밑줄 효과 */}
                     <span
-                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transition-transform duration-300 origin-left ${
+                      className={`absolute -bottom-6.5 left-1/2 -translate-x-1/2 w-10 h-1.5 bg-blue-600 transition-transform duration-300 ${
                         hoveredMenu === item.name ? "scale-x-100" : "scale-x-0"
                       }`}
                     />
@@ -76,13 +76,20 @@ export default function Nav() {
             </div>
           </div>
 
+          {/* 구분선 */}
+          <div 
+            className={`w-full h-0.5 transition-all duration-300 ${
+              isMenuOpen ? "bg-[#f0f0f0] opacity-100" : "bg-transparent opacity-0"
+            }`}
+          />
+
           {/* 전체 서브메뉴 영역 */}
           <div
-            className={`overflow-hidden transition-all duration-300 ${
+            className={`overflow-hidden transition-all duration-300 px-12 ${
               isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            <div className="flex justify-end gap-12 py-6">
+            <div className="flex justify-end gap-16 py-6">
               {menuItems.map((item) => (
                 <div 
                   key={item.name} 
