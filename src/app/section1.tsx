@@ -99,7 +99,7 @@ export default function Section1() {
           {/* 이전 버튼 */}
           <button
             onClick={goToPrevious}
-            className="text-white hover:text-gray-300 transition-colors"
+            className="text-white hover:text-gray-300 transition-colors cursor-pointer"
             aria-label="이전 슬라이드"
           >
             <svg
@@ -138,7 +138,7 @@ export default function Section1() {
           {/* 다음 버튼 */}
           <button
             onClick={goToNext}
-            className="text-white hover:text-gray-300 transition-colors"
+            className="text-white hover:text-gray-300 transition-colors cursor-pointer"
             aria-label="다음 슬라이드"
           >
             <svg
@@ -164,7 +164,7 @@ export default function Section1() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
+              className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
                 index === currentIndex
                   ? "bg-white w-8"
                   : "bg-white/50 hover:bg-white/70"
