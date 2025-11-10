@@ -38,13 +38,15 @@ export default function Nav() {
           {/* 메인 메뉴바 */}
           <div className="flex items-center justify-between h-20">
             {/* 로고 */}
-            <Image
-              src={"/images/logo_gtech.png"}
-              className={`transition-colors duration-300`}
-              alt="G-TECH LOGO"
-              width={100}
-              height={30}
-            />
+            <div className="relative w-[100px] h-[30px]">
+              <Image
+                src={isMenuOpen ? "/images/logo/logo_gtech.png" : "/images/logo/logo_gtech_white.png"}
+                alt="G-TECH LOGO"
+                fill
+                className="object-contain transition-opacity duration-300"
+                priority
+              />
+            </div>
 
             {/* 메뉴 아이템들 */}
             <div className="flex items-center gap-12">
