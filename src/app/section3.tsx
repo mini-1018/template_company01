@@ -68,16 +68,16 @@ export default function Section3() {
             <div className="relative h-full">
               {/* Info Box */}
               <div
-                className={`absolute top-1/2 left-1/2 -translate-x-1/2 box-border p-6 md:p-8 lg:p-10 bg-white text-center transition-all duration-500 z-10 max-w-[90%] ${
+                className={`absolute top-1/2 left-1/2 -translate-x-1/2 box-border p-6 md:p-8 lg:p-10 bg-none text-center transition-all duration-500 z-10 max-w-[90%] ${
                   activeColumn === index
                     ? "opacity-100 -translate-y-1/2"
                     : "opacity-0 translate-y-full"
                 }`}
               >
-                <h2 className="m-0 p-0 text-xl md:text-2xl lg:text-3xl text-[#262626] mb-3">
+                <h2 className="m-0 p-0 text-xl md:text-2xl lg:text-3xl text-white mb-3">
                   {column.heading}
                 </h2>
-                <p className="text-[#262626] text-sm md:text-base lg:text-lg">
+                <p className="text-white text-sm md:text-base lg:text-lg">
                   {column.text}
                 </p>
               </div>

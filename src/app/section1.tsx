@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 export default function Section1() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [direction, setDirection] = useState<"left" | "right">("left");
 
   const slides = [
     {
@@ -38,6 +39,7 @@ export default function Section1() {
     }, 10);
 
     const slideInterval = setInterval(() => {
+      setDirection("left");
       setCurrentIndex((prev) => (prev + 1) % slides.length);
       setProgress(0);
     }, 3000);
@@ -49,16 +51,19 @@ export default function Section1() {
   }, [slides.length]);
 
   const goToSlide = (index: number) => {
+    setDirection(index > currentIndex ? "left" : "right");
     setCurrentIndex(index);
     setProgress(0);
   };
 
   const goToPrevious = () => {
+    setDirection("right");
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
     setProgress(0);
   };
 
   const goToNext = () => {
+    setDirection("left");
     setCurrentIndex((prev) => (prev + 1) % slides.length);
     setProgress(0);
   };
@@ -66,22 +71,38 @@ export default function Section1() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* 배경 이미지 슬라이드 */}
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${slide.image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-      ))}
+      <div className="relative w-full h-full">
+        {slides.map((slide, index) => {
+          let position = "translate-x-full";
+          let opacity = "opacity-0";
+
+          if (index === currentIndex) {
+            position = "translate-x-0";
+            opacity = "opacity-100";
+          } else if (
+            (direction === "left" && index === (currentIndex - 1 + slides.length) % slides.length) ||
+            (direction === "right" && index === (currentIndex + 1) % slides.length)
+          ) {
+            position = direction === "left" ? "-translate-x-full" : "translate-x-full";
+            opacity = "opacity-0";
+          }
+
+          return (
+            <div
+              key={index}
+              className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${position} ${opacity}`}
+              style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${slide.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+          );
+        })}
+      </div>
 
       {/* 콘텐츠 */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-center px-16 text-white">
+      <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center px-16 text-white">
         <div className="max-w-4xl">
           <h1 className="text-7xl font-bold mb-4 animate-fadeIn">
             {slides[currentIndex].title}
