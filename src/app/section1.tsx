@@ -6,6 +6,8 @@ export default function Section1() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("left");
+  const [showTitle, setShowTitle] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
 
   const slides = [
     {
@@ -24,6 +26,25 @@ export default function Section1() {
       description: "함께 성장하는 파트너가 되겠습니다.",
     },
   ];
+
+  // 슬라이드 변경 시 애니메이션 트리거
+  useEffect(() => {
+    setShowTitle(false);
+    setShowDescription(false);
+
+    const titleTimer = setTimeout(() => {
+      setShowTitle(true);
+    }, 600);
+
+    const descriptionTimer = setTimeout(() => {
+      setShowDescription(true);
+    }, 600);
+
+    return () => {
+      clearTimeout(titleTimer);
+      clearTimeout(descriptionTimer);
+    };
+  }, [currentIndex]);
 
   useEffect(() => {
     const progressInterval = setInterval(() => {
@@ -101,10 +122,18 @@ export default function Section1() {
       {/* 콘텐츠 */}
       <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center px-8 md:px-16 lg:px-32 xl:px-48 text-white">
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 md:mb-4 animate-fadeIn">
+          <h1 
+            className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 md:mb-4 transition-all duration-1000 ease-out ${
+              showTitle ? "opacity-100 blur-0" : "opacity-0 blur-sm"
+            }`}
+          >
             {slides[currentIndex].title}
           </h1>
-          <p className="text-base md:text-lg lg:text-xl xl:text-2xl animate-fadeIn">
+          <p 
+            className={`text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-1000 ease-out ${
+              showDescription ? "opacity-100 blur-0" : "opacity-0 blur-sm"
+            }`}
+          >
             {slides[currentIndex].description}
           </p>
         </div>
