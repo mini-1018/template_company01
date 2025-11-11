@@ -57,26 +57,31 @@ export default function Home() {
         }}
       >
         {/* 가이드바 */}
-        <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4">
+        <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col items-end">
           {sections.map((section, index) => (
             <button
               key={index}
               onClick={() => scrollToSection(index)}
-              className="flex items-center gap-3 group"
+              className="flex justify-end gap-3 group relative py-1"
               aria-label={section}
             >
-              <span className={`text-sm transition-all duration-300 ${
+              <span className={`text-sm uppercase transition-all duration-300 leading-none ${
                 activeSection === index
-                  ? "text-foreground font-semibold"
-                  : "text-foreground/50 group-hover:text-foreground/70"
+                  ? "text-white font-semibold opacity-100"
+                  : "text-white/40 opacity-70 group-hover:opacity-100"
               }`}>
                 {section}
               </span>
-              <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                activeSection === index
-                  ? "bg-foreground scale-150"
-                  : "bg-foreground/30 group-hover:bg-foreground/50"
-              }`} />
+              <div className="flex flex-col items-center gap-2">
+                <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  activeSection === index
+                    ? "bg-white scale-125"
+                    : "bg-white/40 group-hover:bg-white/60"
+                }`} />
+                {index < sections.length - 1 && (
+                  <div className="w-px h-8 bg-white/20" />
+                )}
+              </div>
             </button>
           ))}
         </nav>

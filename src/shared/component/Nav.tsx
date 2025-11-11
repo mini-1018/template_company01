@@ -67,7 +67,7 @@ export default function Nav() {
                     {item.name}
                     {/* 밑줄 효과 */}
                     <span
-                      className={`absolute -bottom-[20px] left-1/2 -translate-x-1/2 w-10 h-1.5 bg-blue-600 transition-transform duration-300 ${
+                      className={`absolute -bottom-[26px] left-1/2 -translate-x-1/2 w-10 h-1.5 bg-blue-600 transition-transform duration-300 ${
                         hoveredMenu === item.name ? "scale-x-100" : "scale-x-0"
                       }`}
                     />
