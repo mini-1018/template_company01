@@ -52,6 +52,13 @@ export default function Section3() {
         }}
       />
 
+      {/* 상단 타이틀 */}
+      <div className="absolute top-[10%] left-0 right-0 z-20 flex justify-center">
+        <h1 className="text-7xl font-bold text-white tracking-wider">
+          BUSINESS AREA
+        </h1>
+      </div>
+
       {/* Columns - 반응형 그리드 */}
       <div className="w-full h-full flex flex-col md:flex-row md:flex-wrap">
         {columns.map((column, index) => (
@@ -81,43 +88,90 @@ export default function Section3() {
 
             {/* Content */}
             <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8">
-              {/* 아이콘 */}
-                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 mb-4 md:mb-6 relative">
-                  <Image
-                    src={column.icon}
-                    alt={column.heading}
-                    fill
-                    className="object-contain p-2"
-                  />
-                </div>
-
-              {/* 세로 라인 */}
-              <div className="w-0.5 h-8 md:h-12 lg:h-16 bg-white/50 mb-4 md:mb-6" />
-
-              {/* 제목 */}
-              <h2 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-3 md:mb-4 text-center whitespace-nowrap">
-                {column.heading}
-              </h2>
-
-              {/* 설명 텍스트 */}
-              <p className={`text-xs md:text-sm lg:text-base text-white/90 text-center leading-relaxed mb-4 md:mb-6 max-w-xs transition-all duration-500 break-keep ${
-                activeColumn === index ? "opacity-100" : "opacity-0"
-              }`}>
-                {column.text}
-              </p>
-
-              {/* 자세히 보기 버튼 */}
-              <button
-                className={`px-6 md:px-8 lg:px-10 py-2 md:py-2.5 lg:py-3 border-2 border-white text-white text-xs md:text-sm lg:text-base font-medium rounded-full hover:bg-[#36a9e1] hover:border-transparent hover:text-white transition-all duration-300 cursor-pointer ${
-                  activeColumn === index ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              {/* 아이콘 - hover 시 위로 이동 */}
+              <div 
+                className={`w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 relative transition-all duration-1000 ${
+                  activeColumn === index 
+                    ? "translate-y-0" 
+                    : "translate-y-0"
                 }`}
-                onClick={() => {
-                  // 클릭 이벤트는 나중에 처리
-                  console.log(`자세히 보기: ${column.heading}`);
-                }}
               >
-                자세히 보기
-              </button>
+                <Image
+                  src={column.icon}
+                  alt={column.heading}
+                  fill
+                  className="object-contain p-2"
+                />
+              </div>
+
+              {/* + 아이콘 - hover 시 숨김 */}
+              <div
+                className={`absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-4 md:translate-y-6 lg:translate-y-8 transition-all duration-1000 mt-5 ${
+                  activeColumn === index
+                    ? "opacity-0 scale-0"
+                    : "opacity-100 scale-100"
+                }`}
+              >
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="text-white"
+                >
+                  <line
+                    x1="20"
+                    y1="8"
+                    x2="20"
+                    y2="32"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="8"
+                    y1="20"
+                    x2="32"
+                    y2="20"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+
+              {/* hover 시 나타나는 콘텐츠 */}
+              <div
+                className={`flex flex-col items-center transition-all duration-1000 ${
+                  activeColumn === index
+                    ? "opacity-100 translate-y-0 max-h-screen"
+                    : "opacity-0 translate-y-8 max-h-0 overflow-hidden"
+                }`}
+              >
+                {/* 세로 라인 */}
+                <div className="w-0.5 h-10 bg-white/50 my-3" />
+
+                {/* 제목 */}
+                <h2 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-3 md:mb-4 text-center whitespace-nowrap">
+                  {column.heading}
+                </h2>
+
+                {/* 설명 텍스트 */}
+                <p className="text-xs md:text-sm lg:text-base text-white/90 text-center leading-relaxed mb-4 md:mb-6 max-w-xs break-keep">
+                  {column.text}
+                </p>
+
+                {/* 자세히 보기 버튼 */}
+                <button
+                  className="px-6 md:px-8 lg:px-10 py-2 md:py-2.5 lg:py-3 border-2 border-white text-white text-xs md:text-sm lg:text-base font-medium rounded-full hover:bg-blue-secondary hover:border-transparent hover:text-white transition-all duration-300 cursor-pointer"
+                  onClick={() => {
+                    console.log(`자세히 보기: ${column.heading}`);
+                  }}
+                >
+                  자세히 보기
+                </button>
+              </div>
             </div>
           </div>
         ))}
