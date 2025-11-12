@@ -12,18 +12,18 @@ export default function Section1() {
   const slides = [
     {
       image: "/images/home/main_section_01_01.jpg",
-      title: "Global Business Leader",
-      description: "여러분의 성공적인 비즈니스를 실현해 드립니다.",
+      title: "품질인정",
+      description: "기술력과 품질로 인정받는 기업",
     },
     {
       image: "/images/home/main_section_01_02.jpg",
-      title: "Innovation & Technology",
-      description: "최첨단 기술로 미래를 선도합니다.",
+      title: "가치경영",
+      description: "인공지능을 통한 브랜드 가치경영",
     },
     {
       image: "/images/home/main_section_01_03.jpg",
-      title: "Trusted Partner",
-      description: "함께 성장하는 파트너가 되겠습니다.",
+      title: "기술강화",
+      description: "고정밀 원천 기술에 대한 핵심사업 강화",
     },
   ];
 
@@ -123,7 +123,7 @@ export default function Section1() {
       <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center px-8 md:px-16 lg:px-32 xl:px-48 text-white">
         <div className="max-w-4xl">
           <h1 
-            className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 md:mb-4 transition-all duration-1000 ease-out ${
+            className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 lg:mb-10 transition-all duration-1000 ease-out ${
               showTitle ? "opacity-100 blur-0" : "opacity-0 blur-sm"
             }`}
           >

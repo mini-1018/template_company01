@@ -60,14 +60,14 @@ export default function Nav() {
                   <button
                     className={`text-base xl:text-lg font-medium transition-colors duration-300 relative w-full ${
                       isMenuOpen
-                        ? "text-gray-900 hover:text-blue-600"
+                        ? "text-gray-900 hover:text-blue-primary"
                         : "text-white hover:text-gray-200"
                     }`}
                   >
                     {item.name}
                     {/* 밑줄 효과 */}
                     <span
-                      className={`absolute -bottom-[26px] left-1/2 -translate-x-1/2 w-10 h-1.5 bg-blue-600 transition-transform duration-300 ${
+                      className={`absolute -bottom-[26px] left-1/2 -translate-x-1/2 w-16 h-1.5 bg-blue-primary transition-transform duration-300 ${
                         hoveredMenu === item.name ? "scale-x-100" : "scale-x-0"
                       }`}
                     />
@@ -119,7 +119,7 @@ export default function Nav() {
                   {item.submenu.map((subItem, index) => (
                     <button
                       key={index}
-                      className="text-center text-gray-600 hover:text-blue-600 transition-colors whitespace-nowrap text-sm"
+                      className="text-center text-gray-600 hover:text-blue-primary transition-colors whitespace-nowrap text-sm cursor-pointer"
                     >
                       {subItem}
                     </button>

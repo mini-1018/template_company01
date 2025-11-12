@@ -27,7 +27,7 @@ export default function Section3() {
       title: "3",
       heading: "산업용 시스템",
       icon: "/images/home/main_section_03_area_03.png",
-      text: "반도체 생산 라인, 공항용 스케일 등 정밀한 중량을 측정하는 자동화 라인을 구축하고 기술지원하여 만족도를 높이고 있습니다.",
+      text: "반도체 생산 라인ㆍ공항용 스케일 등 정밀한 중량을 측정하는 자동화 라인을 구축하고 기술지원하여 만족도를 높이고 있습니다.",
       bgImage: "/images/home/main_section_03_03.jpg",
       bgFixed: true,
     },
@@ -82,8 +82,7 @@ export default function Section3() {
             {/* Content */}
             <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8">
               {/* 아이콘 */}
-              <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 mb-4 md:mb-6 relative">
-                <div className="w-full h-full flex items-center justify-center p-3 md:p-4">
+                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 mb-4 md:mb-6 relative">
                   <Image
                     src={column.icon}
                     alt={column.heading}
@@ -91,7 +90,6 @@ export default function Section3() {
                     className="object-contain p-2"
                   />
                 </div>
-              </div>
 
               {/* 세로 라인 */}
               <div className="w-0.5 h-8 md:h-12 lg:h-16 bg-white/50 mb-4 md:mb-6" />
