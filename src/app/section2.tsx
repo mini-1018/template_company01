@@ -164,14 +164,14 @@ export default function Section2() {
             {topStats.map((stat, index) => (
               <div
                 key={index}
-                className={`backdrop-blur-md bg-white/20 rounded-2xl p-6 md:p-8 text-center text-white transition-all duration-700 ease-out ${
+                className={`backdrop-blur-md bg-white/20 rounded-2xl p-6 py-12 md:px-8 md:py-16 text-center text-white transition-all duration-700 ease-out ${
                   isVisible 
                     ? "opacity-100 translate-y-0" 
                     : "opacity-0 translate-y-12"
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="flex items-baseline justify-center mb-3 md:mb-4">
+                <div className="flex items-baseline justify-center mb-3 md:mb-8">
                   <span className="text-4xl md:text-5xl lg:text-6xl font-bold">
                     {stat.title}
                   </span>
