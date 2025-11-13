@@ -53,8 +53,8 @@ export default function Section3() {
       />
 
       {/* 상단 타이틀 */}
-      <div className="absolute top-[10%] left-0 right-0 z-20 flex justify-center">
-        <h1 className="text-7xl font-bold text-white tracking-wider">
+      <div className="absolute top-[15%] left-0 right-0 flex justify-center">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-wider">
           BUSINESS AREA
         </h1>
       </div>

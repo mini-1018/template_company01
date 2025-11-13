@@ -10,7 +10,7 @@ import Section5 from "@/app/section5";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
-  const sections = ["home", "company", "business area", "product", "contact"];
+  const sections = ["home", "company", "business area", "product", "community"];
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

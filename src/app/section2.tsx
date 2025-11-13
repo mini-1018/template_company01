@@ -172,7 +172,7 @@ export default function Section2() {
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="flex items-baseline justify-center mb-3 md:mb-8">
-                  <span className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                  <span className="text-3xl md:text-4xl lg:text-5xl font-bold">
                     {stat.title}
                   </span>
                 </div>
@@ -194,7 +194,7 @@ export default function Section2() {
           >
             <div className="flex flex-col items-center justify-center gap-3 md:gap-4">
               <span className="text-sm md:text-base lg:text-2xl">
-                Gtech가 걸어온 시간
+                지테크인터내셔날이 걸어온 시간
               </span>
               <div className="flex items-baseline gap-2 md:gap-3 tabular-nums">
                 <div className="flex items-baseline">
@@ -225,6 +225,29 @@ export default function Section2() {
             </div>
           </div>
         </div>
+        {/* 회사소개 버튼 */}
+        <button
+                className="group flex items-center gap-2 px-6 md:px-8 lg:px-10 py-2 md:py-2.5 lg:py-3 border-2 border-white text-white text-sm md:text-m lg:text-lg font-medium rounded-full hover:bg-blue-secondary hover:text-white hover:border-transparent transition-all duration-300 cursor-pointer"
+                onClick={() => {
+                  console.log('회사소개 페이지로 이동');
+                }}
+              >
+                <span>회사소개</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                  />
+                </svg>
+              </button>
       </div>
     </div>
   );
