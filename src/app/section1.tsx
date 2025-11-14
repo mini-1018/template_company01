@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Section1() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -109,12 +110,18 @@ export default function Section1() {
             <div
               key={index}
               className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${position} ${opacity}`}
-              style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${slide.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
+            >
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                priority={index === 0}
+                className="object-cover"
+                quality={90}
+              />
+              {/* 오버레이 */}
+              <div className="absolute inset-0 bg-black/30" />
+            </div>
           );
         })}
       </div>
