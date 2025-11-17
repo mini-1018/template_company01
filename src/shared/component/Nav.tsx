@@ -18,6 +18,10 @@ export default function Nav() {
       submenu: ["CODA", "HUEL", "헬스케어", "산업용"],
     },
     {
+      name: "미디어",
+      submenu: ["뉴스룸", "소셜미디어"],
+    },
+    {
       name: "커뮤니티",
       submenu: ["공지사항", "FnQ", "고객문의", "다운로드"],
     },
@@ -54,8 +58,9 @@ export default function Nav() {
               {menuItems.map((item) => (
                 <div 
                   key={item.name} 
-                  className="relative w-20 xl:w-24"
+                  className="relative w-20 xl:w-24 group"
                   onMouseEnter={() => setHoveredMenu(item.name)}
+                  onMouseLeave={() => setHoveredMenu(null)}
                 >
                   <button
                     className={`text-base xl:text-lg font-medium transition-colors duration-300 relative w-full ${
@@ -111,10 +116,12 @@ export default function Nav() {
             }`}
           >
             <div className="flex justify-end gap-12 xl:gap-16 py-6">
-              {menuItems.map((item) => (
+              {menuItems.map((item, menuIndex) => (
                 <div 
                   key={item.name} 
-                  className="flex flex-col gap-3 items-center w-20 xl:w-24"
+                  className="flex flex-col gap-3 items-center w-20 xl:w-24 group"
+                  onMouseEnter={() => setHoveredMenu(item.name)}
+                  onMouseLeave={() => setHoveredMenu(null)}
                 >
                   {item.submenu.map((subItem, index) => (
                     <button
