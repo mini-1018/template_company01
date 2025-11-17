@@ -3,8 +3,11 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function Section4() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const products = [
     {
       title: "재활용품\n무인회수기",
@@ -48,20 +51,39 @@ export default function Section4() {
     ]
   );
 
+  // 비디오 재생 최적화
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.0;
+      videoRef.current.play().catch(error => {
+        console.log("Video autoplay failed:", error);
+      });
+    }
+  }, []);
+
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      {/* 배경 이미지 */}
-      <Image
-        src="/images/home/main_section_04_01.jpg"
-        alt="Section 4 Background"
-        fill
-        className="object-cover"
-        quality={75}
-        priority
-      />
-      
-      {/* 오버레이 */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* 배경 비디오 */}
+      <video
+        ref={videoRef}
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        poster="/images/home/main_section_04_poster.jpg"
+      >
+        <source src="/video/main_section_04_video_01.mp4" type="video/mp4" />
+        {/* 폴백 이미지 */}
+        <Image
+          src="/images/home/main_section_04_01.jpg"
+          alt="Section 4 Background"
+          fill
+          className="object-cover"
+          quality={75}
+        />
+      </video>
 
       {/* 콘텐츠 */}
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 md:px-8">

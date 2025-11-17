@@ -44,13 +44,13 @@ export default function Section5() {
           {/* 콘텐츠 */}
           <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 text-white">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              MEDIA CENTER
+              MEDIA
             </h2>
             <p className="text-sm md:text-base lg:text-lg mb-8 text-center">
               지테크의 최신 소식을 만나보세요
             </p>
             <button className="group flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 border-2 border-white text-white text-sm md:text-base font-medium rounded-full hover:bg-blue-secondary hover:border-transparent transition-all duration-300">
-              <span>자세히 보러가기</span>
+              <span>보러가기</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
