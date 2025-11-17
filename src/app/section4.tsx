@@ -68,7 +68,7 @@ export default function Section4() {
         {/* 상단 타이틀 */}
         <div className="text-center text-white mb-8 md:mb-12">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
-            PRODUCTS
+            PRODUCT
           </h1>
         </div>
 
