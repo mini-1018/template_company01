@@ -56,47 +56,28 @@ export default function Home() {
           scrollSnapType: "y mandatory",
         }}
       >
-        {/* 가이드바 - hover 시 나타남 */}
-        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 group">
-          {/* 화살표 아이콘 - 왼쪽으로 통통 튀기 */}
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 animate-bounce-left">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-6 h-6 text-white/60 group-hover:text-white transition-colors"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
-          </div>
-
-          {/* 가이드바 네비게이션 */}
-          <nav className="pr-12 opacity-0 translate-x-8 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex flex-col items-end bg-black/20 backdrop-blur-sm rounded-l-2xl py-4 px-6">
+        {/* 가이드바 */}
+        <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
+          <nav className="flex flex-col items-end">
             {sections.map((section, index) => (
               <button
                 key={index}
                 onClick={() => scrollToSection(index)}
-                className="flex justify-end gap-3 group/item relative py-1"
+                className="flex justify-end gap-3 group relative py-1"
                 aria-label={section}
               >
-                <span className={`text-sm uppercase transition-all duration-300 leading-none whitespace-nowrap ${
+                {/* <span className={`text-sm uppercase transition-all duration-300 leading-none whitespace-nowrap ${
                   activeSection === index
                     ? "text-white font-semibold opacity-100"
-                    : "text-white/40 opacity-70 group-hover/item:opacity-100"
+                    : "text-white/40 opacity-0 group-hover:opacity-100"
                 }`}>
                   {section}
-                </span>
+                </span> */}
                 <div className="flex flex-col items-center gap-2">
                   <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     activeSection === index
                       ? "bg-white scale-125"
-                      : "bg-white/40 group-hover/item:bg-white/60"
+                      : "bg-white/40 group-hover:bg-white/60"
                   }`} />
                   {index < sections.length - 1 && (
                     <div className="w-px h-8 bg-white/20" />
@@ -124,22 +105,6 @@ export default function Home() {
           <Section5 />
         </section>
       </div>
-
-      {/* 커스텀 애니메이션 추가 */}
-      <style jsx global>{`
-        @keyframes bounce-left {
-          0%, 100% {
-            transform: translateX(0);
-          }
-          50% {
-            transform: translateX(-10px);
-          }
-        }
-
-        .animate-bounce-left {
-          animation: bounce-left 2s ease-in-out infinite;
-        }
-      `}</style>
     </>
   );
 }
