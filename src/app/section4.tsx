@@ -59,16 +59,13 @@ export default function Section4() {
         quality={75}
         priority
       />
-      
-      {/* 오버레이 */}
-      <div className="absolute inset-0 bg-black/40" />
-
+    
       {/* 콘텐츠 */}
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 md:px-8">
         {/* 상단 타이틀 */}
         <div className="text-center text-white mb-8 md:mb-12">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
-            PRODUCT
+            PRODUCTS
           </h1>
         </div>
 
@@ -81,27 +78,33 @@ export default function Section4() {
                   key={index}
                   className="min-w-0 flex-shrink-0 flex-grow-0 basis-full sm:basis-1/2 lg:basis-1/3 px-5 md:px-6"
                 >
-                  <div className="w-full h-[400px] md:h-[450px] shadow-xl flex flex-col cursor-pointer overflow-hidden">
-                    {/* 제품 이미지 영역 */}
-                    <div className="relative w-full h-[80%] bg-white flex items-center justify-center p-8">
-                      <div className="relative w-[70%] h-[70%]">
+                  <div className="w-full shadow-xl flex flex-col cursor-pointer overflow-hidden">
+                    {/* 제품 이미지 영역 - 1:1 비율 */}
+                    <div className="relative w-full aspect-square bg-white flex items-center justify-center p-8">
+                      <div className="relative w-full h-full">
                         <Image
                           src={product.image}
                           alt={product.title}
                           fill
-                          className="object-contain"
+                          className="object-contain hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                     </div>
 
                     {/* 하단 텍스트 영역 */}
-                    <div className="w-full h-[20%] bg-gray-200 opacity-80 flex flex-col items-start justify-center px-6 py-4">
-                      <h3 className="text-[#434343] text-base md:text-lg font-black mb-1">
-                        {product.title}
-                      </h3>
-                      <p className="text-[#434343] text-sm md:text-base font-midium">
-                        {product.subtitle}
-                      </p>
+                    <div className="relative w-full flex flex-col items-start justify-center px-6 py-4">
+                      {/* 배경 레이어 (투명도 적용) */}
+                      <div className="absolute inset-0 bg-gray-200 opacity-20" />
+                      
+                      {/* 텍스트 레이어 (투명도 없음) */}
+                      <div className="relative z-10">
+                        <h3 className="text-white text-base md:text-lg font-bold mb-1">
+                          {product.title}
+                        </h3>
+                        <p className="text-white text-sm md:text-base font-medium">
+                          {product.subtitle}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -21,7 +21,7 @@ export default function Section2() {
 
   useEffect(() => {
     // 개설일: 1995년 3월 1일
-    const startDate = new Date(1995, 2, 1); // 월은 0부터 시작 (2 = 3월)
+    const startDate = new Date(1995, 2, 20); // 월은 0부터 시작 (2 = 3월)
 
     const updateTime = () => {
       const now = new Date();
