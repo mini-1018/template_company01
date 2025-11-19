@@ -2,12 +2,21 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { menuItems } from "@/src/shared/component/menuItems";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
+
+  const handleMenuClick = (path: string) => {
+    router.push(path);
+    setIsMenuOpen(false);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <nav
@@ -25,7 +34,7 @@ export default function Nav() {
           {/* 메인 메뉴바 */}
           <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-8 lg:px-12">
             {/* 로고 */}
-            <div className="relative w-[80px] h-[24px] md:w-[100px] md:h-[30px]">
+            <Link href="/" className="relative w-[80px] h-[24px] md:w-[100px] md:h-[30px]">
               <Image
                 src={isMenuOpen || isMobileMenuOpen ? "/images/logo/logo_gtech.png" : "/images/logo/logo_gtech_white.png"}
                 alt="G-TECH LOGO"
@@ -33,7 +42,7 @@ export default function Nav() {
                 className="object-contain transition-opacity duration-300"
                 priority
               />
-            </div>
+            </Link>
 
             {/* 데스크톱 메뉴 */}
             <div className="hidden lg:flex items-center gap-12 xl:gap-16">
@@ -98,7 +107,7 @@ export default function Nav() {
             }`}
           >
             <div className="flex justify-end gap-12 xl:gap-16 py-6">
-              {menuItems.map((item, menuIndex) => (
+              {menuItems.map((item) => (
                 <div 
                   key={item.name} 
                   className="flex flex-col gap-3 items-center w-20 xl:w-24 group"
@@ -108,9 +117,10 @@ export default function Nav() {
                   {item.submenu.map((subItem, index) => (
                     <button
                       key={index}
+                      onClick={() => handleMenuClick(subItem.path)}
                       className="text-center text-gray-600 hover:text-blue-primary transition-colors whitespace-nowrap text-sm cursor-pointer"
                     >
-                      {subItem}
+                      {subItem.label}
                     </button>
                   ))}
                 </div>
@@ -134,9 +144,10 @@ export default function Nav() {
                     {item.submenu.map((subItem, subIndex) => (
                       <button
                         key={subIndex}
+                        onClick={() => handleMenuClick(subItem.path)}
                         className="text-left text-gray-600 hover:text-blue-600 transition-colors text-sm py-1"
                       >
-                        {subItem}
+                        {subItem.label}
                       </button>
                     ))}
                   </div>
