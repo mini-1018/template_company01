@@ -32,7 +32,10 @@ export default function Section5() {
             <p className="text-sm md:text-base lg:text-lg mb-8 text-center">
               지테크의 최신 소식을 만나보세요
             </p>
-            <button className="group flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 border-2 border-white text-white text-sm md:text-base font-medium rounded-full hover:bg-blue-secondary hover:border-transparent transition-all duration-300">
+            <Link 
+              href="/media/newsroom"
+              className="group flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 border-2 border-white text-white text-sm md:text-base font-medium rounded-full hover:bg-blue-secondary hover:border-transparent transition-all duration-300"
+            >
               <span>보러가기</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +51,7 @@ export default function Section5() {
                   d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -74,7 +77,10 @@ export default function Section5() {
             <p className="text-xl md:text-2xl lg:text-3xl font-semibold mb-8">
               031-852-4070
             </p>
-            <button className="group flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 border-2 border-white text-white text-sm md:text-base font-medium rounded-full hover:bg-blue-secondary hover:border-transparent transition-all duration-300">
+            <Link 
+              href="/community/inquiry"
+              className="group flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 border-2 border-white text-white text-sm md:text-base font-medium rounded-full hover:bg-blue-secondary hover:border-transparent transition-all duration-300"
+            >
               <span>문의하기</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +96,7 @@ export default function Section5() {
                   d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -100,27 +106,29 @@ export default function Section5() {
         <div className="flex flex-col-reverse md:flex-row justify-between w-full max-w-7xl mx-auto px-4 md:px-8">
           {/* 왼쪽 영역 */}
           <div className="w-full md:w-1/2 mt-8 md:mt-0">
-            <Image 
-              src="/images/logo/logo_gtech_white.png" 
-              alt="G-TECH Logo" 
-              width={100} 
-              height={40} 
-              className="h-auto w-auto mb-6"
-            />
+            <Link href="/">
+              <Image 
+                src="/images/logo/logo_gtech_white.png" 
+                alt="G-TECH Logo" 
+                width={100} 
+                height={40} 
+                className="h-auto w-auto mb-6 cursor-pointer"
+              />
+            </Link>
 
             <ul className="flex gap-4 mb-5">
               <li>
-                <Link href="/company" className="text-white text-sm">
+                <Link href="/intro/outline" className="text-white text-sm hover:text-blue-secondary transition-colors">
                   회사소개
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-white text-sm">
+                <Link href="/terms" className="text-white text-sm hover:text-blue-secondary transition-colors">
                   서비스 이용약관
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-white text-sm">
+                <Link href="/privacy" className="text-white text-sm hover:text-blue-secondary transition-colors">
                   개인정보 처리방침
                 </Link>
               </li>
@@ -142,27 +150,27 @@ export default function Section5() {
 
             <ul className="flex gap-6">
               <li>
-                <Link href="https://blog.naver.com/gtech" className="block" target="_blank">
+                <Link href="https://blog.naver.com/gtech" className="block hover:opacity-80 transition-opacity" target="_blank">
                   <Image src="/images/icon/blog.svg" alt="Blog" width={24} height={24} />
                 </Link>
               </li>
               <li>
-                <Link href="https://www.youtube.com/@Gtech-international" className="block" target="_blank">
+                <Link href="https://www.youtube.com/@Gtech-international" className="block hover:opacity-80 transition-opacity" target="_blank">
                   <Image src="/images/icon/youtube.svg" alt="YouTube" width={24} height={24} />
                 </Link>
               </li>
               <li>
-                <Link href="https://www.instagram.com/gtech__official" className="block" target="_blank">
+                <Link href="https://www.instagram.com/gtech__official" className="block hover:opacity-80 transition-opacity" target="_blank">
                   <Image src="/images/icon/insta.svg" alt="Instagram" width={24} height={24} />
                 </Link>
               </li>
               <li>
-                <Link href="tel:010-9282-4070" className="block">
+                <Link href="tel:010-9282-4070" className="block hover:opacity-80 transition-opacity">
                   <Image src="/images/icon/phone.svg" alt="Phone" width={24} height={24} />
                 </Link>
               </li>
               <li>
-                <Link href="mailto:stmo11@gtech21.net" className="block" target="_blank">
+                <Link href="mailto:stmo11@gtech21.net" className="block hover:opacity-80 transition-opacity" target="_blank">
                   <Image src="/images/icon/email.svg" alt="Email" width={24} height={24} />
                 </Link>
               </li>
@@ -182,10 +190,10 @@ export default function Section5() {
                       {menu.submenu.map((sub, subIndex) => (
                         <li key={subIndex} className="mb-4">
                           <Link 
-                            href="#" 
-                            className="text-xs md:text-sm text-white"
+                            href={sub.path} 
+                            className="text-xs md:text-sm text-white hover:text-blue-secondary transition-colors"
                           >
-                            {sub}
+                            {sub.label}
                           </Link>
                         </li>
                       ))}
