@@ -45,9 +45,6 @@ export default function Home() {
 
   return (
     <>
-      {/* 네비게이션 */}
-      <Nav />
-
       <div 
         ref={containerRef}
         className="snap-y snap-mandatory h-screen overflow-y-scroll scrollbar-hide"

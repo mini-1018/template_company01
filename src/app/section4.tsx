@@ -76,7 +76,7 @@ export default function Section4() {
               {products.map((product, index) => (
                 <div
                   key={index}
-                  className="min-w-0 flex-shrink-0 flex-grow-0 basis-full sm:basis-1/2 lg:basis-1/3 px-5 md:px-6"
+                  className="min-w-0 shrink-0 grow-0 basis-full sm:basis-1/2 lg:basis-1/3 px-5 md:px-6"
                 >
                   <div className="w-full shadow-xl flex flex-col cursor-pointer overflow-hidden">
                     {/* 제품 이미지 영역 - 1:1 비율 */}

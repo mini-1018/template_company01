@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
+import Nav from "../shared/component/Nav";
 
 export const metadata: Metadata = {
   title: "",
@@ -14,6 +15,8 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body>
+        {/* 네비게이션 */}
+        <Nav />
         {children}
       </body>
     </html>
