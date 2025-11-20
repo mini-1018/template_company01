@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Nav from "@/shared/component/Nav";
 import Section1 from "@/app/section1";
 import Section2 from "@/app/section2";
 import Section3 from "@/app/section3";

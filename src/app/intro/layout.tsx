@@ -5,10 +5,10 @@ import Image from "next/image";
 
 const tabs = [
   { id: "outline", label: "개요", path: "/intro/outline", image: "/images/intro/subtop_01.jpg"},
-  { id: "business", label: "사업분야", path: "/intro/business", image: "/images/intro/subtop_02.jpg" },
-  { id: "history", label: "연혁", path: "/intro/history", image: "/images/intro/subtop_03.jpg" },
-  { id: "license", label: "인허가", path: "/intro/license", image: "/images/intro/subtop_04.jpg" },
-  { id: "directions", label: "오시는길", path: "/intro/direction", image: "/images/intro/subtop_05.jpg" },
+  { id: "business", label: "사업분야", path: "/intro/business", image: "/images/intro/subtop_01.jpg" },
+  { id: "history", label: "연혁", path: "/intro/history", image: "/images/intro/subtop_01.jpg" },
+  { id: "license", label: "인허가", path: "/intro/license", image: "/images/intro/subtop_01.jpg" },
+  { id: "directions", label: "오시는길", path: "/intro/direction", image: "/images/intro/subtop_01.jpg" },
 ];
 
 export default function IntroLayout({

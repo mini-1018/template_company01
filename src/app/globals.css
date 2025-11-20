@@ -33,6 +33,7 @@
   --font-mono: var(--font-geist-mono);
   --color-blue-primary: #2c2276;
   --color-blue-secondary: #36a9e1;
+  --color-black-primary: #434343;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,7 +47,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "pretendard", Arial, Helvetica, sans-serif;
-  overflow: hidden;
 }
 
 .scrollbar-hide {
