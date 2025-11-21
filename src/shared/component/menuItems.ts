@@ -6,7 +6,7 @@ export const menuItems = [
         { label: "사업분야", path: "/intro/business" },
         { label: "연혁", path: "/intro/history" },
         { label: "인허가", path: "/intro/license" },
-        { label: "오시는길", path: "/intro/directions" },
+        { label: "오시는길", path: "/intro/direction" },
       ],
     },
     {

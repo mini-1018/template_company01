@@ -52,10 +52,10 @@ export default function IntroLayout({
               <button
                 key={tab.id}
                 onClick={() => router.push(tab.path)}
-                className={`flex-1 px-4 py-4 text-sm md:text-base font-bold transition-colors whitespace-nowrap ${
+                className={`flex-1 px-4 py-4 text-sm md:text-base font-bold transition-colors whitespace-nowrap cursor-pointer ${
                   pathname === tab.path
                     ? "text-blue-primary border-b-4 border-blue-primary font-bold"
-                    : "text-gray-600 hover:text-[#434343] hover:bg-gray-50"
+                    : "text-gray-600 hover:text-black-primary hover:bg-gray-200"
                 }`}
               >
                 {tab.label}
