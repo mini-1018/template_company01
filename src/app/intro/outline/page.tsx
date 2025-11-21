@@ -161,7 +161,7 @@ export default function OutlinePage() {
 
       {/* 본사 조직도 섹션 - 16:9 비율 */}
       <section className="relative w-full aspect-[16/9] bg-gray-50">
-        <div className="inset-0 flex flex-col items-center justify-center px-8 md:px-12 lg:px-16 py-12">
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-8 md:px-12 lg:px-16 py-12">
           <div className="w-full max-w-7xl mx-auto">
             <div className="text-center mb-8 md:mb-12">
               <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
