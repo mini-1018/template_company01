@@ -32,20 +32,22 @@ export default function OutlinePage() {
                 가족의 행복을 만드는 NO.1 기업
               </h3>
 
-              <div className="text-[25px] md:text-[25px] leading-normal tracking-[-0.2px] wrap-break-word">
+              <div className="w-[813px] text-[25px] md:text-[25px] leading-normal tracking-normal wrap-break-word ">
                 <p>
-                  (주)지테크인터내셔날은 좋은사람들이 모여<br />
-                  사용하기쉬운 제품을 만드는 "즐거운 회사"입니다.
+                  주식회사 지테크인터내셔날은 좋은 사람들이 모여<br />
+                  사용하기 쉬운 제품을 만드는 "즐거운 회사"입니다.
                 </p>
                 <br />
                 <p>
-                  1995년 설립한 지테크인터내셔날은 하중 감지 센서기술을 기반으로 측정 및 계량기술 개발에 매진하여 원천기술을 확보하였고, 
-                  우수한 품질을 실현하고자 산업용시스템분야, 건강관리 측정분야, 농축산계량분야, 음식물 쓰레기 종량제 분야에 대한 사업을 확장하며 성장했습니다.
+                1995년 설립한 지테크인터내셔날은 하중 감지 센서기술을 기반으로
+                측정 및 계량기술 개발에 매진하여 원천기술을 확보하였고 우수한 품질을 실현하고자
+                산업용 · 헬스케어 · 농축산 · 친환경 분야에 대한 사업을 확장하며 성장했습니다.
                 </p>
                 <br />
                 <p>
-                    ㈜지테크인터내셔날에서 개발된 모든제품은 정확성, 안전성, 신뢰성에 대한 "Safety system"을 적용하여 
-                    각 제품의 사용 환경에 최고의 성능을 발휘할수있도록 개발되었습니다.
+                지테크인터내셔날에서 개발된 모든 제품은 정확성 · 안전성 · 신뢰성에 대한
+                "Safety system"을 적용하여 각 제품의 사용 환경에 최고의 성능을 발휘
+                할 수 있도록 개발되었습니다.
                 </p>
                 <br />
                 <p>
@@ -212,7 +214,7 @@ export default function OutlinePage() {
             <div className="text-center mb-16">
               <div className="flex justify-center gap-4">
                 <div 
-                  className="w-[250px] h-[60px] border border-black/10 cursor-pointer text-[15px] flex items-center justify-center font-bold gap-[15px]"
+                  className="w-[250px] h-[60px] border border-black/10 cursor-pointer text-[15px] flex items-center justify-center font-bold gap-[15px] bg-gradient-to-t from-[#f0f0f0] to-[#ffffff]"
                 >
                   CI DOWNLOAD
                 <div className="w-[13px] h-[13px] relative">
