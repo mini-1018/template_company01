@@ -16,6 +16,8 @@ export default function Home() {
   const sections = ["home", "company", "business area", "product", "community"];
   const containerRef = useRef<HTMLDivElement>(null);
   const lastScrollTimeRef = useRef(0);
+  const touchStartRef = useRef(0);
+  const touchEndRef = useRef(0);
 
   // 클라이언트에서만 viewport height 설정
   useEffect(() => {
@@ -39,14 +41,14 @@ export default function Home() {
     setTimeout(() => setIsScrolling(false), 1000);
   };
 
-  // 스크롤 이벤트 처리 - isMounted 의존성 추가
+  // 스크롤 이벤트 처리
   useEffect(() => {
     if (!isMounted) return;
     
     const container = containerRef.current;
     if (!container) return;
 
-    const scrollCooldown = 1000; // 1초 쿨다운
+    const scrollCooldown = 1000;
     
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
@@ -56,15 +58,45 @@ export default function Home() {
       
       if (isScrolling) return;
 
-      // 스크롤 방향 감지
       if (e.deltaY > 30 && activeSection < sections.length - 1) {
-        // 아래로 스크롤
         lastScrollTimeRef.current = now;
         scrollToSection(activeSection + 1);
       } else if (e.deltaY < -30 && activeSection > 0) {
-        // 위로 스크롤
         lastScrollTimeRef.current = now;
         scrollToSection(activeSection - 1);
+      }
+    };
+
+    // 터치 이벤트 처리
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartRef.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      touchEndRef.current = e.changedTouches[0].clientY;
+      
+      const now = Date.now();
+      if (now - lastScrollTimeRef.current < scrollCooldown) return;
+      
+      if (isScrolling) return;
+
+      const diff = touchStartRef.current - touchEndRef.current;
+      const minSwipeDistance = 50;
+
+      if (Math.abs(diff) > minSwipeDistance) {
+        if (diff > 0 && activeSection < sections.length - 1) {
+          // 위로 스와이프 (아래 섹션으로)
+          lastScrollTimeRef.current = now;
+          scrollToSection(activeSection + 1);
+        } else if (diff < 0 && activeSection > 0) {
+          // 아래로 스와이프 (위 섹션으로)
+          lastScrollTimeRef.current = now;
+          scrollToSection(activeSection - 1);
+        }
       }
     };
 
@@ -87,10 +119,16 @@ export default function Home() {
     };
 
     container.addEventListener("wheel", handleWheel, { passive: false });
+    container.addEventListener("touchstart", handleTouchStart, { passive: false });
+    container.addEventListener("touchmove", handleTouchMove, { passive: false });
+    container.addEventListener("touchend", handleTouchEnd, { passive: false });
     window.addEventListener("keydown", handleKeyDown);
     
     return () => {
       container.removeEventListener("wheel", handleWheel);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchmove", handleTouchMove);
+      container.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isMounted, activeSection, isScrolling, sections.length]);
@@ -104,7 +142,7 @@ export default function Home() {
     <>
       <div 
         ref={containerRef}
-        className="h-screen overflow-hidden bg-black"
+        className="h-screen overflow-hidden bg-black touch-none"
       >
         {/* 가이드바 */}
         <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
