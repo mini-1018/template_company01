@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import Section1 from "@/app/section1";
 import Section2 from "@/app/section2";
 import Section3 from "@/app/section3";
@@ -9,48 +10,101 @@ import Section5 from "@/app/section5";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const sections = ["home", "company", "business area", "product", "community"];
   const containerRef = useRef<HTMLDivElement>(null);
+  const lastScrollTimeRef = useRef(0);
 
+  // 클라이언트에서만 viewport height 설정
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      const scrollPosition = container.scrollTop + window.innerHeight / 2;
-      
-      sections.forEach((_, index) => {
-        const section = document.getElementById(`section-${index}`);
-        if (section) {
-          const offsetTop = section.offsetTop;
-          const offsetHeight = section.offsetHeight;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(index);
-          }
-        }
-      });
+    setViewportHeight(window.innerHeight);
+    setIsMounted(true);
+    
+    const handleResize = () => {
+      setViewportHeight(window.innerHeight);
     };
-
-    container.addEventListener("scroll", handleScroll);
-    return () => container.removeEventListener("scroll", handleScroll);
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const scrollToSection = (index: number) => {
-    const section = document.getElementById(`section-${index}`);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    if (isScrolling) return;
+    
+    setIsScrolling(true);
+    setActiveSection(index);
+    
+    setTimeout(() => setIsScrolling(false), 1000);
   };
+
+  // 스크롤 이벤트 처리 - isMounted 의존성 추가
+  useEffect(() => {
+    if (!isMounted) return;
+    
+    const container = containerRef.current;
+    if (!container) return;
+
+    const scrollCooldown = 1000; // 1초 쿨다운
+    
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      
+      const now = Date.now();
+      if (now - lastScrollTimeRef.current < scrollCooldown) return;
+      
+      if (isScrolling) return;
+
+      // 스크롤 방향 감지
+      if (e.deltaY > 30 && activeSection < sections.length - 1) {
+        // 아래로 스크롤
+        lastScrollTimeRef.current = now;
+        scrollToSection(activeSection + 1);
+      } else if (e.deltaY < -30 && activeSection > 0) {
+        // 위로 스크롤
+        lastScrollTimeRef.current = now;
+        scrollToSection(activeSection - 1);
+      }
+    };
+
+    // 키보드 지원
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isScrolling) return;
+      
+      const now = Date.now();
+      if (now - lastScrollTimeRef.current < scrollCooldown) return;
+      
+      if ((e.key === "ArrowDown" || e.key === "PageDown") && activeSection < sections.length - 1) {
+        e.preventDefault();
+        lastScrollTimeRef.current = now;
+        scrollToSection(activeSection + 1);
+      } else if ((e.key === "ArrowUp" || e.key === "PageUp") && activeSection > 0) {
+        e.preventDefault();
+        lastScrollTimeRef.current = now;
+        scrollToSection(activeSection - 1);
+      }
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("keydown", handleKeyDown);
+    
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMounted, activeSection, isScrolling, sections.length]);
+
+  // 초기 로딩 중
+  if (!isMounted || viewportHeight === 0) {
+    return <div className="h-screen bg-black" />;
+  }
 
   return (
     <>
       <div 
         ref={containerRef}
-        className="snap-y snap-mandatory h-screen overflow-y-scroll scrollbar-hide"
-        style={{
-          scrollBehavior: "smooth",
-          scrollSnapType: "y mandatory",
-        }}
+        className="h-screen overflow-hidden bg-black"
       >
         {/* 가이드바 */}
         <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
@@ -62,13 +116,6 @@ export default function Home() {
                 className="flex justify-end gap-3 group relative py-1"
                 aria-label={section}
               >
-                {/* <span className={`text-sm uppercase transition-all duration-300 leading-none whitespace-nowrap ${
-                  activeSection === index
-                    ? "text-white font-semibold opacity-100"
-                    : "text-white/40 opacity-0 group-hover:opacity-100"
-                }`}>
-                  {section}
-                </span> */}
                 <div className="flex flex-col items-center gap-2">
                   <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     activeSection === index
@@ -85,21 +132,30 @@ export default function Home() {
         </div>
 
         {/* 섹션들 */}
-        <section id="section-0" className="snap-start h-screen">
-          <Section1 />
-        </section>
-        <section id="section-1" className="snap-start h-screen">
-          <Section2 />
-        </section>
-        <section id="section-2" className="snap-start h-screen">
-          <Section3 />
-        </section>
-        <section id="section-3" className="snap-start h-screen">
-          <Section4 />
-        </section>
-        <section id="section-4" className="snap-start h-screen">
-          <Section5 />
-        </section>
+        <motion.div
+          animate={{ y: -activeSection * viewportHeight }}
+          transition={{ 
+            duration: 1,
+            ease: [0.43, 0.13, 0.23, 0.96]
+          }}
+          className="will-change-transform"
+        >
+          <section className="h-screen">
+            <Section1 />
+          </section>
+          <section className="h-screen">
+            <Section2 />
+          </section>
+          <section className="h-screen">
+            <Section3 />
+          </section>
+          <section className="h-screen">
+            <Section4 />
+          </section>
+          <section className="h-screen">
+            <Section5 />
+          </section>
+        </motion.div>
       </div>
     </>
   );

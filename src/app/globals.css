@@ -102,29 +102,6 @@ body {
   display: none;
 }
 
-/* 스크롤 스냅 부드럽게 */
-.snap-y {
-  scroll-snap-type: y mandatory;
-  scroll-padding: 0;
-}
-
-.snap-start {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-/* 스크롤 속도 조절 */
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  * {
-    scroll-behavior: smooth;
-  }
-}
-
 /* 페이드인 애니메이션 */
 @keyframes fadeIn {
   from {
