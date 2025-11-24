@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import NoImageBackgroundSection from "@/src/shared/component/NoImageBackgroundSection";
 
 export const metadata: Metadata = {
   title: "개요 | G-TECH International",
@@ -161,136 +162,128 @@ export default function OutlinePage() {
         </div>
       </section>
 
-      {/* 본사 조직도 섹션 - 16:9 비율 */}
-      <section className="relative w-full aspect-[16/9] bg-gray-50">
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-8 md:px-12 lg:px-16 py-12">
-          <div className="w-full max-w-7xl mx-auto">
-            <div className="text-center mb-8 md:mb-12">
-              <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black-primary mb-[90px]">
-                조직도
-              </h3>
-            </div>
+      {/* 본사 조직도 섹션 */}
+      <NoImageBackgroundSection bgColor="gray">
+        <div className="text-center mb-8 md:mb-12">
+          <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
+          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black-primary mb-[90px]">
+            조직도
+          </h3>
+        </div>
 
-            {/* 조직도 이미지 */}
-            <div className="relative w-full max-w-6xl mx-auto">
-              <div className="relative w-full aspect-2/1">
-                <Image
-                  src="/images/intro/company_organization.png"
-                  alt="지테크 조직도"
-                  fill
-                  className="object-contain"
-                />
-              </div>
+        {/* 조직도 이미지 */}
+        <div className="relative w-full max-w-6xl mx-auto">
+          <div className="relative w-full aspect-2/1">
+            <Image
+              src="/images/intro/company_organization.png"
+              alt="지테크 조직도"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+      </NoImageBackgroundSection>
+
+      {/* 본사 CI 섹션 */}
+      <NoImageBackgroundSection bgColor="white">
+        <div className="text-center mb-8 md:mb-12">
+          <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
+          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black-primary mb-[90px]">
+            CI
+          </h3>
+        </div>
+
+        {/* CI 로고 이미지 */}
+        <div className="relative w-full max-w-2xl mx-auto mb-12">
+          <div className="relative w-full aspect-[16/6] flex items-center justify-center">
+            <Image
+              src="/images/intro/logo_ci.png"
+              alt="지테크 CI"
+              fill
+              className="object-contain p-8"
+            />
+          </div>
+        </div>
+
+        {/* Section 1 다운로드 버튼 */}
+        <div className="text-center mb-16">
+          <div className="flex justify-center gap-4">
+            <div 
+              className="w-[250px] h-[60px] border border-black/10 cursor-pointer text-[15px] flex items-center justify-center font-bold gap-[15px] bg-gradient-to-t from-[#f0f0f0] to-[#ffffff]"
+            >
+              CI DOWNLOAD
+            <div className="w-[13px] h-[13px] relative">
+              <Image 
+                src={"/images/intro/download.png"}
+                alt="download icon"
+                fill
+              />
+            </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* 본사 CI 섹션 - 16:9 비율 */}
-      <section className="relative w-full aspect-[16/9] bg-white">
-        <div className="inset-0 flex flex-col items-center justify-center px-8 md:px-12 lg:px-16 py-12">
-          <div className="w-full max-w-7xl mx-auto">
-            <div className="text-center mb-8 md:mb-12">
-              <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black-primary mb-[90px]">
-                CI
-              </h3>
-            </div>
+        {/* 의미 섹션 */}
+        <div className="mb-12">
+          <h4 className="text-xl md:text-2xl font-bold">의미</h4>
+          <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
+          <ul className="space-y-3 text-gray-700 text-sm md:text-base list-disc list-inside">
+            <li>국선의 정면는 유연한 확장성과 연결의 상징</li>
+            <li>사선 처리된 그래픽 요소는 정밀하고 신뢰할 수 있는 기술의 상징</li>
+            <li>정확함을 넘어는 불투과 균형과 가능성을 상징하는 스카이블루가 조화를 이루며 혁신과 열린 사고를 의미과 하는 의지</li>
+          </ul>
+        </div>
 
-            {/* CI 로고 이미지 */}
-            <div className="relative w-full max-w-2xl mx-auto mb-12">
-              <div className="relative w-full aspect-[16/6] flex items-center justify-center">
-                <Image
-                  src="/images/intro/logo_ci.png"
-                  alt="지테크 CI"
-                  fill
-                  className="object-contain p-8"
-                />
+        {/* 규정 섹션 */}
+        <div className="mb-12">
+          <h4 className="text-xl md:text-2xl font-bold">규정</h4>
+          <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
+          <p className="text-gray-700 text-sm md:text-base mb-8">
+            지테크인터내셔날의 전용 색상은 Process Color를 기본으로 합니다. 전용 색상은 지테크의 이미지를 가장 잘 나타내는 수단이므로 제시된 다자인 가이드 라인을 준수하여 사용하여야 합니다.
+          </p>
+          
+          {/* 컬러 샘플 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1320px] mx-auto">
+            {/* G-tech Blue */}
+            <div className="flex items-center">
+              <div className="w-[300px] h-[100px] bg-blue-primary flex items-center justify-center">
+                <span className="text-white font-bold text-xl">G-tech Blue</span>
+              </div>
+              <div className="flex items-center justify-center gap-5 text-left w-[300px] h-[100px] text-sm border border-gray-primary">
+                <div className="font-bold">
+                  <p>Printed Color</p>
+                  <p>Process Color</p>
+                  <p>RGB Color</p>
+                </div>
+                <div>
+                  <p>PANTONE 288C</p>
+                  <p>C100+M10+Y0+K15</p>
+                  <p>R44+G34+B118</p>
+                </div>
               </div>
             </div>
 
-            {/* Section 1 다운로드 버튼 */}
-            <div className="text-center mb-16">
-              <div className="flex justify-center gap-4">
-                <div 
-                  className="w-[250px] h-[60px] border border-black/10 cursor-pointer text-[15px] flex items-center justify-center font-bold gap-[15px] bg-gradient-to-t from-[#f0f0f0] to-[#ffffff]"
-                >
-                  CI DOWNLOAD
-                <div className="w-[13px] h-[13px] relative">
-                  <Image 
-                    src={"/images/intro/download.png"}
-                    alt="download icon"
-                    fill
-                  />
-                </div>
-                </div>
+            {/* G-tech Sky Blue */}
+            <div className="flex items-center">
+            <div className="w-[300px] h-[100px] bg-blue-secondary flex items-center justify-center">
+                <span className="text-white font-bold text-xl">G-tech Sky Blue</span>
               </div>
-            </div>
-
-            {/* 의미 섹션 */}
-            <div className="mb-12">
-              <h4 className="text-xl md:text-2xl font-bold">의미</h4>
-              <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
-              <ul className="space-y-3 text-gray-700 text-sm md:text-base list-disc list-inside">
-                <li>국선의 정면는 유연한 확장성과 연결의 상징</li>
-                <li>사선 처리된 그래픽 요소는 정밀하고 신뢰할 수 있는 기술의 상징</li>
-                <li>정확함을 넘어는 불투과 균형과 가능성을 상징하는 스카이블루가 조화를 이루며 혁신과 열린 사고를 의미과 하는 의지</li>
-              </ul>
-            </div>
-
-            {/* 규정 섹션 */}
-            <div className="mb-12">
-              <h4 className="text-xl md:text-2xl font-bold">규정</h4>
-              <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
-              <p className="text-gray-700 text-sm md:text-base mb-8">
-                지테크인터내셔날의 전용 색상은 Process Color를 기본으로 합니다. 전용 색상은 지테크의 이미지를 가장 잘 나타내는 수단이므로 제시된 다자인 가이드 라인을 준수하여 사용하여야 합니다.
-              </p>
-              
-              {/* 컬러 샘플 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1320px] mx-auto">
-                {/* G-tech Blue */}
-                <div className="flex items-center">
-                  <div className="w-[300px] h-[100px] bg-blue-primary flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">G-tech Blue</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-5 text-left w-[300px] h-[100px] text-sm border border-gray-primary">
-                    <div className="font-bold">
-                      <p>Printed Color</p>
-                      <p>Process Color</p>
-                      <p>RGB Color</p>
-                    </div>
-                    <div>
-                      <p>PANTONE 288C</p>
-                      <p>C100+M10+Y0+K15</p>
-                      <p>R44+G34+B118</p>
-                    </div>
-                  </div>
+              <div className="flex items-center justify-center gap-5 text-left w-[300px] h-[100px] text-sm border border-gray-primary">
+                <div className="font-bold">
+                  <p>Printed Color</p>
+                  <p>Process Color</p>
+                  <p>RGB Color</p>
                 </div>
-
-                {/* G-tech Sky Blue */}
-                <div className="flex items-center">
-                <div className="w-[300px] h-[100px] bg-blue-secondary flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">G-tech Sky Blue</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-5 text-left w-[300px] h-[100px] text-sm space-y-1 border border-gray-primary">
-                    <div className="font-bold">
-                      <p>Printed Color</p>
-                      <p>Process Color</p>
-                      <p>RGB Color</p>
-                    </div>
-                    <div>
-                      <p>PANTONE 2995C</p>
-                      <p>C70+M15+Y0+K0</p>
-                      <p>R54+G169+B225</p>
-                    </div>
-                  </div>
+                <div>
+                  <p>PANTONE 2995C</p>
+                  <p>C70+M15+Y0+K0</p>
+                  <p>R54+G169+B225</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </NoImageBackgroundSection>
     </div>
   );
 }

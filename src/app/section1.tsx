@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Section1() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("left");
   const [showTitle, setShowTitle] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(true);
 
   const slides = [
     {
@@ -32,6 +33,7 @@ export default function Section1() {
   useEffect(() => {
     setShowTitle(false);
     setShowDescription(false);
+    setIsAnimating(false);
 
     const titleTimer = setTimeout(() => {
       setShowTitle(true);
@@ -41,30 +43,24 @@ export default function Section1() {
       setShowDescription(true);
     }, 600);
 
+    const animationTimer = setTimeout(() => {
+      setIsAnimating(true);
+    }, 100);
+
     return () => {
       clearTimeout(titleTimer);
       clearTimeout(descriptionTimer);
+      clearTimeout(animationTimer);
     };
   }, [currentIndex]);
 
   useEffect(() => {
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          return 0;
-        }
-        return prev + (100 / 300);
-      });
-    }, 10);
-
     const slideInterval = setInterval(() => {
       setDirection("left");
       setCurrentIndex((prev) => (prev + 1) % slides.length);
-      setProgress(0);
     }, 3000);
 
     return () => {
-      clearInterval(progressInterval);
       clearInterval(slideInterval);
     };
   }, [slides.length]);
@@ -72,19 +68,16 @@ export default function Section1() {
   const goToSlide = (index: number) => {
     setDirection(index > currentIndex ? "left" : "right");
     setCurrentIndex(index);
-    setProgress(0);
   };
 
   const goToPrevious = () => {
     setDirection("right");
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
-    setProgress(0);
   };
 
   const goToNext = () => {
     setDirection("left");
     setCurrentIndex((prev) => (prev + 1) % slides.length);
-    setProgress(0);
   };
 
   return (
@@ -174,11 +167,17 @@ export default function Section1() {
             {/* 현재 페이지 */}
             <span className="text-base md:text-lg">{currentIndex + 1}</span>
             
-            {/* 프로그레스 바 */}
+            {/* 프로그레스 바 - Framer Motion */}
             <div className="w-20 md:w-24 lg:w-32 h-0.5 bg-white/30 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-white transition-all duration-100 ease-linear"
-                style={{ width: `${progress}%` }}
+              <motion.div
+                key={currentIndex}
+                className="h-full bg-white"
+                initial={{ width: "0%" }}
+                animate={isAnimating ? { width: "100%" } : { width: "0%" }}
+                transition={{
+                  duration: 3,
+                  ease: "linear"
+                }}
               />
             </div>
             

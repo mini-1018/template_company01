@@ -74,8 +74,8 @@ export default function Section5() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               CUSTOMER SERVICE
             </h2>
-            <p className="text-xl md:text-2xl lg:text-3xl font-semibold mb-8">
-              031-852-4070
+            <p className="text-sm md:text-base lg:text-lg mb-8 text-center">
+              궁금한 점이 있으신가요?
             </p>
             <Link 
               href="/community/inquiry"
