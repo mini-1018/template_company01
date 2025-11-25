@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Button from "../shared/component/Button";
+import { hr } from "framer-motion/client";
 
 export default function Section3() {
   const [activeColumn, setActiveColumn] = useState(0);
@@ -13,6 +15,7 @@ export default function Section3() {
       icon: "/images/home/main_section_03_area_01.png",
       text: "신체를 측정하는 기술을 기반으로 신장 체중 자동 측정기는 물론 손소독기ㆍ동물용 체중계 등으로 사업분야를 넓히고 있습니다.",
       bgImage: "/images/home/main_section_03_01.jpg",
+      href: "/business/healthcare",
     },
     {
       title: "2",
@@ -20,6 +23,7 @@ export default function Section3() {
       icon: "/images/home/main_section_03_area_02.png",
       text: "농업ㆍ수산업ㆍ축산업 현장에서 ICT 기술을 접목하여 계량 장비를 자동화ㆍ최적화 함으로써 생산효율을 높이는데 힘쓰고 있습니다.",
       bgImage: "/images/home/main_section_03_02.jpg",
+      href: "/business/agriculture",
     },
     {
       title: "3",
@@ -27,6 +31,7 @@ export default function Section3() {
       icon: "/images/home/main_section_03_area_03.png",
       text: "반도체 생산 라인ㆍ공항용 스케일 등 정밀한 중량을 측정하는 자동화 라인을 구축하고 기술지원하여 만족도를 높이고 있습니다.",
       bgImage: "/images/home/main_section_03_03.jpg",
+      href: "/business/industrial",
     },
     {
       title: "4",
@@ -34,6 +39,7 @@ export default function Section3() {
       icon: "/images/home/main_section_03_area_04.png",
       text: "무게 측정 기술 기반으로 AI 인공지능 및 ICT 기술을 더해 재활용품 무인회수기, 음식물 종량기 등 지자체에서 관리하기 용이한 친환경 제품을 갖추고 있습니다.",
       bgImage: "/images/home/main_section_03_04.jpg",
+      href: "/business/eco-friendly",
     },
   ];
 
@@ -169,14 +175,11 @@ export default function Section3() {
                 </p>
 
                 {/* 자세히 보기 버튼 */}
-                <button
-                  className="px-6 md:px-8 lg:px-10 py-2 md:py-2.5 lg:py-3 border-2 border-white text-white text-xs md:text-sm lg:text-base font-medium rounded-full hover:bg-blue-secondary hover:border-transparent hover:text-white transition-all duration-300 cursor-pointer"
-                  onClick={() => {
-                    console.log(`자세히 보기: ${column.heading}`);
-                  }}
-                >
-                  자세히 보기
-                </button>
+                <Button 
+                text = "자세히 보기"
+                href = {column.href}
+                size = "md"
+                />
               </div>
             </div>
           </div>

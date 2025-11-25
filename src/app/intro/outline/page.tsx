@@ -29,9 +29,9 @@ export default function OutlinePage() {
         <div className="absolute inset-0 z-10 flex items-center">
           <div className="w-full mx-auto px-8 md:px-24 lg:px-[200px]">
             <div className="max-w-4xl text-black-primary">
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-[70px]">
-                가족의 행복을 만드는 NO.1 기업
-              </h3>
+              {/* <h3 className="text-3xl md:text-4xl lg:text-[50px] font-bold mb-[70px]">
+                CEO 인사말
+              </h3> */}
 
               <div className="w-[813px] text-[25px] md:text-[25px] leading-normal tracking-normal wrap-break-word ">
                 <p>

@@ -77,6 +77,7 @@
   --color-blue-secondary: #36a9e1;
   --color-black-primary: #434343;
   --color-gray-primary: #CCCCCC;
+  --color-gray-secondary: #F0F0F0;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
+import Button from "../shared/component/Button";
 
 export default function Section2() {
   const [timeElapsed, setTimeElapsed] = useState({
@@ -164,7 +165,7 @@ export default function Section2() {
             {topStats.map((stat, index) => (
               <div
                 key={index}
-                className={`backdrop-blur-md bg-white/20 rounded-2xl p-6 py-12 md:px-8 md:py-16 text-center text-white transition-all duration-700 ease-out ${
+                className={`backdrop-blur-md bg-white/20 p-6 py-12 md:px-8 md:py-16 text-center text-white transition-all duration-700 ease-out ${
                   isVisible 
                     ? "opacity-100 translate-y-0" 
                     : "opacity-0 translate-y-12"
@@ -226,28 +227,12 @@ export default function Section2() {
           </div>
         </div>
         {/* 회사소개 버튼 */}
-        <button
-                className="group flex items-center gap-2 px-6 md:px-8 lg:px-10 py-2 md:py-2.5 lg:py-3 border-2 border-white text-white text-sm md:text-m lg:text-lg font-medium rounded-full hover:bg-blue-secondary hover:text-white hover:border-transparent transition-all duration-300 cursor-pointer"
-                onClick={() => {
-                  console.log('회사소개 페이지로 이동');
-                }}
-              >
-                <span>회사소개</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </button>
+        <Button 
+          text="회사소개"
+          href="/intro/outline"
+          showArrow={true}
+          size="lg"
+        />
       </div>
     </div>
   );

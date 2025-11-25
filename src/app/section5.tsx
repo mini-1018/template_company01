@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { menuItems } from "@/src/shared/component/menuItems";
+import Button from "../shared/component/Button";
 
 export default function Section5() {
 
@@ -32,26 +33,12 @@ export default function Section5() {
             <p className="text-sm md:text-base lg:text-lg mb-8 text-center">
               지테크의 최신 소식을 만나보세요
             </p>
-            <Link 
-              href="/media/newsroom"
-              className="group flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 border-2 border-white text-white text-sm md:text-base font-medium rounded-full hover:bg-blue-secondary hover:border-transparent transition-all duration-300"
-            >
-              <span>보러가기</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                />
-              </svg>
-            </Link>
+            <Button 
+              text="보러가기"
+              href="/media/news"
+              showArrow={true}
+              size="lg"
+            />
           </div>
         </div>
 
@@ -72,31 +59,17 @@ export default function Section5() {
           {/* 콘텐츠 */}
           <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 text-white">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              CUSTOMER SERVICE
+              SUPPORT
             </h2>
             <p className="text-sm md:text-base lg:text-lg mb-8 text-center">
               궁금한 점이 있으신가요?
             </p>
-            <Link 
-              href="/community/inquiry"
-              className="group flex items-center gap-2 px-6 md:px-8 py-2.5 md:py-3 border-2 border-white text-white text-sm md:text-base font-medium rounded-full hover:bg-blue-secondary hover:border-transparent transition-all duration-300"
-            >
-              <span>문의하기</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                />
-              </svg>
-            </Link>
+            <Button 
+              text="문의하기"
+              href="/community/support"
+              showArrow={true}
+              size="lg"
+            />
           </div>
         </div>
       </div>
