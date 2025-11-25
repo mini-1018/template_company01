@@ -13,65 +13,114 @@ export const metadata: Metadata = {
 export default function Certification() {
   const certificates = [
     {
-      image: "/images/intro/certification/certification01.png",
-      name: "인증서",
+      image: "/images/intro/certification/certifications_01.jpg",
+      name: "기업부설연구소 인정서",
     },
     {
-      image: "/images/intro/certification/certification02.jpg",
-      name: "인증서",
-    },    {
-      image: "/images/intro/certification/certification03.jpg",
-      name: "인증서",
+      image: "/images/intro/certification/certifications_02.jpg",
+      name: "벤처기업 확인서",
     },
     {
-      image: "/images/intro/certification/certification03.jpg",
-      name: "인증서",
+      image: "/images/intro/certification/certifications_03.jpg",
+      name: "기술혁신형 중소기업 확인서",
     },
     {
-      image: "/images/intro/certification/certification03.jpg",
-      name: "인증서",
+      image: "/images/intro/certification/certifications_04.jpg",
+      name: "ISO 품질경영시스템 인증서",
     },
     {
-      image: "/images/intro/certification/certification03.jpg",
-      name: "인증서",
+      image: "/images/intro/certification/certifications_05.jpg",
+      name: "글로벌 강소기업 지정서",
+    },
+    {
+      image: "/images/intro/certification/certifications_06.jpg",
+      name: "우수제품지정증서 2건",
+    },
+    {
+      image: "/images/intro/certification/certifications_07.jpg",
+      name: "우수구매추천확인서 2건",
+    },
+    {
+      image: "/images/intro/certification/certifications_08.jpg",
+      name: "ICT 품질 인증서",
+    },
+    {
+      image: "/images/intro/certification/certifications_09.jpg",
+      name: "품질인증(Q-MARK)지정서",
+    },
+    {
+      image: "/images/intro/certification/certifications_10.jpg",
+      name: "계량기 제작업 등록증",
+    },
+    {
+      image: "/images/intro/certification/certifications_11.jpg",
+      name: "KTC 형식승인서 9건",
+    },
+    {
+      image: "/images/intro/certification/certifications_12.jpg",
+      name: "CE인증서",
+    },
+    {
+      image: "/images/intro/certification/certifications_13.jpg",
+      name: "특허증 64건",
+    },
+    {
+      image: "/images/intro/certification/certifications_14.jpg",
+      name: "디자인등록증 34건",
+    },
+    {
+      image: "/images/intro/certification/certifications_15.jpg",
+      name: "실용신안등록증 9건",
+    },
+    {
+      image: "/images/intro/certification/certifications_16.jpg",
+      name: "녹색기술 인증서",
+    },
+    {
+      image: "/images/intro/certification/certifications_17.jpg",
+      name: "과학의날 표창장",
+    },
+    {
+      image: "/images/intro/certification/certifications_18.jpg",
+      name: "우량기술기업 선정서",
+    },
+    {
+      image: "/images/intro/certification/certifications_19.jpg",
+      name: "대한체육협회 감사장",
+    },
+    {
+      image: "/images/intro/certification/certifications_20.jpg",
+      name: "NTEP 미국 형식인증서",
     },
   ];
 
   return (
     <div className="w-full bg-white py-[200px]">
-      <div className="w-full mx-auto px-8 md:px-12 lg:px-16">
-        {/* 헤더 */}
-        <div className="text-center mb-16 md:mb-20">
-          <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black-primary mb-6">
-            인증현황
-          </h1>
-          <p className="text-base md:text-lg text-gray-600">
-            지테크인터내셔날의 기술력과 품질을 인정받은 인증서입니다.
-          </p>
-        </div>
-
+      <div className="w-full max-w-[1660px] mx-auto">
         {/* 인증서 그리드 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-x-4 md:gap-y-[125px]">
           {certificates.map((cert, index) => (
             <div 
               key={index}
               className="flex flex-col items-center group cursor-pointer"
             >
               {/* 인증서 이미지 */}
-              <div className="relative w-[300px] h-[400px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+              <div className="relative w-[300px] h-[400px] overflow-hidden transition-transform duration-300 group-hover:scale-105 shadow-md">
                 <Image
                   src={cert.image}
                   alt={cert.name}
                   fill
                   className="object-cover"
                 />
+                {/* border-gray-primary border-1 */}
               </div>
               
               {/* 인증서 이름 */}
-              <h3 className="mt-4 text-center text-base md:text-lg font-semibold text-black-primary">
-                {cert.name}
-              </h3>
+              <div className="mt-4 h-[60px] flex items-start justify-center">
+                <h3 className="text-center text-base md:text-[20px] text-black-primary whitespace-pre-line leading-relaxed">
+                  {cert.name}
+                </h3>
+              </div>
             </div>
           ))}
         </div>

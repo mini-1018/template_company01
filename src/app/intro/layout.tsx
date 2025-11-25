@@ -35,10 +35,10 @@ export default function IntroLayout({
         <div className="absolute inset-0 bg-black/40" />
         
         <div className="relative z-10 h-full flex flex-col items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
-          <h1 className="text-4xl md:text-[80px] font-bold text-white mb-8">
+          <h1 className="text-4xl md:text-[60px] font-bold text-white mb-8">
             {tabs.find(tab => pathname === tab.path)?.label}
           </h1>
-          <div className="flex items-center gap-2 text-white text-sm md:text-[30px]">
+          <div className="flex items-center gap-2 text-white text-sm md:text-[25px]">
           {tabs.find(tab => pathname === tab.path)?.sub}
           </div>
         </div>

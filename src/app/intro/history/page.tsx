@@ -159,17 +159,6 @@ export default function History() {
   return (
     <div className="w-full bg-white py-[200px]">
       <div className="w-full max-w-7xl mx-auto px-8 md:px-12 lg:px-16">
-        {/* 헤더 */}
-        <div className="text-center mb-16 md:mb-20">
-          <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black-primary mb-6">
-            연혁
-          </h1>
-          <p className="text-base md:text-lg text-gray-600">
-            지테크인터내셔날의 성장 과정입니다.
-          </p>
-        </div>
-
         {/* 메인 콘텐츠 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* 왼쪽: 이미지 영역 */}
@@ -244,14 +233,14 @@ export default function History() {
                       >
                         {/* 타임라인 점 */}
                         <motion.div 
-                          className="absolute -left-[34px] top-2 w-3 h-3 rounded-full bg-blue-primary border-4 border-white shadow-md"
+                          className="absolute -left-[37px] top-2 right-0.5 w-3 h-3 rounded-full bg-blue-primary border-4 border-white shadow-md"
                           whileInView={{ scale: [0, 1.2, 1] }}
                           viewport={{ once: true }}
                           transition={{ delay: itemIndex * 0.1, duration: 0.3 }}
                         />
                         
                         {/* 월 */}
-                        <div className="text-sm font-bold text-blue-primary mb-2">
+                        <div className="text-sm font-bold text-blue-secondary mb-2">
                           {item.month}월
                         </div>
                         
