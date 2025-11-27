@@ -1,3 +1,4 @@
+import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -100,6 +101,7 @@ export default function Certification() {
         {/* 인증서 그리드 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-x-4 md:gap-y-[125px]">
           {certificates.map((cert, index) => (
+            <FadeUpOnView key={index} delay={index * 0.1}>
             <div 
               key={index}
               className="flex flex-col items-center group cursor-pointer"
@@ -122,6 +124,7 @@ export default function Certification() {
                 </h3>
               </div>
             </div>
+            </FadeUpOnView>
           ))}
         </div>
       </div>
