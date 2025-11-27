@@ -105,7 +105,7 @@ export default function Certification() {
               className="flex flex-col items-center group cursor-pointer"
             >
               {/* 인증서 이미지 */}
-              <div className="relative w-[300px] h-[400px] overflow-hidden transition-transform duration-300 group-hover:scale-105 shadow-md">
+              <div className="relative w-[300px] h-[400px] overflow-hidden transition-transform duration-300 group-hover:scale-105 border-gray-primary border">
                 <Image
                   src={cert.image}
                   alt={cert.name}

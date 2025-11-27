@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const locations = [
   {
     id: "headquarters",
-    name: "의정부 본사",
+    tab: "본사",
+    name: "(주)지테크인터내셔날 본사",
     address: "경기도 의정부시 산단로 68번길 29",
     tel: "031-852-4070",
     fax: "031-852-4656",
@@ -13,6 +15,7 @@ const locations = [
   },
   {
     id: "nambu",
+    tab: "남부지사",
     name: "남부 지사",
     address: "대구광역시 북구 동변로 15길 22",
     tel: "053-588-4070",
@@ -21,6 +24,7 @@ const locations = [
   },
   {
     id: "jeju",
+    tab: "제주지사",
     name: "제주 지사",
     address: "제주특별자치도 제주시 조천읍 조천우회로 302-1",
     tel: "010-9369-4071",
@@ -56,16 +60,16 @@ export default function Location() {
                   : "bg-gray-secondary text-black-primary hover:bg-gray-200"
               }`}
             >
-              {location.name}
+              {location.tab}
             </button>
           ))}
         </div>
 
         {/* 지도 및 정보 */}
         {currentLocation && (
-          <div className="space-y-8">
+          <div className="flex border border-gray-primary">
             {/* 구글 맵 */}
-            <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
+            <div className="w-[50%] h-[500px] overflow-hidden">
               <iframe
                 src={currentLocation.mapUrl}
                 width="100%"
@@ -78,34 +82,76 @@ export default function Location() {
             </div>
 
             {/* 상세 정보 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8 rounded-lg">
-              <div>
-                <h3 className="text-xl font-bold text-blue-secondary mb-2">
-                  {currentLocation.name}
-                </h3>
-                <p className="text-black-primary leading-relaxed">
+            <div className="w-[50%] flex flex-col justify-start px-16 py-12 gap-8">
+              <h2 className="text-3xl font-bold text-black-primary">
+                {currentLocation.name}
+              </h2>
+
+              {/* 구분선 */}
+              <div className="border-t border-gray-primary" />
+
+              {/* 주소 섹션 */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <div className="relative w-6 h-6">
+                      <Image 
+                        src="/images/icon/location.svg"
+                        alt="phone icon"
+                        fill
+                        className="object-cover"
+                      />
+                  </div>
+                  <h3 className="text-2xl font-bold text-blue-secondary">
+                    Address
+                  </h3>
+                </div>
+                <p className="text-xl text-black-primary leading-relaxed">
                   {currentLocation.address}
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-xl font-bold text-black-primary mb-2">
-                  TEL
-                </h3>
-                <p className="text-black-primary">
+              {/* 전화번호 섹션 */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <div className="relative w-6 h-6">
+                    <Image 
+                      src="/images/icon/tel.svg"
+                      alt="phone icon"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-blue-secondary">
+                    TEL
+                  </h3>
+                </div>
+                <p className="text-xl text-black-primary">
                   {currentLocation.tel}
                 </p>
               </div>
 
+              {/* 팩스 섹션 */}
               {currentLocation.fax && (
-                <div>
-                  <h3 className="text-xl font-bold text-black-primary mb-2">
-                    FAX
-                  </h3>
-                  <p className="text-black-primary">
-                    {currentLocation.fax}
-                  </p>
-                </div>
+                <>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="relative w-6 h-6">
+                      <Image 
+                        src="/images/icon/fax.svg"
+                        alt="phone icon"
+                        fill
+                        className="object-cover"
+                      />
+                      </div>
+                      <h3 className="text-2xl font-bold text-blue-secondary">
+                        FAX
+                      </h3>
+                    </div>
+                    <p className="text-xl text-black-primary">
+                      {currentLocation.fax}
+                    </p>
+                  </div>
+                </>
               )}
             </div>
           </div>

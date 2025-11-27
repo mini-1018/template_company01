@@ -11,12 +11,12 @@ export default function Business() {
     {
       title: "친환경 솔루션",
       image: "/images/intro/business/business_areas_01.jpg",
-      description: "무게 측정 기술 기반으로 AI 인공지능 및 ICT 기술을\n더해 재활용품 무인회수기 · 음식물 종량기 등\n지자체에서 관리하기 용이한 친환경 제품을 갖추고 있습니다.",
+      description: "무게 측정 기술 기반으로\n AI 인공지능 및 ICT 기술을 더해\n 재활용품 무인회수기 · 음식물 종량기 등 지자체에서 \n관리하기 용이한 친환경 제품을 갖추고 있습니다.",
     },
     {
       title: "헬스케어 제품",
       image: "/images/intro/business/business_areas_02.jpg",
-      description: "신체를 측정하는 기술을 기반으로 신장 체중 자동\n측정기 · 환자용 측정기 · 손소독기 · 반려동물 체중계 등으로\n사업분야를 넓히고 있습니다.",
+      description: "신체를 측정하는 기술을 기반으로\n 신장 체중 자동 측정기 · 환자용 측정기 · \n손소독기 · 반려동물 체중계 등으로\n헬스케어 사업분야를 넓히고 있습니다.",
     },
     {
       title: "농축산 시스템",
@@ -35,7 +35,7 @@ export default function Business() {
       <div className="w-full max-w-[1426px] mx-auto px-8 md:px-10 lg:px-12">
         {/* 헤더 */}
         <div className="text-center mb-16 md:mb-40">
-          <h1 className="text-3xl md:text-4xl lg:text-[50px] font-bold text-black-primary mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-[50px] font-bold text-black-primary mb-6 leading-15">
             융복합 측정기술 전문기업 지테크인터내셔날은 <br/> 4대 사업군을 기반으로 지속 가능한 미래 가치를 만들어 갑니다.
           </h1>
         </div>
@@ -125,7 +125,7 @@ export default function Business() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 20 }}
                         transition={{ delay: 0.1, duration: 0.3 }}
-                        className="text-[25px] font-bold text-white leading-relaxed whitespace-pre-line text-center"
+                        className="text-[25px] font-medium text-white leading-relaxed whitespace-pre-line text-center"
                       >
                         {business.description}
                       </motion.p>

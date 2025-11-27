@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import NoImageBackgroundSection from "@/src/shared/component/NoImageBackgroundSection";
+import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 
 export const metadata: Metadata = {
   title: "개요 | G-TECH International",
@@ -33,33 +34,35 @@ export default function OutlinePage() {
                 CEO 인사말
               </h3> */}
 
-              <div className="w-[813px] text-[25px] md:text-[25px] leading-normal tracking-normal wrap-break-word ">
-                <p>
-                  주식회사 지테크인터내셔날은 좋은 사람들이 모여<br />
-                  사용하기 쉬운 제품을 만드는 "즐거운 회사"입니다.
-                </p>
-                <br />
-                <p>
-                1995년 설립한 지테크인터내셔날은 하중 감지 센서기술을 기반으로
-                측정 및 계량기술 개발에 매진하여 원천기술을 확보하였고 우수한 품질을 실현하고자
-                산업용 · 헬스케어 · 농축산 · 친환경 분야에 대한 사업을 확장하며 성장했습니다.
-                </p>
-                <br />
-                <p>
-                지테크인터내셔날에서 개발된 모든 제품은 정확성 · 안전성 · 신뢰성에 대한
-                "Safety system"을 적용하여 각 제품의 사용 환경에 최고의 성능을 발휘
-                할 수 있도록 개발되었습니다.
-                </p>
-                <br />
-                <p>
-                "가족의 행복을 만드는 NO.1 기업" 슬로건을 바탕으로 언제나 고객 가까이에서
-                기술 그 이상의 가치로 최고의 제품만을 추구하여 최상의 만족을 드리겠습니다.
-                </p>
-                <br />
-                <p>
-                  (주)지테크인터내셔날 대표이사 한성우
-                </p>
-              </div>
+              <FadeUpOnView >
+                <div className="w-[813px] text-[25px] md:text-[25px] leading-normal tracking-normal wrap-break-word animate-fade-in-up">
+                  <p>
+                    주식회사 지테크인터내셔날은 좋은 사람들이 모여<br />
+                    사용하기 쉬운 제품을 만드는 "즐거운 회사"입니다.
+                  </p>
+                  <br />
+                  <p>
+                  1995년 설립한 지테크인터내셔날은 하중 감지 센서기술을 기반으로
+                  측정 및 계량기술 개발에 매진하여 원천기술을 확보하였고 우수한 품질을 실현하고자
+                  산업용 · 헬스케어 · 농축산 · 친환경 분야에 대한 사업을 확장하며 성장했습니다.
+                  </p>
+                  <br />
+                  <p>
+                  지테크인터내셔날에서 개발된 모든 제품은 정확성 · 안전성 · 신뢰성에 대한
+                  "Safety system"을 적용하여 각 제품의 사용 환경에 최고의 성능을 발휘
+                  할 수 있도록 개발되었습니다.
+                  </p>
+                  <br />
+                  <p>
+                  "가족의 행복을 만드는 NO.1 기업" 슬로건을 바탕으로 언제나 고객 가까이에서
+                  기술 그 이상의 가치로 최고의 제품만을 추구하여 최상의 만족을 드리겠습니다.
+                  </p>
+                  <br />
+                  <p>
+                    (주)지테크인터내셔날 대표이사 한성우
+                  </p>
+                </div>
+              </FadeUpOnView>
             </div>
           </div>
         </div>
@@ -91,7 +94,7 @@ export default function OutlinePage() {
             </h3>
             
             {/* 부제목 */}
-            <p className="text-xl md:text-[50px] text-white mb-16 md:mb-20">
+            <p className="text-xl md:text-[50px] text-white font-bold mb-16 md:mb-20">
               "가족의 행복을 만드는 NO.1 기업"
             </p>
             
@@ -102,61 +105,67 @@ export default function OutlinePage() {
             {/* 3가지 가치 카드 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mx-auto">
               {/* 품질인증 */}
-              <div className="flex flex-col items-center">
-                <div className="w-24 h-24 md:w-32 md:h-32 relative mb-6">
-                  <Image
-                    src="/images/intro/intro_icon_01.png"
-                    alt="품질인정"
-                    fill
-                    className="object-contain"
-                  />
+              <FadeUpOnView delay={0}>
+                <div className="flex flex-col items-center">
+                  <div className="w-24 h-24 md:w-32 md:h-32 relative mb-6">
+                    <Image
+                      src="/images/intro/intro_icon_01.png"
+                      alt="품질인정"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <h4 className="text-xl md:text-[30px] font-bold text-white mb-4">
+                    품질인정
+                  </h4>
+                  <div className="w-[50px] border-2 border-white mx-auto mb-4"/>
+                  <p className="text-sm md:text-[25px] text-white/90">
+                    기술력과 품질로 인정받는 기업
+                  </p>
                 </div>
-                <h4 className="text-xl md:text-[30px] font-bold text-white mb-4">
-                  품질인정
-                </h4>
-                <div className="w-[50px] border-2 border-white mx-auto mb-4"/>
-                <p className="text-sm md:text-[25px] text-white/90">
-                  기술력과 품질로 인정받는 기업
-                </p>
-              </div>
+              </FadeUpOnView>
               
               {/* 기술강화 */}
-              <div className="flex flex-col items-center">
-                <div className="w-24 h-24 md:w-32 md:h-32 relative mb-6">
-                  <Image
-                    src="/images/intro/intro_icon_02.png"
-                    alt="기술강화"
-                    fill
-                    className="object-contain"
-                  />
+              <FadeUpOnView delay={200}>
+                <div className="flex flex-col items-center">
+                  <div className="w-24 h-24 md:w-32 md:h-32 relative mb-6">
+                    <Image
+                      src="/images/intro/intro_icon_02.png"
+                      alt="기술강화"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <h4 className="text-xl md:text-[30px] font-bold text-white mb-4">
+                    기술강화
+                  </h4>
+                  <div className="w-[50px] border-2 border-white mx-auto mb-4"/>
+                  <p className="text-sm md:text-[25px] text-white/90">
+                    고정밀 원천 기술에 대한 핵심 사업 강화
+                  </p>
                 </div>
-                <h4 className="text-xl md:text-[30px] font-bold text-white mb-4">
-                  기술강화
-                </h4>
-                <div className="w-[50px] border-2 border-white mx-auto mb-4"/>
-                <p className="text-sm md:text-[25px] text-white/90">
-                  고정밀 원천 기술에 대한 핵심 사업 강화
-                </p>
-              </div>
+              </FadeUpOnView>
               
               {/* 가치경영 */}
-              <div className="flex flex-col items-center">
-                <div className="w-24 h-24 md:w-32 md:h-32 relative mb-6">
-                  <Image
-                    src="/images/intro/intro_icon_03.png"
-                    alt="가치경영"
-                    fill
-                    className="object-contain"
-                  />
+              <FadeUpOnView delay={400}>
+                <div className="flex flex-col items-center">
+                  <div className="w-24 h-24 md:w-32 md:h-32 relative mb-6">
+                    <Image
+                      src="/images/intro/intro_icon_03.png"
+                      alt="가치경영"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <h4 className="text-xl md:text-[30px] font-bold text-white mb-4">
+                    가치경영
+                  </h4>
+                  <div className="w-[50px] border-2 border-white m-auto mb-4"/>
+                  <p className="text-sm md:text-[25px] text-white/90">
+                    인공지능(AI)을 통한 브랜드 가치경영
+                  </p>
                 </div>
-                <h4 className="text-xl md:text-[30px] font-bold text-white mb-4">
-                  가치경영
-                </h4>
-                <div className="w-[50px] border-2 border-white m-auto mb-4"/>
-                <p className="text-sm md:text-[25px] text-white/90">
-                  인공지능(AI)을 통한 브랜드 가치경영
-                </p>
-              </div>
+              </FadeUpOnView>
             </div>
           </div>
         </div>
@@ -228,9 +237,9 @@ export default function OutlinePage() {
           <h4 className="text-xl md:text-2xl font-bold">의미</h4>
           <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
           <ul className="space-y-3 text-gray-700 text-sm md:text-base list-disc list-inside">
-            <li>국선의 정면는 유연한 확장성과 연결의 상징</li>
+            <li>곡선의 형태는 유연한 확장성과 연결의 상징</li>
             <li>사선 처리된 그래픽 요소는 정밀하고 신뢰할 수 있는 기술의 상징</li>
-            <li>정확함을 넘어는 불투과 균형과 가능성을 상징하는 스카이블루가 조화를 이루며 혁신과 열린 사고를 의미과 하는 의지</li>
+            <li>정확함을 뜻하는 블루와 균형과 가능성을 상징하는 스카이블루가 조화를 이루며 혁신과 열린 사고를 하고자 하는 의지</li>
           </ul>
         </div>
 
@@ -239,7 +248,8 @@ export default function OutlinePage() {
           <h4 className="text-xl md:text-2xl font-bold">규정</h4>
           <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
           <p className="text-gray-700 text-sm md:text-base mb-8">
-            지테크인터내셔날의 전용 색상은 Process Color를 기본으로 합니다. 전용 색상은 지테크의 이미지를 가장 잘 나타내는 수단이므로 제시된 다자인 가이드 라인을 준수하여 사용하여야 합니다.
+            지테크인터내셔날의 전용 색상은 Process Color를 기본으로 합니다. 전용 색상은 지테크의 이미지를 가장 잘 나타내는 수단이므로 제시된
+            디자인 가이드 라인을 준수하여 사용하여야 합니다.
           </p>
           
           {/* 컬러 샘플 */}
