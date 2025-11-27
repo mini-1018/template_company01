@@ -49,7 +49,7 @@ export default function Location() {
         </div>
 
         {/* 탭 메뉴 */}
-        <div className="flex border-b border-gray-200 mb-8">
+        <div className="flex border-b border-gray-200 mb-16">
           {locations.map((location) => (
             <button
               key={location.id}

@@ -66,7 +66,6 @@ export default function History() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,black_100%)] pointer-events-none" />
                 </div>
       
                   <div className="absolute bottom-0 left-0 right-0 p-8">

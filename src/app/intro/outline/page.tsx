@@ -84,7 +84,7 @@ export default function OutlinePage() {
         
         {/* 콘텐츠 */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 md:px-12 lg:px-16 py-12">
-          <div className="w-full max-w-7xl mx-auto text-center">
+          <div className="w-full max-w-[1320px] mx-auto text-center">
             {/* 상단 구분선 */}
             <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
             
@@ -234,9 +234,9 @@ export default function OutlinePage() {
 
         {/* 의미 섹션 */}
         <div className="mb-12">
-          <h4 className="text-xl md:text-2xl font-bold">의미</h4>
+          <h4 className="text-xl md:text-[30px] font-bold">의미</h4>
           <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
-          <ul className="space-y-3 text-gray-700 text-sm md:text-base list-disc list-inside">
+          <ul className="space-y-3 text-black-primary text-sm md:text-[25px] list-disc list-inside">
             <li>곡선의 형태는 유연한 확장성과 연결의 상징</li>
             <li>사선 처리된 그래픽 요소는 정밀하고 신뢰할 수 있는 기술의 상징</li>
             <li>정확함을 뜻하는 블루와 균형과 가능성을 상징하는 스카이블루가 조화를 이루며 혁신과 열린 사고를 하고자 하는 의지</li>
@@ -245,9 +245,9 @@ export default function OutlinePage() {
 
         {/* 규정 섹션 */}
         <div className="mb-12">
-          <h4 className="text-xl md:text-2xl font-bold">규정</h4>
+          <h4 className="text-xl md:text-[30px] font-bold">규정</h4>
           <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
-          <p className="text-gray-700 text-sm md:text-base mb-8">
+          <p className="text-black-primary text-sm md:text-[25px] mb-8">
             지테크인터내셔날의 전용 색상은 Process Color를 기본으로 합니다. 전용 색상은 지테크의 이미지를 가장 잘 나타내는 수단이므로 제시된
             디자인 가이드 라인을 준수하여 사용하여야 합니다.
           </p>
@@ -257,15 +257,15 @@ export default function OutlinePage() {
             {/* G-tech Blue */}
             <div className="flex items-center">
               <div className="w-[300px] h-[100px] bg-blue-primary flex items-center justify-center">
-                <span className="text-white font-bold text-xl">G-tech Blue</span>
+                <span className="text-white font-bold text-[25px]">G-tech Blue</span>
               </div>
               <div className="flex items-center justify-center gap-5 text-left w-[300px] h-[100px] text-sm border border-gray-primary">
-                <div className="font-bold">
+                <div className="font-bold text-[15px]">
                   <p>Printed Color</p>
                   <p>Process Color</p>
                   <p>RGB Color</p>
                 </div>
-                <div>
+                <div className="text-[15px]">
                   <p>PANTONE 288C</p>
                   <p>C100+M10+Y0+K15</p>
                   <p>R44+G34+B118</p>
@@ -276,15 +276,15 @@ export default function OutlinePage() {
             {/* G-tech Sky Blue */}
             <div className="flex items-center">
             <div className="w-[300px] h-[100px] bg-blue-secondary flex items-center justify-center">
-                <span className="text-white font-bold text-xl">G-tech Sky Blue</span>
+                <span className="text-white font-bold text-[25px]">G-tech Sky Blue</span>
               </div>
               <div className="flex items-center justify-center gap-5 text-left w-[300px] h-[100px] text-sm border border-gray-primary">
-                <div className="font-bold">
+                <div className="font-bold text-[15px]">
                   <p>Printed Color</p>
                   <p>Process Color</p>
                   <p>RGB Color</p>
                 </div>
-                <div>
+                <div className="text-[15px]">
                   <p>PANTONE 2995C</p>
                   <p>C70+M15+Y0+K0</p>
                   <p>R54+G169+B225</p>

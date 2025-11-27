@@ -15,7 +15,7 @@ export default function NoImageBackgroundSection({
   
   return (
     <section className={`w-full py-[75px] lg:py-[150px] ${bgColorClass} ${className}`}>
-      <div className="w-full max-w-7xl mx-auto px-8 md:px-12 lg:px-16">
+      <div className="w-full max-w-[1448px] mx-auto px-8 md:px-12 lg:px-16">
         {children}
       </div>
     </section>
