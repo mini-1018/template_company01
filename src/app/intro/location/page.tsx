@@ -54,9 +54,9 @@ export default function Location() {
             <button
               key={location.id}
               onClick={() => setActiveTab(location.id)}
-              className={`flex-1 py-2 text-[25px] font-bold transition-colors ${
+              className={`flex-1 py-2 text-[25px] font-bold transition-colors cursor-pointer ${
                 activeTab === location.id
-                  ? "bg-blue-secondary text-white border-b-4 border-blue-secondary"
+                  ? "bg-blue-secondary text-white"
                   : "bg-gray-secondary text-black-primary hover:bg-gray-200"
               }`}
             >
