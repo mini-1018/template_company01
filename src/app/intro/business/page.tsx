@@ -35,7 +35,7 @@ export default function Business() {
       <div className="w-full max-w-[1426px] mx-auto px-8 md:px-10 lg:px-12">
         {/* 헤더 */}
         <div className="text-center mb-16 md:mb-40">
-          <h1 className="text-3xl md:text-4xl lg:text-[50px] font-semibold text-black-primary mb-6 leading-15">
+          <h1 className="text-3xl md:text-4xl lg:text-[40px] font-semibold text-black-primary mb-6 leading-15">
             융복합 측정기술 전문기업 지테크인터내셔날은 <br/> 4대 사업군을 기반으로 지속 가능한 미래 가치를 만들어 갑니다.
           </h1>
         </div>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function OutlinePage() {
+export default function AboutPage() {
   return (
     <div className="w-full bg-white">
       {/* CEO 메시지 섹션 - 16:9 비율 */}

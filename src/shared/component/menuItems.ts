@@ -2,35 +2,35 @@ export const menuItems = [
     {
       name: "회사소개",
       submenu: [
-        { label: "개요", path: "/intro/outline" },
+        { label: "개요", path: "/intro/about" },
         { label: "사업분야", path: "/intro/business" },
         { label: "연혁", path: "/intro/history" },
-        { label: "인증현황", path: "/intro/certification" },
-        { label: "위치안내", path: "/intro/direction" },
+        { label: "인증현황", path: "/intro/certifications" },
+        { label: "위치안내", path: "/intro/location" },
       ],
     },
     {
-      name: "사업소개",
+      name: "제품소개",
       submenu: [
-        { label: "CODA", path: "/business/coda" },
-        { label: "HUEL", path: "/business/huel" },
+        { label: "친환경", path: "/business/environmental" },
         { label: "헬스케어", path: "/business/healthcare" },
+        { label: "농축산", path: "/business/smartfarm" },
         { label: "산업용", path: "/business/industrial" },
       ],
     },
     {
       name: "미디어",
       submenu: [
-        { label: "뉴스룸", path: "/media/newsroom" },
+        { label: "보도자료", path: "/media/releases" },
         { label: "소셜미디어", path: "/media/social" },
       ],
     },
     {
-      name: "커뮤니티",
+      name: "고객지원",
       submenu: [
         { label: "공지사항", path: "/community/notice" },
-        { label: "고객문의", path: "/community/inquiry" },
-        { label: "다운로드", path: "/community/download" },
+        { label: "다운로드", path: "/community/downloads" },
+        { label: "고객문의", path: "/community/contact" },
       ],
     },
   ];

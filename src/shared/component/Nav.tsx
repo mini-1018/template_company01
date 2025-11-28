@@ -44,8 +44,8 @@ export default function Nav() {
               />
             </Link>
 
-            {/* 데스크톱 메뉴 */}
-            <div className="hidden lg:flex items-center gap-12 xl:gap-16">
+            {/* 데스크톱 메뉴 - 중앙 정렬 */}
+            <div className="hidden lg:flex items-center gap-12 xl:gap-40 absolute left-1/2 -translate-x-1/2">
               {menuItems.map((item) => (
                 <div 
                   key={item.name} 
@@ -54,9 +54,9 @@ export default function Nav() {
                   onMouseLeave={() => setHoveredMenu(null)}
                 >
                   <button
-                    className={`text-base xl:text-lg font-medium transition-colors duration-300 relative w-full ${
+                    className={`text-base xl:text-[20px] font-extrabold transition-colors duration-300 relative w-full ${
                       isMenuOpen
-                        ? "text-gray-900 hover:text-blue-primary"
+                        ? "text-black-primary hover:text-blue-primary"
                         : "text-white hover:text-gray-200"
                     }`}
                   >
@@ -70,6 +70,43 @@ export default function Nav() {
                   </button>
                 </div>
               ))}
+            </div>
+
+            {/* 우측 메뉴 */}
+            <div className="hidden lg:flex gap-3 items-center">
+              <div className={`flex gap-[5px] items-center h-[30px] border rounded-[30px] px-[15px] transition-colors duration-300 ${
+                isMenuOpen || isMobileMenuOpen ? "border-black-primary" : "border-white"
+              }`}>
+                <div className="relative w-[22px] h-[22px]">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke={isMenuOpen ? "#434343" : "#ffffff"} strokeLinecap="round" strokeLinejoin="round" id="Shopping-Cart--Streamline-Lucide" height="20" width="20">
+                    <desc>
+                      Shopping Cart Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path d="M7 21a1 1 0 1 0 2 0 1 1 0 1 0 -2 0" strokeWidth="2"></path>
+                    <path d="M18 21a1 1 0 1 0 2 0 1 1 0 1 0 -2 0" strokeWidth="2"></path>
+                    <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95 -1.57l1.65 -7.43H5.12" strokeWidth="2"></path>
+                  </svg>
+                </div>
+                <a 
+                  href="https://smartstore.naver.com/gmall" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={`text-[15px] font-extrabold transition-colors duration-300 ${
+                    isMenuOpen || isMobileMenuOpen ? "text-black-primary" : "text-white"
+                  }`}
+                >
+                  지테크몰
+                </a>
+              </div>
+              <div className={`flex gap-[5px] items-center h-[30px] border rounded-[30px] px-[15px] transition-colors duration-300 ${
+                isMenuOpen || isMobileMenuOpen ? "border-black-primary" : "border-white"
+              }`}>
+                <p className={`text-[15px] font-extrabold transition-colors duration-300 ${
+                  isMenuOpen || isMobileMenuOpen ? "text-black-primary" : "text-white"
+                }`}>
+                  KOR
+                </p>
+              </div>
             </div>
 
             {/* 모바일 햄버거 메뉴 */}
@@ -102,11 +139,11 @@ export default function Nav() {
 
           {/* 데스크톱 서브메뉴 */}
           <div
-            className={`hidden lg:block overflow-hidden transition-all duration-300 px-8 lg:px-12 ${
+            className={`hidden lg:block overflow-hidden transition-all duration-300 ${
               isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            <div className="flex justify-end gap-12 xl:gap-16 py-6">
+            <div className="flex justify-center gap-12 xl:gap-40 py-6">
               {menuItems.map((item) => (
                 <div 
                   key={item.name} 
@@ -118,7 +155,7 @@ export default function Nav() {
                     <button
                       key={index}
                       onClick={() => handleMenuClick(subItem.path)}
-                      className="text-center text-gray-600 hover:text-blue-primary transition-colors whitespace-nowrap text-sm cursor-pointer"
+                      className="text-center text-black-primary hover:text-blue-primary transition-colors whitespace-nowrap text-sm cursor-pointer"
                     >
                       {subItem.label}
                     </button>
@@ -137,7 +174,7 @@ export default function Nav() {
             <div className="px-4 py-4 space-y-4">
               {menuItems.map((item, menuIndex) => (
                 <div key={menuIndex} className="border-b border-gray-200 pb-4 last:border-b-0">
-                  <h3 className="text-gray-900 font-medium mb-3 text-base">
+                  <h3 className="text-black-primary font-medium mb-3 text-base">
                     {item.name}
                   </h3>
                   <div className="flex flex-col gap-2 pl-4">
@@ -145,7 +182,7 @@ export default function Nav() {
                       <button
                         key={subIndex}
                         onClick={() => handleMenuClick(subItem.path)}
-                        className="text-left text-gray-600 hover:text-blue-600 transition-colors text-sm py-1"
+                        className="text-left text-black-primary hover:text-blue-primary transition-colors text-sm py-1"
                       >
                         {subItem.label}
                       </button>

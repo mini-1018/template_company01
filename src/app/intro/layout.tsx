@@ -4,10 +4,10 @@ import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 
 const tabs = [
-  { id: "outline", label: "개요", sub: "About Us",path: "/intro/outline", image: "/images/intro/subtop_01.jpg"},
+  { id: "about", label: "개요", sub: "About Us",path: "/intro/about", image: "/images/intro/subtop_01.jpg"},
   { id: "business", label: "사업분야", sub: "Business Areas", path: "/intro/business", image: "/images/intro/subtop_01.jpg" },
   { id: "history", label: "연혁", sub: "History", path: "/intro/history", image: "/images/intro/subtop_01.jpg" },
-  { id: "certification", label: "인증현황", sub: "Certifications", path: "/intro/certification", image: "/images/intro/subtop_01.jpg" },
+  { id: "certifications", label: "인증현황", sub: "Certifications", path: "/intro/certifications", image: "/images/intro/subtop_01.jpg" },
   { id: "directions", label: "위치안내",sub: "Location", path: "/intro/location", image: "/images/intro/subtop_01.jpg" },
 ];
 

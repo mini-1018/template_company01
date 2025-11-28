@@ -13,7 +13,7 @@ export default function History() {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-45% 0px -45% 0px",
+      rootMargin: "-40% 0px -40% 0px",
       threshold: 0,
     };
 
@@ -44,7 +44,13 @@ export default function History() {
 
   return (
     <div className="w-full bg-white py-[200px]">
-      <div className="w-full max-w-7xl mx-auto px-8 md:px-12 lg:px-16">
+        {/* 헤더 */}
+        <div className="text-center mb-16 md:mb-40">
+          <h1 className="text-3xl md:text-4xl lg:text-[40px] font-semibold text-black-primary mb-6 leading-15">
+            더 나은 세상을 만들기 위해 <br/> 지테크인터내셔날이 걸어온 여정입니다.
+          </h1>
+        </div>
+      <div className="w-full max-w-[1460px] mx-auto px-8 md:px-12 lg:px-16">
         {/* 메인 콘텐츠 */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           {/* 왼쪽: 이미지 영역 (sticky) */}
