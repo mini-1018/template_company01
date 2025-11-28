@@ -74,6 +74,11 @@ export default function Nav() {
 
             {/* 우측 메뉴 */}
             <div className="hidden lg:flex gap-3 items-center">
+              <a 
+                href="https://smartstore.naver.com/gmall" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                >
               <div className={`flex gap-[5px] items-center h-[30px] border rounded-[30px] px-[15px] transition-colors duration-300 ${
                 isMenuOpen || isMobileMenuOpen ? "border-black-primary" : "border-white"
               }`}>
@@ -87,17 +92,13 @@ export default function Nav() {
                     <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95 -1.57l1.65 -7.43H5.12" strokeWidth="2"></path>
                   </svg>
                 </div>
-                <a 
-                  href="https://smartstore.naver.com/gmall" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className={`text-[15px] font-extrabold transition-colors duration-300 ${
-                    isMenuOpen || isMobileMenuOpen ? "text-black-primary" : "text-white"
-                  }`}
-                >
+                <p className={`text-[15px] font-extrabold transition-colors duration-300 ${
+                  isMenuOpen || isMobileMenuOpen ? "text-black-primary" : "text-white"
+                }`}>
                   지테크몰
-                </a>
+                </p>
               </div>
+              </a>
               <div className={`flex gap-[5px] items-center h-[30px] border rounded-[30px] px-[15px] transition-colors duration-300 ${
                 isMenuOpen || isMobileMenuOpen ? "border-black-primary" : "border-white"
               }`}>
