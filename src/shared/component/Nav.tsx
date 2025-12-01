@@ -148,7 +148,7 @@ export default function Nav() {
               {menuItems.map((item) => (
                 <div 
                   key={item.name} 
-                  className="flex flex-col gap-8 items-center w-20 xl:w-24 group"
+                  className="flex flex-col gap-6 items-center w-20 xl:w-24 group"
                   onMouseEnter={() => setHoveredMenu(item.name)}
                   onMouseLeave={() => setHoveredMenu(null)}
                 >
