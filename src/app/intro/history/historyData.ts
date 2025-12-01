@@ -17,7 +17,7 @@ export const historyData = [
         { month: "09", content: "ISO 품질경영시스템 인증" },
         { month: "10", content: "스마트팜 ICT 기자재 국가표준 확산 지원사업 성공" },
       ],
-      image: "/images/intro/history/history_2024.jpg",
+      image: "/images/intro/history/history_2025.jpg",
       description: "2024",
     },
     {
@@ -28,7 +28,7 @@ export const historyData = [
         { month: "10", content: "재활용품 무인회수기 개발" },
         { month: "12", content: "스마트팜 배지함수율 측정장치 개발" },
       ],
-      image: "/images/intro/history/history_2023.jpg",
+      image: "/images/intro/history/history_2025.jpg",
       description: "2023",
     },
     {
@@ -46,7 +46,7 @@ export const historyData = [
       items: [
         { month: "10", content: "절전형 음식물 종량기 성능인증 획득" },
       ],
-      image: "/images/intro/history/history_2021.jpg",
+      image: "/images/intro/history/history_2022.jpg",
       description: "2021",
     },
     {
@@ -54,7 +54,7 @@ export const historyData = [
       items: [
         { month: "05", content: "고용노동부 2020년 강소기업 선정" },
       ],
-      image: "/images/intro/history/history_2020.jpg",
+      image: "/images/intro/history/history_2022.jpg",
       description: "2020",
     },
     {
@@ -62,7 +62,7 @@ export const historyData = [
       items: [
         { month: "02", content: "음식물 종량기(GFS-150C) 우수 조달품 지정" },
       ],
-      image: "/images/intro/history/history_2019.jpg",
+      image: "/images/intro/history/history_2022.jpg",
       description: "2019",
     },
     {
@@ -82,7 +82,7 @@ export const historyData = [
         { month: "02", content: "제주지사 설립" },
         { month: "11", content: "생산 공장 4관 증축 (건평 500m²)\n노원구 음식물 종량기 설치" },
       ],
-      image: "/images/intro/history/history_2017.jpg",
+      image: "/images/intro/history/history_2018.jpg",
       description: "2017",
     },
     {
@@ -91,7 +91,7 @@ export const historyData = [
         { month: "04", content: "음식물 종량기(GFS-150C) 조달청 우수제품 지정" },
         { month: "06", content: "한국형기산업협동조합 가입\n음식물 종량기(GFS-150C) 홍콩 수출" },
       ],
-      image: "/images/intro/history/history_2016.jpg",
+      image: "/images/intro/history/history_2018.jpg",
       description: "2016",
     },
     {
@@ -101,7 +101,7 @@ export const historyData = [
         { month: "10", content: "경기도지사 경기도 유망 중소기업 선정" },
         { month: "11", content: "음식물 종량기(GFS-150C) 중소기업청 성능인증" },
       ],
-      image: "/images/intro/history/history_2015.jpg",
+      image: "/images/intro/history/history_2018.jpg",
       description: "2015",
     },
     {
@@ -111,7 +111,7 @@ export const historyData = [
         { month: "09", content: "Powder, Granule 정량공급장치개발" },
         { month: "10", content: "침대저울 인디케이터 개발\n2014 명품 의료기기 공모전 최우수상 (GL-150P)" },
       ],
-      image: "/images/intro/history/history_2014.jpg",
+      image: "/images/intro/history/history_2018.jpg",
       description: "2014",
     },
     {
@@ -170,7 +170,7 @@ export const historyData = [
         { month: "03", content: "2008 KIMES (의료기기 전시회) 참가" },
         { month: "04", content: "생산 공장 3관 증축 (건평 200m²)" },
       ],
-      image: "/images/intro/history/history_2008.jpg",
+      image: "/images/intro/history/history_2009.jpg",
       description: "2008",
     },
     {
@@ -188,7 +188,7 @@ export const historyData = [
         { month: "04", content: "과학기술부 장관 표창" },
         { month: "07", content: "음성 안내 과일 선별기 특허 등록" },
       ],
-      image: "/images/intro/history/history_2006.jpg",
+      image: "/images/intro/history/history_2007.jpg",
       description: "2006",
     },
     {
@@ -200,7 +200,7 @@ export const historyData = [
         { month: "09", content: "경기도청 유망중소기업 인증" },
         { month: "12", content: "경기도청 경기중소기업 대상 수상" },
       ],
-      image: "/images/intro/history/history_2005.jpg",
+      image: "/images/intro/history/history_2007.jpg",
       description: "2005",
     },
     {
@@ -209,7 +209,7 @@ export const historyData = [
         { month: "10", content: "한국산업기술진흥협회 등록" },
         { month: "11", content: "ISO9001 인증" },
       ],
-      image: "/images/intro/history/history_2004.jpg",
+      image: "/images/intro/history/history_2007.jpg",
       description: "2004",
     },
     {
@@ -217,7 +217,7 @@ export const historyData = [
       items: [
         { month: "06", content: "기업 부설 연구소 인증" },
       ],
-      image: "/images/intro/history/history_2003.jpg",
+      image: "/images/intro/history/history_2007.jpg",
       description: "2003",
     },
     {
@@ -225,7 +225,7 @@ export const historyData = [
       items: [
         { month: "09", content: "본사 공장 2관 증축 (건평 759m²)" },
       ],
-      image: "/images/intro/history/history_2002.jpg",
+      image: "/images/intro/history/history_2007.jpg",
       description: "2002",
     },
     {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { historyData } from "./historyData";
@@ -8,8 +8,28 @@ import { historyData } from "./historyData";
 export default function History() {
   const [activeYear, setActiveYear] = useState("2025");
   const yearRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // Intersection Observer로 스크롤 위치에 따른 연도 추적
+  const currentData = useMemo(() => {
+    const data = historyData.find(item => item.year === activeYear);
+    return {
+      image: data?.image || historyData[0].image,
+      description: data?.description || historyData[0].description,
+      year: data?.image.split(".jpg")[0].slice(-4) || historyData[0].year,
+    };
+  }, [activeYear]);
+
+  const observerCallback = useCallback((entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const year = entry.target.getAttribute("data-year");
+        if (year) {
+          setActiveYear(year);
+        }
+      }
+    });
+  }, []);
+
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -17,39 +37,50 @@ export default function History() {
       threshold: 0,
     };
 
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const year = entry.target.getAttribute("data-year");
-          if (year) {
-            setActiveYear(year);
-          }
-        }
-      });
-    };
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    observerRef.current = new IntersectionObserver(observerCallback, observerOptions);
 
     Object.values(yearRefs.current).forEach((ref) => {
-      if (ref) observer.observe(ref);
+      if (ref) observerRef.current?.observe(ref);
     });
 
     return () => {
-      observer.disconnect();
+      observerRef.current?.disconnect();
     };
-  }, []);
+  }, [observerCallback]);
 
-  const currentImage = historyData.find(item => item.year === activeYear)?.image || historyData[0].image;
-  const currentDescription = historyData.find(item => item.year === activeYear)?.description || historyData[0].description;
+  const imageVariants = useMemo(() => ({
+    initial: { opacity: 0, scale: 1.1 },
+    animate: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 0.9 },
+  }), []);
+
+  const descriptionVariants = useMemo(() => ({
+    initial: { y: 20, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+  }), []);
+
+  const itemVariants = useMemo(() => ({
+    initial: { opacity: 0, x: -20 },
+    animate: { opacity: 1, x: 0 },
+  }), []);
+
+  const dotVariants = useMemo(() => ({
+    scale: [0, 1.2, 1],
+  }), []);
 
   return (
     <div className="w-full bg-white py-[200px]">
-        {/* 헤더 */}
-        <div className="text-center mb-16 md:mb-40">
-          <h1 className="text-3xl md:text-4xl lg:text-[40px] font-semibold text-black-primary mb-6 leading-15">
-            더 나은 세상을 만들기 위해 <br/> 지테크인터내셔날이 걸어온 여정입니다.
-          </h1>
-        </div>
+      {/* 헤더 */}
+      <div className="text-center mb-16 md:mb-40">
+        <h1 className="text-3xl md:text-4xl lg:text-[40px] font-semibold text-black-primary mb-6 leading-15">
+          더 나은 세상을 만들기 위해 <br/> 지테크인터내셔날이 걸어온 여정입니다.
+        </h1>
+      </div>
+      
       <div className="w-full max-w-[1460px] mx-auto px-8 md:px-12 lg:px-16">
         {/* 메인 콘텐츠 */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
@@ -58,31 +89,35 @@ export default function History() {
             <div className="relative w-full aspect-[4/3]">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={activeYear}
-                  initial={{ opacity: 0, scale: 1.1 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
+                  key={currentData.image}
+                  variants={imageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
                   transition={{ duration: 0.5 }}
                   className="relative top-10 w-full h-full"
                 >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={currentImage}
-                    alt={`${activeYear}년 주요 활동`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-      
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={currentData.image}
+                      alt={`${currentData.year}년 지테크인터내셔날 주요 활동`}
+                      fill
+                      className="object-cover"
+                      priority={currentData.year === "2025"} // 첫 이미지는 우선 로드
+                      sizes="(max-width: 1024px) 100vw, 800px"
+                    />
+                  </div>
+        
                   <div className="absolute bottom-0 left-0 right-0 p-8">
                     <motion.p
                       key={`description-${activeYear}`}
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
+                      variants={descriptionVariants}
+                      initial="initial"
+                      animate="animate"
                       transition={{ delay: 0.2, duration: 0.3 }}
                       className="text-lg md:text-xl font-medium text-white"
                     >
-                      {currentDescription}
+                      {currentData.description}
                     </motion.p>
                   </div>
                 </motion.div>
@@ -117,9 +152,10 @@ export default function History() {
                 <div className="space-y-6 ml-14">
                   {yearData.items.map((item, itemIndex) => (
                     <motion.div 
-                      key={itemIndex}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      key={`${yearData.year}-${itemIndex}`} // 더 명확한 key
+                      variants={itemVariants}
+                      initial="initial"
+                      whileInView="animate"
                       viewport={{ once: true, margin: "-100px" }}
                       transition={{ delay: itemIndex * 0.1, duration: 0.3 }}
                       className="relative pb-6 group"
@@ -129,7 +165,7 @@ export default function History() {
                         className={`absolute -left-[37px] top-2 w-3 h-3 rounded-full transition-colors duration-300 ${
                           activeYear === yearData.year ? "bg-blue-secondary" : "bg-gray-300"
                         }`}
-                        whileInView={{ scale: [0, 1.2, 1] }}
+                        animate={dotVariants}
                         viewport={{ once: true }}
                         transition={{ delay: itemIndex * 0.1, duration: 0.3 }}
                       />
