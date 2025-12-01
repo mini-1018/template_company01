@@ -30,12 +30,8 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-10 flex items-center">
           <div className="w-full mx-auto px-8 md:px-24 lg:px-[200px]">
             <div className="max-w-4xl text-black-primary">
-              {/* <h3 className="text-3xl md:text-4xl lg:text-[50px] font-bold mb-[70px]">
-                CEO 인사말
-              </h3> */}
-
               <FadeUpOnView >
-                <div className="w-[813px] text-[25px] md:text-[25px] leading-normal tracking-normal wrap-break-word animate-fade-in-up">
+                <div className="max-w-[813px] w-full text-[25px] md:text-[25px] leading-normal tracking-normal wrap-break-word">
                   <p>
                     주식회사 지테크인터내셔날은 좋은 사람들이 모여<br />
                     사용하기 쉬운 제품을 만드는 "즐거운 회사"입니다.
@@ -80,7 +76,7 @@ export default function AboutPage() {
         />
         
         {/* 오버레이 */}
-        <div className="absolute inset-0 bg-black/40 z-[1]" />
+        <div className="absolute inset-0 bg-black/40 z-1" />
         
         {/* 콘텐츠 */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 md:px-12 lg:px-16 py-12">
@@ -218,7 +214,7 @@ export default function AboutPage() {
         <div className="text-center mb-16">
           <div className="flex justify-center gap-4">
             <div 
-              className="w-[250px] h-[60px] border border-black/10 cursor-pointer text-[15px] flex items-center justify-center font-bold gap-[15px] bg-gradient-to-t from-[#f0f0f0] to-[#ffffff]"
+              className="w-[250px] h-[60px] border border-black/10 cursor-pointer text-[15px] flex items-center justify-center font-bold gap-[15px] bg-linear-to-t from-[#f0f0f0] to-[#ffffff]"
             >
               CI DOWNLOAD
             <div className="w-[13px] h-[13px] relative">

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Button from "../shared/component/Button";
-import { hr } from "framer-motion/client";
 
 export default function Section3() {
   const [activeColumn, setActiveColumn] = useState(0);
@@ -170,7 +169,8 @@ export default function Section3() {
                 </h2>
 
                 {/* 설명 텍스트 */}
-                <p className="text-xs md:text-sm lg:text-base text-white/90 text-center leading-relaxed mb-4 md:mb-12 max-w-xs break-keep">
+                <p className="text-xs md:text-sm lg:text-base text-white/90 text-center leading-relaxed mb-4
+                  md:mb-24 max-w-xs break-keep">
                   {column.text}
                 </p>
 
@@ -178,7 +178,7 @@ export default function Section3() {
                 <Button 
                 text = "자세히 보기"
                 href = {column.href}
-                size = "md"
+                size = "lg"
                 />
               </div>
             </div>

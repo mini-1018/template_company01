@@ -82,8 +82,8 @@ export default function Nav() {
               <div className={`flex gap-[5px] items-center h-[30px] border rounded-[30px] px-[15px] transition-colors duration-300 ${
                 isMenuOpen || isMobileMenuOpen ? "border-black-primary" : "border-white"
               }`}>
-                <div className="relative w-[22px] h-[22px]">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke={isMenuOpen ? "#434343" : "#ffffff"} strokeLinecap="round" strokeLinejoin="round" id="Shopping-Cart--Streamline-Lucide" height="20" width="20">
+                <div className="relative w-[22px] h-[22px] flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke={isMenuOpen ? "#434343" : "#ffffff"} strokeLinecap="round" strokeLinejoin="round" id="Shopping-Cart--Streamline-Lucide" height="16" width="16">
                     <desc>
                       Shopping Cart Streamline Icon: https://streamlinehq.com
                     </desc>
