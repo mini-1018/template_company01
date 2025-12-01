@@ -133,22 +133,22 @@ export default function Nav() {
 
           {/* 데스크톱 구분선 */}
           <div 
-            className={`hidden lg:block w-full h-[1px] transition-all duration-300 ${
+            className={`hidden lg:block w-full h-[1px] transition-all duration-500 ${
               isMenuOpen ? "bg-[#ccccca] opacity-100" : "bg-transparent opacity-0"
             }`}
           />
 
           {/* 데스크톱 서브메뉴 */}
           <div
-            className={`hidden lg:block overflow-hidden transition-all duration-300 ${
-              isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+            className={`hidden lg:block overflow-hidden transition-all duration-500 ${
+              isMenuOpen ? "max-h-100 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            <div className="flex justify-center gap-12 xl:gap-40 py-6">
+            <div className="flex justify-center gap-12 xl:gap-40 pt-6 pb-14">
               {menuItems.map((item) => (
                 <div 
                   key={item.name} 
-                  className="flex flex-col gap-3 items-center w-20 xl:w-24 group"
+                  className="flex flex-col gap-8 items-center w-20 xl:w-24 group"
                   onMouseEnter={() => setHoveredMenu(item.name)}
                   onMouseLeave={() => setHoveredMenu(null)}
                 >
@@ -156,7 +156,7 @@ export default function Nav() {
                     <button
                       key={index}
                       onClick={() => handleMenuClick(subItem.path)}
-                      className="text-center text-black-primary hover:text-blue-primary transition-colors whitespace-nowrap text-sm cursor-pointer"
+                      className="text-center text-black-primary hover:text-blue-primary transition-colors whitespace-nowrap text-base cursor-pointer"
                     >
                       {subItem.label}
                     </button>

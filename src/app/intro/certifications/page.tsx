@@ -97,6 +97,12 @@ export default function Certification() {
 
   return (
     <div className="w-full bg-white py-[200px]">
+      {/* 헤더 */}
+      <div className="text-center mb-16 md:mb-40">
+        <h1 className="text-3xl md:text-4xl lg:text-[40px] font-semibold text-black-primary mb-6 leading-15">
+          전체 인력의 25%를 연구개발에 투입하여 <br/> 안정적이고 검증된 기술 경쟁력을 유지하고 있습니다.
+        </h1>
+      </div>
       <div className="w-full max-w-[1660px] mx-auto">
         {/* 인증서 그리드 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-x-4 md:gap-y-[125px]">
