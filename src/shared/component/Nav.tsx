@@ -20,7 +20,7 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-normal duration-1000 ${
         isMenuOpen || isMobileMenuOpen ? "bg-white shadow-md" : "bg-transparent"
       }`}
       onMouseEnter={() => setIsMenuOpen(true)}

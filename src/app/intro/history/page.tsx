@@ -58,11 +58,6 @@ export default function History() {
     exit: { opacity: 0, scale: 0.9 },
   }), []);
 
-  const descriptionVariants = useMemo(() => ({
-    initial: { y: 20, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-  }), []);
-
   const itemVariants = useMemo(() => ({
     initial: { opacity: 0, x: -20 },
     animate: { opacity: 1, x: 0 },
@@ -106,19 +101,6 @@ export default function History() {
                       priority={currentData.year === "2025"} // 첫 이미지는 우선 로드
                       sizes="(max-width: 1024px) 100vw, 800px"
                     />
-                  </div>
-        
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <motion.p
-                      key={`description-${activeYear}`}
-                      variants={descriptionVariants}
-                      initial="initial"
-                      animate="animate"
-                      transition={{ delay: 0.2, duration: 0.3 }}
-                      className="text-lg md:text-xl font-medium text-white"
-                    >
-                      {currentData.description}
-                    </motion.p>
                   </div>
                 </motion.div>
               </AnimatePresence>

@@ -217,7 +217,7 @@ export const historyData = [
       items: [
         { month: "06", content: "기업 부설 연구소 인증" },
       ],
-      image: "/images/intro/history/history_2007.jpg",
+      image: "/images/intro/history/history_2000.jpg",
       description: "2003",
     },
     {
@@ -225,7 +225,7 @@ export const historyData = [
       items: [
         { month: "09", content: "본사 공장 2관 증축 (건평 759m²)" },
       ],
-      image: "/images/intro/history/history_2007.jpg",
+      image: "/images/intro/history/history_2000.jpg",
       description: "2002",
     },
     {
