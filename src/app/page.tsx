@@ -13,7 +13,7 @@ export default function Home() {
   const [isScrolling, setIsScrolling] = useState(false);
   const [viewportHeight, setViewportHeight] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
-  const sections = ["home", "company", "business area", "product", "community"];
+  const sections = ["home", "company", "business area", "product", "support"];
   const containerRef = useRef<HTMLDivElement>(null);
   const lastScrollTimeRef = useRef(0);
   const touchStartRef = useRef(0);

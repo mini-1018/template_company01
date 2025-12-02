@@ -6,6 +6,7 @@ export const menuItems = [
         { label: "사업분야", path: "/intro/business" },
         { label: "연혁", path: "/intro/history" },
         { label: "인증현황", path: "/intro/certifications" },
+        { label: "납품실적", path: "/intro/performance" },
         { label: "위치안내", path: "/intro/location" },
       ],
     },
@@ -28,9 +29,9 @@ export const menuItems = [
     {
       name: "고객지원",
       submenu: [
-        { label: "공지사항", path: "/community/notice" },
-        { label: "다운로드", path: "/community/downloads" },
-        { label: "고객문의", path: "/community/contact" },
+        { label: "공지사항", path: "/support/notice" },
+        { label: "다운로드", path: "/support/downloads" },
+        { label: "고객문의", path: "/support/contact" },
       ],
     },
   ];

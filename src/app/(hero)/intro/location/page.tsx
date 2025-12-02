@@ -1,7 +1,9 @@
 "use client";
 
+import ContentTabs from "@/src/shared/component/ContentTab";
 import Image from "next/image";
 import { useState } from "react";
+import IntroHeader from "../IntroHeader";
 
 const locations = [
   {
@@ -38,6 +40,11 @@ export default function Location() {
 
   const currentLocation = locations.find(loc => loc.id === activeTab);
 
+  const tabs = locations.map(loc => ({
+    id: loc.id,
+    label: loc.tab
+  }));
+
   return (
     <div className="w-full bg-white py-[200px]">
       <div className="w-full max-w-[1426px] mx-auto px-8 md:px-10 lg:px-12">
@@ -48,22 +55,15 @@ export default function Location() {
           </h1>
         </div>
 
-        {/* 탭 메뉴 */}
-        <div className="flex border-b border-gray-200 mb-16">
-          {locations.map((location) => (
-            <button
-              key={location.id}
-              onClick={() => setActiveTab(location.id)}
-              className={`flex-1 py-2 text-[25px] font-bold transition-colors cursor-pointer ${
-                activeTab === location.id
-                  ? "bg-blue-secondary text-white"
-                  : "bg-gray-secondary text-black-primary hover:bg-gray-200"
-              }`}
-            >
-              {location.tab}
-            </button>
-          ))}
-        </div>
+        <IntroHeader text={"주요 사업별로 특화된 사업장을 운영하며\n신속하고 정확한 서비스를 제공하고 있습니다."}/>
+
+        {/* 탭 네비게이션 */}
+        <ContentTabs 
+          tabs={tabs}
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          className="mb-16"
+        />
 
         {/* 지도 및 정보 */}
         {currentLocation && (

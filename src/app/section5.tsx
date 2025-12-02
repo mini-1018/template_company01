@@ -66,7 +66,7 @@ export default function Section5() {
             </p>
             <Button 
               text="문의하기"
-              href="/community/support"
+              href="/support/support"
               showArrow={true}
               size="lg"
             />
