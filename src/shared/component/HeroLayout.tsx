@@ -2,21 +2,22 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import { ReactNode } from "react";
 
-const tabs = [
-  { id: "about", label: "개요", sub: "About Us",path: "/intro/about", image: "/images/intro/subtop_01.jpg"},
-  { id: "business", label: "사업분야", sub: "Business Areas", path: "/intro/business", image: "/images/intro/subtop_01.jpg" },
-  { id: "history", label: "연혁", sub: "History", path: "/intro/history", image: "/images/intro/subtop_01.jpg" },
-  { id: "certifications", label: "인증현황", sub: "Certifications", path: "/intro/certifications", image: "/images/intro/subtop_01.jpg" },
-  { id: "performance", label: "납품실적", sub: "Performance", path: "/intro/performance", image: "/images/intro/subtop_01.jpg" },
-  { id: "directions", label: "위치안내",sub: "Location", path: "/intro/location", image: "/images/intro/subtop_01.jpg" },
-];
+interface Tab {
+  id: string;
+  label: string;
+  sub: string;
+  path: string;
+  image: string;
+}
 
-export default function IntroLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+interface HeroLayoutProps {
+  tabs: Tab[];
+  children: ReactNode;
+}
+
+export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -37,10 +38,10 @@ export default function IntroLayout({
         
         <div className="relative z-10 h-full flex flex-col items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
           <h1 className="text-4xl md:text-[60px] font-bold text-white mb-8">
-            {tabs.find(tab => pathname === tab.path)?.label}
+            {currentTab.label}
           </h1>
           <div className="flex items-center gap-2 text-white text-sm md:text-[25px]">
-          {tabs.find(tab => pathname === tab.path)?.sub}
+            {currentTab.sub}
           </div>
         </div>
       </div>
@@ -56,7 +57,7 @@ export default function IntroLayout({
                 className={`flex-1 px-4 py-4 text-sm md:text-base font-extrabold transition-colors whitespace-nowrap cursor-pointer ${
                   pathname === tab.path
                     ? "text-blue-primary border-b-4 border-blue-primary font-bold"
-                    : "text-gray-600 hover:text-black-primary hover:bg-gray-200"
+                    : "text-black-primary hover:bg-gray-primary"
                 }`}
               >
                 {tab.label}

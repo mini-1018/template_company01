@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
 import Nav from "../shared/component/Nav";
+import Footer from "../shared/component/Footer";
 
 export const metadata: Metadata = {
   title: "G-TECH International | 지테크인터내셔날",
@@ -18,6 +19,7 @@ export default function RootLayout({
         {/* 네비게이션 */}
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

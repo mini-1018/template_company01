@@ -13,10 +13,10 @@ export const menuItems = [
     {
       name: "제품소개",
       submenu: [
-        { label: "친환경", path: "/business/environmental" },
-        { label: "헬스케어", path: "/business/healthcare" },
-        { label: "농축산", path: "/business/smartfarm" },
-        { label: "산업용", path: "/business/industrial" },
+        { label: "친환경", path: "/product/environmental" },
+        { label: "헬스케어", path: "/product/healthcare" },
+        { label: "농축산", path: "/product/smartfarm" },
+        { label: "산업용", path: "/product/industrial" },
       ],
     },
     {
@@ -29,7 +29,7 @@ export const menuItems = [
     {
       name: "고객지원",
       submenu: [
-        { label: "공지사항", path: "/support/notice" },
+        // { label: "공지사항", path: "/support/notice" },
         { label: "다운로드", path: "/support/downloads" },
         { label: "고객문의", path: "/support/contact" },
       ],

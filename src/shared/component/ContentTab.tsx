@@ -22,7 +22,7 @@ export default function ContentTabs({ tabs, activeTab, onTabChange, className = 
           className={`flex-1 py-2 text-[25px] font-bold transition-colors cursor-pointer ${
             activeTab === tab.id
               ? "bg-blue-secondary text-white"
-              : "bg-gray-secondary text-black-primary hover:bg-gray-200"
+              : "bg-gray-secondary text-black-primary hover:bg-gray-primary"
           }`}
         >
           {tab.label}

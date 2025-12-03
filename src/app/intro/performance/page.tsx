@@ -32,7 +32,7 @@ export default function Performance() {
         {/* 헤더 */}
         <IntroHeader text={"공공기관 및 지자체와 기업 및 병원 등\n국 · 내외 다양한 곳에서 설치 및 운영중에 있습니다."}/>
 
-        <div className="max-w-7xl mx-auto p-4 md:p-8">
+        <div className="max-w-[1660px] mx-auto">
             <ContentTabs 
                 tabs={tabs}
                 activeTab={activeTab}
@@ -40,7 +40,7 @@ export default function Performance() {
                 className="mb-16"
             />
 
-            {/* 탭 컨텐츠 */}
+            {/* 탭 컨텐츠 - 5열 그리드, 40px 간격 */}
             <div className="mt-8">
                 {currentContent?.component}
             </div>
