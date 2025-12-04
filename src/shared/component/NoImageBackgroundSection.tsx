@@ -14,8 +14,8 @@ export default function NoImageBackgroundSection({
   const bgColorClass = bgColor === 'gray' ? 'bg-gray-50' : 'bg-white';
   
   return (
-    <section className={`w-full py-[75px] lg:py-[150px] ${bgColorClass} ${className}`}>
-      <div className="w-full max-w-[1448px] mx-auto px-8 md:px-12 lg:px-16">
+    <section className={`w-full ${bgColorClass} ${className}`}>
+      <div className="w-full max-w-[1440px] mx-auto px-8 md:px-0 lg:px-0">
         {children}
       </div>
     </section>

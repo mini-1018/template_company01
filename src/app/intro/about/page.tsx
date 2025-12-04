@@ -30,7 +30,7 @@ export default function AboutPage() {
         
         {/* 텍스트 콘텐츠 - 왼쪽 배치 */}
         <div className="absolute inset-0 z-10 flex items-center">
-          <div className="w-full mx-auto px-8 md:px-24 lg:px-[200px]">
+          <div className="w-full mx-auto px-8 md:px-24 lg:px-[240px]">
             <div className="max-w-4xl text-black-primary">
               <FadeUpOnView >
                 <div className="max-w-[813px] w-full text-[25px] md:text-[25px] leading-normal tracking-normal wrap-break-word">
@@ -170,7 +170,7 @@ export default function AboutPage() {
       </section>
 
       {/* 본사 조직도 섹션 */}
-      <NoImageBackgroundSection bgColor="gray">
+      <NoImageBackgroundSection bgColor="gray" className="py-[75px] lg:py-[150px]">
         <div className="text-center mb-8 md:mb-12">
           <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black-primary mb-[90px]">
@@ -192,7 +192,7 @@ export default function AboutPage() {
       </NoImageBackgroundSection>
 
       {/* 본사 CI 섹션 */}
-      <NoImageBackgroundSection bgColor="white">
+      <NoImageBackgroundSection bgColor="white" className="pt-[75px] lg:pt-[150px]">
         <div className="text-center mb-8 md:mb-12">
           <div className="w-20 border-5 border-blue-secondary m-auto mb-[30px]"/>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black-primary mb-[90px]">
@@ -231,7 +231,7 @@ export default function AboutPage() {
         </div>
 
         {/* 의미 섹션 */}
-        <div className="mb-12">
+        <div className="mb-[110px]">
           <h4 className="text-xl md:text-[30px] font-bold">의미</h4>
           <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
           <ul className="space-y-3 text-black-primary text-sm md:text-[25px] list-disc list-inside">
@@ -245,10 +245,9 @@ export default function AboutPage() {
         <div className="mb-12">
           <h4 className="text-xl md:text-[30px] font-bold">규정</h4>
           <div className="w-full border border-gray-primary mt-[22px] mb-[40px]"/>
-          <p className="text-black-primary text-sm md:text-[25px] mb-8">
-            지테크인터내셔날의 전용 색상은 Process Color를 기본으로 합니다. 전용 색상은 지테크의 이미지를 가장 잘 나타내는 수단이므로 제시된
-            디자인 가이드 라인을 준수하여 사용하여야 합니다.
-          </p>
+          <ul className="space-y-3 text-black-primary text-sm md:text-[25px] list-disc list-inside mb-[110px]">
+            <li>지테크인터내셔날의 전용 색상은 지테크의 이미지를 가장 잘 나타내는 수단이므로 제시된 디자인 가이드 라인을 준수하여 사용하여야 합니다.</li>
+          </ul>
           
           {/* 컬러 샘플 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1320px] mx-auto">
@@ -273,7 +272,7 @@ export default function AboutPage() {
 
             {/* G-tech Sky Blue */}
             <div className="flex items-center">
-            <div className="w-[300px] h-[100px] bg-blue-secondary flex items-center justify-center">
+              <div className="w-[300px] h-[100px] bg-blue-secondary flex items-center justify-center">
                 <span className="text-white font-bold text-[25px]">G-tech Sky Blue</span>
               </div>
               <div className="flex items-center justify-center gap-5 text-left w-[300px] h-[100px] text-sm border border-gray-primary">

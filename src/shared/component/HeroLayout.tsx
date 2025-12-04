@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 interface Tab {
   id: string;
@@ -20,8 +20,22 @@ interface HeroLayoutProps {
 export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const [isSticky, setIsSticky] = useState(false);
 
   const currentTab = tabs.find(tab => pathname === tab.path) || tabs[0];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const tabNav = document.getElementById('tab-navigation');
+      if (tabNav) {
+        const rect = tabNav.getBoundingClientRect();
+        setIsSticky(rect.top <= 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -46,25 +60,28 @@ export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
         </div>
       </div>
 
-      {/* 탭 네비게이션 */}
-      <div className="w-full bg-white border-b border-gray-200">
-        <div className="w-full max-w-7xl mx-auto">
-          <nav className="w-full flex">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => router.push(tab.path)}
-                className={`flex-1 px-4 py-4 text-sm md:text-base font-extrabold transition-colors whitespace-nowrap cursor-pointer ${
-                  pathname === tab.path
-                    ? "text-blue-primary border-b-4 border-blue-primary font-bold"
-                    : "text-black-primary hover:bg-gray-primary"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </nav>
-        </div>
+      {/* 탭 네비게이션 - sticky 적용 + 동적 너비 */}
+      <div 
+        id="tab-navigation"
+        className="sticky top-0 z-40 w-full bg-white border-b border-gray-200"
+      >
+        <nav className={`w-full flex transition-all duration-100 ${
+          isSticky ? 'max-w-full' : 'max-w-[1440px] mx-auto'
+        }`}>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => router.push(tab.path)}
+              className={`flex-1 px-4 py-4 text-sm md:text-base font-extrabold transition-colors whitespace-nowrap cursor-pointer ${
+                pathname === tab.path
+                  ? "text-blue-primary border-b-4 border-blue-primary font-bold"
+                  : "text-black-primary hover:bg-gray-primary"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </nav>
       </div>
 
       {/* 페이지 콘텐츠 */}

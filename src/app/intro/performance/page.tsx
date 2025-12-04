@@ -12,7 +12,7 @@ const performance = [
   { id: "government", tab: "공공기관", component : <GovernmentPerformance /> },
   { id: "local", tab: "지자체", component : <LocalPerformance /> },
   { id: "enterprise", tab: "기업체", component : <EnterprisePerformance /> },
-  { id: "hospital", tab: "병원", component : <HospitalPerformance /> },
+  { id: "hospital", tab: "대형병원", component : <HospitalPerformance /> },
   { id: "global", tab: "해외", component : <GlobalPerformance /> },
 ];
 

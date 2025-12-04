@@ -98,7 +98,7 @@ export default function Section3() {
             />
 
             {/* Content */}
-            <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8">
+            <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8 lg:mt-16">
               {/* 아이콘 */}
               <div 
                 className={`w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 relative transition-all duration-1000 ${
@@ -170,7 +170,7 @@ export default function Section3() {
 
                 {/* 설명 텍스트 */}
                 <p className="text-xs md:text-sm lg:text-base text-white/90 text-center leading-relaxed mb-4
-                  md:mb-24 max-w-xs break-keep">
+                  md:mb-16 max-w-xs break-keep">
                   {column.text}
                 </p>
 

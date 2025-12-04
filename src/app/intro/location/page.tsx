@@ -47,7 +47,7 @@ export default function Location() {
 
   return (
     <div>
-      <div className="w-full max-w-[1426px] mx-auto px-8 md:px-10 lg:px-12">
+      <div className="w-full max-w-[1440px] mx-auto px-8 md:px-10 lg:px-0">
         {/* 헤더 */}
         <div className="sr-only">
           <h1 className="sr-only">
@@ -69,7 +69,7 @@ export default function Location() {
         {currentLocation && (
           <div className="flex border border-gray-primary">
             {/* 구글 맵 */}
-            <div className="w-[50%] h-[500px] overflow-hidden">
+            <div className="w-[50%] h-[720px] overflow-hidden">
               <iframe
                 src={currentLocation.mapUrl}
                 width="100%"
@@ -82,7 +82,7 @@ export default function Location() {
             </div>
 
             {/* 상세 정보 */}
-            <div className="w-[50%] flex flex-col justify-start px-16 py-12 gap-8">
+            <div className="w-[50%] flex flex-col justify-start px-16 py-12 gap-10">
               <h2 className="text-3xl font-bold text-black-primary">
                 {currentLocation.name}
               </h2>
