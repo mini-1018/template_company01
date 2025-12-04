@@ -68,7 +68,7 @@ export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
       </div>
 
       {/* 페이지 콘텐츠 */}
-      <main>{children}</main>
+      <main className="w-full bg-white pt-[200px] pb-[400px]">{children}</main>
     </div>
   );
 }

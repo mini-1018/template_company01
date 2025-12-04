@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import NoImageBackgroundSection from "@/src/shared/component/NoImageBackgroundSection";
 import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
+import MainHeader from "@/src/shared/component/MainHeader";
 
 export const metadata: Metadata = {
   title: "개요 | G-TECH International",
@@ -14,9 +15,10 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="w-full bg-white">
+    <div>
+      <MainHeader text={"융복합 측정기술 전문기업 지테크인터내셔날이\n나아갈 길과 책임을 담고 있습니다."}/>
       {/* CEO 메시지 섹션 - 16:9 비율 */}
-      <section className="relative w-full aspect-[16/9]">
+      <section className="relative w-full aspect-video">
         {/* 배경 이미지 */}
         <Image
           src="/images/intro/company_ceo.jpg"

@@ -8,7 +8,7 @@ interface PerformanceCardProps {
 
 export default function PerformanceCard({ src, title, content }: PerformanceCardProps) {
   return (
-    <div className="flex flex-col items-center gap-[50px] w-[300px]">
+    <div className="flex flex-col items-center gap-[24px] w-[300px]">
       <div className="relative w-full h-[100px] border-gray-primary border">
         <Image src={src} alt="Logo" fill />
       </div>

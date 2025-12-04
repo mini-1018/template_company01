@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { historyData } from "./historyData";
-import IntroHeader from "../IntroHeader";
+import MainHeader from "../../../shared/component/MainHeader";
 
 export default function History() {
   const [activeYear, setActiveYear] = useState("2025");
@@ -69,10 +69,10 @@ export default function History() {
   }), []);
 
   return (
-    <div className="w-full bg-white py-[200px]">
+    <div>
 
       {/* 헤더 */}
-      <IntroHeader text={"더 나은 세상을 만들기 위해\n지테크인터내셔날이 걸어온 여정입니다."}/>
+      <MainHeader text={"더 나은 세상을 만들기 위해\n지테크인터내셔날이 걸어온 여정입니다."}/>
       
       <div className="w-full max-w-[1460px] mx-auto px-8 md:px-12 lg:px-16">
         {/* 메인 콘텐츠 */}

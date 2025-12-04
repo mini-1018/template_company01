@@ -1,7 +1,7 @@
 import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 import { Metadata } from "next";
 import Image from "next/image";
-import IntroHeader from "../IntroHeader";
+import MainHeader from "../../../shared/component/MainHeader";
 
 export const metadata: Metadata = {
   title: "인증현황 | G-TECH International",
@@ -97,14 +97,14 @@ export default function Certification() {
   ];
 
   return (
-    <div className="w-full bg-white py-[200px]">
+    <div>
 
       {/* 헤더 */}
-      <IntroHeader text={"전체 인력의 25%를 연구개발에 투입하여\n안정적이고 검증된 기술 경쟁력을 유지하고 있습니다."}/>
+      <MainHeader text={"전체 인력의 25%를 연구개발에 투입하여\n안정적이고 검증된 기술 경쟁력을 유지하고 있습니다."}/>
       
-      <div className="w-full max-w-[1660px] mx-auto">
+      <div className="w-full max-w-[1440px] mx-auto">
         {/* 인증서 그리드 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-x-4 md:gap-y-[125px]">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-x-4 md:gap-y-[125px]">
           {certificates.map((cert, index) => (
             <FadeUpOnView key={index} delay={index * 0.1}>
             <div 

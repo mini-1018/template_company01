@@ -6,7 +6,7 @@ import LocalPerformance from "./LocalPerformance";
 import EnterprisePerformance from "./EnterprisePerformance";
 import HospitalPerformance from "./HospitalPerformance";
 import GlobalPerformance from "./GlobalPerformance";
-import IntroHeader from "../IntroHeader";
+import MainHeader from "../../../shared/component/MainHeader";
 
 const performance = [
   { id: "government", tab: "공공기관", component : <GovernmentPerformance /> },
@@ -28,16 +28,16 @@ export default function Performance() {
     }));
 
     return (
-    <div className="w-full bg-white py-[200px]">
+    <div>
         {/* 헤더 */}
-        <IntroHeader text={"공공기관 및 지자체와 기업 및 병원 등\n국 · 내외 다양한 곳에서 설치 및 운영중에 있습니다."}/>
+        <MainHeader text={"공공기관 및 지자체와 기업 및 병원 등\n국 · 내외 다양한 곳에서 설치 및 운영중에 있습니다."}/>
 
-        <div className="max-w-[1660px] mx-auto">
+        <div className="max-w-[1440px] mx-auto">
             <ContentTabs 
                 tabs={tabs}
                 activeTab={activeTab}
                 onTabChange={setActiveTab}
-                className="mb-16"
+                className="mb-24"
             />
 
             {/* 탭 컨텐츠 - 5열 그리드, 40px 간격 */}

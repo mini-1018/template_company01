@@ -3,7 +3,7 @@
 import ContentTabs from "@/src/shared/component/ContentTab";
 import Image from "next/image";
 import { useState } from "react";
-import IntroHeader from "../IntroHeader";
+import MainHeader from "../../../shared/component/MainHeader";
 
 const locations = [
   {
@@ -46,7 +46,7 @@ export default function Location() {
   }));
 
   return (
-    <div className="w-full bg-white py-[200px]">
+    <div>
       <div className="w-full max-w-[1426px] mx-auto px-8 md:px-10 lg:px-12">
         {/* 헤더 */}
         <div className="sr-only">
@@ -55,7 +55,7 @@ export default function Location() {
           </h1>
         </div>
 
-        <IntroHeader text={"주요 사업별로 특화된 사업장을 운영하며\n신속하고 정확한 서비스를 제공하고 있습니다."}/>
+        <MainHeader text={"주요 사업별로 특화된 사업장을 운영하며\n신속하고 정확한 서비스를 제공하고 있습니다."}/>
 
         {/* 탭 네비게이션 */}
         <ContentTabs 

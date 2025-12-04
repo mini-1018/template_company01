@@ -13,7 +13,7 @@ const government = [
 
 export default function GovernmentPerformance() {
   return (
-    <div className="grid grid-cols-5 gap-x-10 gap-y-25">
+    <div className="grid grid-cols-[repeat(4,minmax(0,300px))] justify-between gap-y-25">
       {government.map((item, index) => (
         <PerformanceCard key={index} {...item} />
       ))}
