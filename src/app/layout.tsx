@@ -19,7 +19,6 @@ export default function RootLayout({
         {/* 네비게이션 */}
         <Nav />
         {children}
-        <Footer />
       </body>
     </html>
   );

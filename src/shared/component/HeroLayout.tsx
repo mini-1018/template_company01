@@ -49,7 +49,7 @@ export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
           priority
         />
         <div className="absolute inset-0 bg-black/40" />
-        
+
         <div className="relative z-10 h-full flex flex-col items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
           <h1 className="text-4xl md:text-[60px] font-bold text-white mb-8">
             {currentTab.label}
@@ -61,25 +61,28 @@ export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
       </div>
 
       {/* 탭 네비게이션 - sticky 적용 + 동적 너비 */}
-      <div 
+      <div
         id="tab-navigation"
         className="sticky top-0 z-40 w-full bg-white border-b border-gray-200"
       >
-        <nav className={`w-full flex transition-all duration-100 ${
-          isSticky ? 'max-w-full' : 'max-w-[1440px] mx-auto'
-        }`}>
+        <nav className={`w-full flex transition-all duration-100 ${isSticky ? 'max-w-full' : 'max-w-[1440px] mx-auto'
+          }`}>
           {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => router.push(tab.path)}
-              className={`flex-1 px-4 py-4 text-sm md:text-base font-extrabold transition-colors whitespace-nowrap cursor-pointer ${
-                pathname === tab.path
-                  ? "text-blue-primary border-b-4 border-blue-primary font-bold"
-                  : "text-black-primary hover:bg-gray-primary"
-              }`}
-            >
-              {tab.label}
-            </button>
+            <div key={tab.id} className="flex-1 flex items-center justify-center">
+              <button
+                onClick={() => router.push(tab.path)}
+                className="relative px-8 py-4 text-sm md:text-base font-extrabold transition-colors whitespace-nowrap cursor-pointer group"
+              >
+                <span className="text-black-primary">
+                  {tab.label}
+                </span>
+                {/* 텍스트 너비에 맞춘 밑줄 */}
+                <span
+                  className={`absolute bottom-0 left-0 right-0 h-1 bg-blue-secondary transition-all duration-300 ${pathname === tab.path ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+                    }`}
+                />
+              </button>
+            </div>
           ))}
         </nav>
       </div>
