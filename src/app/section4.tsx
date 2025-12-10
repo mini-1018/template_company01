@@ -1,10 +1,15 @@
 "use client";
 
+import { useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
+import { motion, useInView, Variants } from "framer-motion";
 
 export default function Section4() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
+
   const products = [
     {
       title: "재활용품 무인회수기",
@@ -41,77 +46,184 @@ export default function Section4() {
     },
     [
       Autoplay({
-        delay: 3000,
+        delay: 2000,
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),
     ]
   );
 
+  // 애니메이션 variants
+  const titleVariants: Variants = {
+    hidden: { opacity: 0, y: -50, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 1,
+        ease: [0.42, 0, 0.58, 1],
+      },
+    },
+  };
+
+  const carouselContainerVariants: Variants = {
+    hidden: { opacity: 0, y: 80 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        delay: 0.3,
+      },
+    },
+  };
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        delay: 0.5 + index * 0.1,
+      },
+    }),
+  };
+
+  const imageVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.8, rotate: -5 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const textContainerVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const textVariants: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.4,
+      },
+    },
+  };
+
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
+    <div ref={sectionRef} className="relative w-full h-screen overflow-hidden bg-black">
       {/* 배경 이미지 */}
-      <Image
-        src="/images/home/main_section_04_01.jpg"
-        alt="Section 4 Background"
-        fill
-        className="object-cover"
-        quality={75}
-        priority
-      />
+      <motion.div
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="absolute inset-0"
+      >
+        <Image
+          src="/images/home/main_section_04_01.jpg"
+          alt="Section 4 Background"
+          fill
+          className="object-cover"
+          quality={75}
+          priority
+        />
+      </motion.div>
     
       {/* 콘텐츠 */}
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 md:px-8">
         {/* 상단 타이틀 */}
         <div className="text-center text-white mb-8 md:mb-12">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <motion.h1
+            variants={titleVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+          >
             PRODUCT
-          </h1>
+          </motion.h1>
         </div>
 
         {/* 캐러셀 */}
-        <div className="w-full max-w-7xl">
+        <motion.div
+          variants={carouselContainerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="w-full max-w-7xl"
+        >
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {products.map((product, index) => (
-                <div
+                <motion.div
                   key={index}
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
                   className="min-w-0 shrink-0 grow-0 basis-full sm:basis-1/2 lg:basis-1/3 px-5 md:px-6"
                 >
                   <div className="w-full shadow-xl flex flex-col cursor-pointer overflow-hidden">
                     {/* 제품 이미지 영역 - 1:1 비율 */}
-                    <div className="relative w-full aspect-square bg-white flex items-center justify-center p-8">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={product.image}
-                          alt={product.title}
-                          fill
-                          className="object-contain hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
+                    <div className="relative w-full aspect-square bg-white flex items-center justify-center p-8 overflow-hidden">
+                      <motion.div
+                        variants={imageVariants}
+                        className="relative w-full h-full"
+                      >
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={product.image}
+                            alt={product.title}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </motion.div>
                     </div>
 
                     {/* 하단 텍스트 영역 */}
-                    <div className="relative w-full flex flex-col items-start justify-center px-6 py-4">
-                      {/* 배경 레이어 (투명도 적용) */}
-                      <div className="absolute inset-0 bg-gray-200 opacity-20" />
-                      
-                      {/* 텍스트 레이어 (투명도 없음) */}
-                      <div className="relative z-10">
-                        <h3 className="text-white text-base md:text-lg font-bold mb-1">
-                          {product.title}
-                        </h3>
-                        <p className="text-white text-sm md:text-base font-medium">
-                          {product.subtitle}
-                        </p>
-                      </div>
-                    </div>
+                    <motion.div
+                      variants={textContainerVariants}
+                      className="relative w-full flex flex-col items-start justify-center px-6 py-4 bg-gray-200/20"
+                    >
+                      <motion.h3
+                        variants={textVariants}
+                        className="text-white text-base md:text-lg font-bold mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+                      >
+                        {product.title}
+                      </motion.h3>
+                      <motion.p
+                        variants={textVariants}
+                        className="text-white text-sm md:text-base font-medium drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
+                      >
+                        {product.subtitle}
+                      </motion.p>
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

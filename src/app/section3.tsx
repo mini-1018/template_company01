@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
+import { motion, useInView, Variants } from "framer-motion";
 import Button from "../shared/component/Button";
 
 export default function Section3() {
   const [activeColumn, setActiveColumn] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
 
   const columns = [
     {
@@ -42,15 +45,148 @@ export default function Section3() {
     },
   ];
 
+  // 애니메이션 variants
+  const titleVariants: Variants = {
+    hidden: { opacity: 0, y: -50, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 1,
+        ease: [0.42, 0, 0.58, 1],
+      },
+    },
+  };
+
+  const columnContainerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const columnVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.8, y: 50 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const iconVariants: Variants = {
+    hidden: { opacity: 0, scale: 0, rotate: -180 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const plusIconVariants: Variants = {
+    hidden: { opacity: 0, scale: 0, rotate: 90 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0,
+      rotate: 90,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
+
+  const contentVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      height: 0,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      height: "auto",
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        staggerChildren: 0.1,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: 30,
+      height: 0,
+      transition: {
+        duration: 0.4,
+      },
+    },
+  };
+
+  const lineVariants: Variants = {
+    hidden: { scaleY: 0 },
+    visible: {
+      scaleY: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const textVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
+  const buttonVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className="w-full h-screen overflow-hidden relative">
-      {/* Background Images - 모든 이미지를 미리 로드하고 active만 표시 */}
+    <div ref={sectionRef} className="w-full h-screen overflow-hidden relative">
+      {/* Background Images */}
       {columns.map((column, index) => (
-        <div
+        <motion.div
           key={index}
-          className={`absolute top-0 left-0 w-full h-full pointer-events-none -z-10 transition-opacity duration-500 ${
-            activeColumn === index ? "opacity-100" : "opacity-0"
-          }`}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: activeColumn === index ? 1 : 0,
+          }}
+          transition={{ duration: 0.5 }}
+          className="absolute top-0 left-0 w-full h-full pointer-events-none -z-10"
         >
           <Image
             src={column.bgImage}
@@ -60,21 +196,33 @@ export default function Section3() {
             className="object-cover"
             quality={90}
           />
-        </div>
+        </motion.div>
       ))}
 
       {/* 상단 타이틀 */}
       <div className="absolute top-[15%] left-0 right-0 flex justify-center z-20">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-wider">
+        <motion.h1
+          variants={titleVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-wider drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+        >
           BUSINESS AREA
-        </h1>
+        </motion.h1>
       </div>
 
-      {/* Columns - 반응형 그리드 */}
-      <div className="w-full h-full flex flex-col md:flex-row md:flex-wrap">
+      {/* Columns */}
+      <motion.div
+        className="w-full h-full flex flex-col md:flex-row md:flex-wrap"
+        variants={columnContainerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
         {columns.map((column, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={columnVariants}
+            whileHover={{ scale: 1.02 }}
             className={`
               w-full md:w-1/2 lg:w-1/4 
               h-1/4 md:h-1/2 lg:h-full 
@@ -84,44 +232,41 @@ export default function Section3() {
               border-b-2 md:border-b-2 md:[&:nth-child(n+3)]:border-b-0
               lg:border-b-0
               box-border z-10 relative
-              transition-all duration-500
             `}
             onMouseEnter={() => setActiveColumn(index)}
           >
             {/* Backdrop Blur Overlay */}
-            <div
-              className={`absolute inset-0 transition-all duration-500 ${
-                activeColumn === index
-                  ? "backdrop-blur-sm bg-black/60"
-                  : "backdrop-blur-none bg-transparent"
-              }`}
+            <motion.div
+              initial={{ backdropFilter: "blur(0px)", backgroundColor: "rgba(0, 0, 0, 0)" }}
+              animate={{
+                backdropFilter: activeColumn === index ? "blur(8px)" : "blur(0px)",
+                backgroundColor: activeColumn === index ? "rgba(0, 0, 0, 0.6)" : "rgba(0, 0, 0, 0)",
+              }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0"
             />
 
             {/* Content */}
             <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8 lg:mt-16">
               {/* 아이콘 */}
-              <div 
-                className={`w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 relative transition-all duration-1000 ${
-                  activeColumn === index 
-                    ? "translate-y-0" 
-                    : "translate-y-0"
-                }`}
+              <motion.div
+                variants={iconVariants}
+                animate={activeColumn === index ? "hover" : "visible"}
+                className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 relative"
               >
                 <Image
                   src={column.icon}
                   alt={column.heading}
                   fill
-                  className="object-contain p-2"
+                  className="object-contain p-2 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]"
                 />
-              </div>
+              </motion.div>
 
-              {/* + 아이콘 - hover 시 숨김 */}
-              <div
-                className={`absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-4 md:translate-y-6 lg:translate-y-8 transition-all duration-1000 mt-5 ${
-                  activeColumn === index
-                    ? "opacity-0 scale-0"
-                    : "opacity-100 scale-100"
-                }`}
+              {/* + 아이콘 */}
+              <motion.div
+                variants={plusIconVariants}
+                animate={activeColumn === index ? "exit" : "visible"}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-4 md:translate-y-6 lg:translate-y-8 mt-5"
               >
                 <svg
                   width="40"
@@ -129,7 +274,7 @@ export default function Section3() {
                   viewBox="0 0 40 40"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-white"
+                  className="text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
                 >
                   <line
                     x1="20"
@@ -150,41 +295,45 @@ export default function Section3() {
                     strokeLinecap="round"
                   />
                 </svg>
-              </div>
+              </motion.div>
 
               {/* hover 시 나타나는 콘텐츠 */}
-              <div
-                className={`flex flex-col items-center transition-all duration-1000 ${
-                  activeColumn === index
-                    ? "opacity-100 translate-y-0 max-h-screen"
-                    : "opacity-0 translate-y-8 max-h-0 overflow-hidden"
-                }`}
+              <motion.div
+                variants={contentVariants}
+                animate={activeColumn === index ? "visible" : "hidden"}
+                className="flex flex-col items-center overflow-hidden"
               >
                 {/* 세로 라인 */}
-                <div className="w-0.5 h-10 bg-white/50 my-3" />
+                <motion.div
+                  variants={lineVariants}
+                  className="w-0.5 h-10 bg-white/50 my-3 origin-top"
+                />
 
                 {/* 제목 */}
-                <h2 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-3 md:mb-4 text-center whitespace-nowrap">
+                <motion.h2
+                  variants={textVariants}
+                  className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-3 md:mb-4 text-center whitespace-nowrap drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                >
                   {column.heading}
-                </h2>
+                </motion.h2>
 
                 {/* 설명 텍스트 */}
-                <p className="text-xs md:text-sm lg:text-base text-white/90 text-center leading-relaxed mb-4
-                  md:mb-16 max-w-xs break-keep">
+                <motion.p
+                  variants={textVariants}
+                  className="text-xs md:text-sm lg:text-base text-white/90 text-center leading-relaxed mb-4 md:mb-16 max-w-xs break-keep drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+                >
                   {column.text}
-                </p>
+                </motion.p>
 
                 {/* 자세히 보기 버튼 */}
-                <Button 
-                text = "자세히 보기"
-                href = {column.href}
-                size = "lg"
-                />
-              </div>
+                <motion.div variants={buttonVariants}>
+                  <Button text="자세히 보기" href={column.href} size="lg" />
+                </motion.div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
