@@ -51,7 +51,7 @@ export default function SocialCard({
         </div>
 
         {/* 오른쪽 - SNS 링크 */}
-        <div className="w-full md:w-1/2 bg-gray-50 flex flex-col items-center justify-center p-12 md:p-20 gap-8">
+        <div className="w-full md:w-1/2 bg-gray-secondary flex flex-col items-center justify-center p-12 md:p-20 gap-8">
           {/* 타이틀 - 호버된 플랫폼 색상으로 변경 */}
           <h3 
             className={`text-xl md:text-[30px] font-bold text-center transition-colors duration-300 ${

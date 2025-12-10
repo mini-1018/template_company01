@@ -229,7 +229,7 @@ export default function Section3() {
               border-black/50 
               md:border-r-2 md:even:border-r-2 
               lg:border-r-2
-              border-b-2 md:border-b-2 md:[&:nth-child(n+3)]:border-b-0
+              border-b-2 md:border-b-2 md:nth-[n+3]:border-b-0
               lg:border-b-0
               box-border z-10 relative
             `}

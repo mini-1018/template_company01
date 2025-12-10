@@ -249,7 +249,7 @@ export default function Section2() {
                 <div className="flex items-baseline justify-center mb-3 md:mb-8">
                   <motion.span 
                     variants={cardTitleVariants}
-                    className="text-3xl md:text-4xl lg:text-5xl font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold"
                   >
                     {stat.title}
                   </motion.span>
@@ -272,7 +272,7 @@ export default function Section2() {
             <div className="flex flex-col items-center justify-center gap-3 md:gap-4">
               <motion.span 
                 variants={timeLabelVariants}
-                className="text-sm md:text-base lg:text-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+                className="text-sm md:text-base lg:text-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
               >
                 지테크인터내셔날이 걸어온 시간
               </motion.span>

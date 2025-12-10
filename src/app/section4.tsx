@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
@@ -38,20 +38,45 @@ export default function Section4() {
     },
   ];
 
-  const [emblaRef] = useEmblaCarousel(
+  const autoplayPlugin = useRef(
+    Autoplay({
+      delay: 3000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    })
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
       align: "start",
       slidesToScroll: 1,
+      skipSnaps: false,
+      containScroll: "trimSnaps",
     },
-    [
-      Autoplay({
-        delay: 2000,
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
-      }),
-    ]
+    [autoplayPlugin.current]
   );
+
+  // 뷰포트 진입/이탈 시 carousel 제어
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    if (isInView) {
+      // 뷰포트 진입 시 첫 슬라이드로 리셋하고 autoplay 시작
+      emblaApi.scrollTo(0, true);
+      autoplayPlugin.current.play();
+    } else {
+      // 뷰포트 이탈 시 autoplay 정지
+      autoplayPlugin.current.stop();
+    }
+  }, [isInView, emblaApi]);
+
+  // carousel 초기화 시 리셋
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.reInit();
+    }
+  }, [emblaApi]);
 
   // 애니메이션 variants
   const titleVariants: Variants = {

@@ -19,7 +19,7 @@ export default function ContentTabs({ tabs, activeTab, onTabChange, className = 
         <button
           key={tab.id}
           onClick={() => onTabChange(tab.id)}
-          className={`flex-1 h-[57px] text-[25px] font-bold transition-colors cursor-pointer ${
+          className={`flex-1 h-[57px] text-[25px] font-bold transition-colors tracking-[-1px] cursor-pointer ${
             activeTab === tab.id
               ? "bg-blue-secondary text-white"
               : "bg-gray-secondary text-black-primary hover:bg-gray-primary"
