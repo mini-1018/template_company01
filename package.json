@@ -10,21 +10,21 @@
   "dependencies": {
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
-    "framer-motion": "^12.23.24",
-    "next": "16.0.1",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "framer-motion": "^12.23.25",
+    "next": "^16.0.7",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "babel-plugin-react-compiler": "^19.1.0-rc.3",
-    "baseline-browser-mapping": "^2.8.32",
-    "eslint-plugin-react-hooks": "^6.0.0-rc.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "baseline-browser-mapping": "^2.9.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
   },
   "packageManager": "yarn@4.11.0"
 }
