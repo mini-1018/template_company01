@@ -18,6 +18,8 @@ export default function Nav() {
     setIsMobileMenuOpen(false);
   };
 
+  console.log(isMenuOpen);
+
   return (
     <nav
       className={`absolute top-0 left-0 w-full z-50 transition-normal duration-1000 ${
@@ -112,12 +114,15 @@ export default function Nav() {
 
             {/* 모바일 햄버거 메뉴 */}
             <button
-              className="lg:hidden text-white p-2"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={"lg:hidden text-white p-2"}
+              onClick={() => {
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+                setIsMenuOpen(false);
+              }}
               aria-label="메뉴 열기"
             >
               <svg
-                className={`w-6 h-6 transition-colors ${isMobileMenuOpen ? "text-gray-900" : "text-white"}`}
+                className={`w-6 h-6 transition-colors ${isMobileMenuOpen ? "text-black-primary" : "text-white"}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
