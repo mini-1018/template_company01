@@ -1,29 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 export default function Section1() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState<"left" | "right">("left");
   const [showTitle, setShowTitle] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const slides = [
     {
-      image: "/images/home/main_section_01_01.jpg",
+      type: "video" as const,
+      src: "/video/main_section_01_01.webm",
       title: "품질인정",
       description: "기술력과 품질로 인정받는 기업",
     },
     {
-      image: "/images/home/main_section_01_02.jpg",
+      type: "video" as const,
+      src: "/video/main_section_01_02.webm",
       title: "가치경영",
       description: "인공지능을 통한 브랜드 가치경영",
     },
     {
-      image: "/images/home/main_section_01_03.jpg",
+      type: "video" as const,
+      src: "/video/main_section_01_03.webm",
       title: "기술강화",
       description: "고정밀 원천 기술에 대한 핵심사업 강화",
     },
@@ -33,106 +35,130 @@ export default function Section1() {
   useEffect(() => {
     setShowTitle(false);
     setShowDescription(false);
-    setIsAnimating(false);
+    setProgress(0);
 
     const titleTimer = setTimeout(() => {
       setShowTitle(true);
-    }, 600);
+    }, 800);
 
     const descriptionTimer = setTimeout(() => {
       setShowDescription(true);
-    }, 600);
-
-    const animationTimer = setTimeout(() => {
-      setIsAnimating(true);
-    }, 100);
+    }, 1000);
 
     return () => {
       clearTimeout(titleTimer);
       clearTimeout(descriptionTimer);
-      clearTimeout(animationTimer);
     };
   }, [currentIndex]);
 
+  // 동영상 제어 및 프로그레스 업데이트
   useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setDirection("left");
-      setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 3000);
+    const currentVideo = videoRefs.current[currentIndex];
+    console.dir(currentVideo);
 
-    return () => {
-      clearInterval(slideInterval);
-    };
-  }, [slides.length]);
+
+    if (currentVideo) {
+      // 동영상 처음부터 재생
+      currentVideo.currentTime = 0;
+      currentVideo.play().catch((error) => {
+        console.log("Video autoplay prevented:", error);
+      });
+
+      // 프로그레스 업데이트
+      const updateProgress = () => {
+        if (currentVideo.duration) {
+          const progressPercent = (currentVideo.currentTime / currentVideo.duration) * 100;
+          setProgress(progressPercent);
+        }
+      };
+
+      // 동영상 종료 시 다음 슬라이드로
+      const handleVideoEnd = () => {
+        setCurrentIndex((prev) => (prev + 1) % slides.length);
+      };
+
+      // 이벤트 리스너 등록
+      currentVideo.addEventListener("timeupdate", updateProgress);
+      currentVideo.addEventListener("ended", handleVideoEnd);
+
+      return () => {
+        currentVideo.removeEventListener("timeupdate", updateProgress);
+        currentVideo.removeEventListener("ended", handleVideoEnd);
+      };
+    }
+  }, [currentIndex, slides.length]);
+
+  // 다른 동영상들 정지 (약간 지연)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      videoRefs.current.forEach((video, index) => {
+        if (video && index !== currentIndex) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
+    }, 1500); // 크로스페이드 완료 후 정지
+
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
 
   const goToSlide = (index: number) => {
-    setDirection(index > currentIndex ? "left" : "right");
     setCurrentIndex(index);
   };
 
   const goToPrevious = () => {
-    setDirection("right");
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   const goToNext = () => {
-    setDirection("left");
     setCurrentIndex((prev) => (prev + 1) % slides.length);
   };
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* 배경 이미지 슬라이드 */}
+      {/* 배경 동영상 슬라이드 */}
       <div className="relative w-full h-full">
-        {slides.map((slide, index) => {
-          let position = "translate-x-full";
-          let opacity = "opacity-0";
-
-          if (index === currentIndex) {
-            position = "translate-x-0";
-            opacity = "opacity-100";
-          } else if (
-            (direction === "left" && index === (currentIndex - 1 + slides.length) % slides.length) ||
-            (direction === "right" && index === (currentIndex + 1) % slides.length)
-          ) {
-            position = direction === "left" ? "-translate-x-full" : "translate-x-full";
-            opacity = "opacity-0";
-          }
-
-          return (
-            <div
-              key={index}
-              className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${position} ${opacity}`}
+        {slides.map((slide, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: index === currentIndex ? 1 : 0,
+              zIndex: index === currentIndex ? 1 : 0,
+            }}
+            transition={{
+              opacity: { duration: 1.5, ease: "easeInOut" },
+              zIndex: { duration: 0 },
+            }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <video
+              ref={(el) => { videoRefs.current[index] = el; }}
+              className="w-full h-full object-cover"
+              muted
+              playsInline
+              preload="auto"
             >
-              <Image
-                src={slide.image}
-                alt={slide.title}
-                fill
-                priority={index === 0}
-                className="object-cover"
-                quality={90}
-              />
-              {/* 오버레이 */}
-              <div className="absolute inset-0 bg-black/30" />
-            </div>
-          );
-        })}
+              <source src={slide.src} type="video/webm" />
+            </video>
+            {/* 오버레이 */}
+            {/* <div className="absolute inset-0 bg-black/30" /> */}
+          </motion.div>
+        ))}
       </div>
 
       {/* 콘텐츠 */}
       <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center px-8 md:px-16 lg:px-32 xl:px-48 text-white">
         <div className="max-w-4xl">
-          <h1 
-            className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 lg:mb-10 transition-all duration-1000 ease-out ${
-              showTitle ? "opacity-100 blur-0" : "opacity-0 blur-sm"
-            }`}
+          <h1
+            className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 lg:mb-10 transition-all duration-1000 ease-out ${showTitle ? "opacity-100 blur-0" : "opacity-0 blur-sm"
+              }`}
           >
             {slides[currentIndex].title}
           </h1>
-          <p 
-            className={`text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-1000 ease-out ${
-              showDescription ? "opacity-100 blur-0" : "opacity-0 blur-sm"
-            }`}
+          <p
+            className={`text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-1000 ease-out ${showDescription ? "opacity-100 blur-0" : "opacity-0 blur-sm"
+              }`}
           >
             {slides[currentIndex].description}
           </p>
@@ -166,21 +192,15 @@ export default function Section1() {
           <div className="flex items-center gap-2 md:gap-3 lg:gap-4 text-white">
             {/* 현재 페이지 */}
             <span className="text-base md:text-lg">{currentIndex + 1}</span>
-            
-            {/* 프로그레스 바 - Framer Motion */}
+
+            {/* 프로그레스 바 - 동영상 진행률 */}
             <div className="w-20 md:w-24 lg:w-32 h-0.5 bg-white/30 rounded-full overflow-hidden">
-              <motion.div
-                key={currentIndex}
-                className="h-full bg-white"
-                initial={{ width: "0%" }}
-                animate={isAnimating ? { width: "100%" } : { width: "0%" }}
-                transition={{
-                  duration: 3,
-                  ease: "linear"
-                }}
+              <div
+                className="h-full bg-white transition-all duration-200 ease-linear"
+                style={{ width: `${progress}%` }}
               />
             </div>
-            
+
             {/* 전체 페이지 */}
             <span className="text-sm md:text-base lg:text-lg text-white/70">{slides.length}</span>
           </div>
@@ -214,11 +234,10 @@ export default function Section1() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all cursor-pointer ${
-                index === currentIndex
+              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all cursor-pointer ${index === currentIndex
                   ? "bg-white w-6 md:w-8"
                   : "bg-white/50 hover:bg-white/70"
-              }`}
+                }`}
               aria-label={`슬라이드 ${index + 1}로 이동`}
             />
           ))}
