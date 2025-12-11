@@ -1,10 +1,10 @@
 import ProductCard from "../ProductCard";
 
 const fws = [
-    { src: "/images/intro/performance/performance_01_01.jpg", title: "음식물 종량기", content: "GRC700" },
-    { src: "/images/intro/performance/performance_01_01.jpg", title: "음식물 종량기", content: "GRC700" },
-    { src: "/images/intro/performance/performance_01_01.jpg", title: "음식물 종량기", content: "GRC700" },
-    { src: "/images/intro/performance/performance_01_01.jpg", title: "음식물 종량기", content: "GRC700" },
+    { src: "/images/product/product_test.jpg", title: "음식물 종량기", content: "GRC700" },
+    { src: "/images/product/product_test.jpg", title: "음식물 종량기", content: "GRC700" },
+    { src: "/images/product/product_test.jpg", title: "음식물 종량기", content: "GRC700" },
+    { src: "/images/product/product_test.jpg", title: "음식물 종량기", content: "GRC700" },
 ]
 
 
