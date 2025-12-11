@@ -13,19 +13,19 @@ export default function Section1() {
   const slides = [
     {
       type: "video" as const,
-      src: "/video/main_section_01_01.mp4",
+      src: "/video/main_section_01_01.webm",
       title: "품질인정",
       description: "기술력과 품질로 인정받는 기업",
     },
     {
       type: "video" as const,
-      src: "/video/main_section_01_02.mp4",
+      src: "/video/main_section_01_02.webm",
       title: "가치경영",
       description: "인공지능을 통한 브랜드 가치경영",
     },
     {
       type: "video" as const,
-      src: "/video/main_section_01_03.mp4",
+      src: "/video/main_section_01_03.webm",
       title: "기술강화",
       description: "고정밀 원천 기술에 대한 핵심사업 강화",
     },
