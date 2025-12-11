@@ -18,13 +18,10 @@ export default function Nav() {
     setIsMobileMenuOpen(false);
   };
 
-  console.log(isMenuOpen);
-
   return (
     <nav
-      className={`absolute top-0 left-0 w-full z-50 transition-normal duration-1000 ${
-        isMenuOpen || isMobileMenuOpen ? "bg-white shadow-md" : "bg-transparent"
-      }`}
+      className={`absolute top-0 left-0 w-full z-50 transition-normal duration-1000 ${isMenuOpen || isMobileMenuOpen ? "bg-white shadow-md" : "bg-transparent"
+        }`}
       onMouseEnter={() => setIsMenuOpen(true)}
       onMouseLeave={() => {
         setIsMenuOpen(false);
@@ -36,7 +33,10 @@ export default function Nav() {
           {/* 메인 메뉴바 */}
           <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-8 lg:px-12">
             {/* 로고 */}
-            <Link href="/" className="relative w-[80px] h-[24px] md:w-[100px] md:h-[30px]">
+            <Link href="/" className="relative w-[80px] h-[24px] md:w-[100px] md:h-[30px]" onClick={() => {
+              setIsMenuOpen(false);
+              setIsMobileMenuOpen(false);
+            }}>
               <Image
                 src={isMenuOpen || isMobileMenuOpen ? "/images/logo/logo_gtech.png" : "/images/logo/logo_gtech_white.png"}
                 alt="G-TECH LOGO"
@@ -49,25 +49,23 @@ export default function Nav() {
             {/* 데스크톱 메뉴 - 중앙 정렬 */}
             <div className="hidden lg:flex items-center gap-12 xl:gap-40 absolute left-1/2 -translate-x-1/2">
               {menuItems.map((item) => (
-                <div 
-                  key={item.name} 
+                <div
+                  key={item.name}
                   className="relative w-20 xl:w-24 group"
                   onMouseEnter={() => setHoveredMenu(item.name)}
                   onMouseLeave={() => setHoveredMenu(null)}
                 >
                   <button
-                    className={`text-base xl:text-[20px] font-extrabold transition-colors duration-300 relative w-full ${
-                      isMenuOpen
+                    className={`text-base xl:text-[20px] font-extrabold transition-colors duration-300 relative w-full ${isMenuOpen
                         ? "text-black-primary hover:text-blue-primary"
                         : "text-white hover:text-gray-200"
-                    }`}
+                      }`}
                   >
                     {item.name}
                     {/* 밑줄 효과 */}
                     <span
-                      className={`absolute -bottom-[26px] left-1/2 -translate-x-1/2 w-16 h-1.5 bg-blue-primary transition-transform duration-300 ${
-                        hoveredMenu === item.name ? "scale-x-100" : "scale-x-0"
-                      }`}
+                      className={`absolute -bottom-[26px] left-1/2 -translate-x-1/2 w-16 h-1.5 bg-blue-primary transition-transform duration-300 ${hoveredMenu === item.name ? "scale-x-100" : "scale-x-0"
+                        }`}
                     />
                   </button>
                 </div>
@@ -76,37 +74,33 @@ export default function Nav() {
 
             {/* 우측 메뉴 */}
             <div className="hidden lg:flex gap-3 items-center">
-              <a 
-                href="https://smartstore.naver.com/gmall" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                >
-              <div className={`flex gap-[5px] items-center h-[30px] border rounded-[30px] px-[15px] transition-colors duration-300 ${
-                isMenuOpen || isMobileMenuOpen ? "border-black-primary" : "border-white"
-              }`}>
-                <div className="relative w-[22px] h-[22px] flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke={isMenuOpen ? "#434343" : "#ffffff"} strokeLinecap="round" strokeLinejoin="round" id="Shopping-Cart--Streamline-Lucide" height="16" width="16">
-                    <desc>
-                      Shopping Cart Streamline Icon: https://streamlinehq.com
-                    </desc>
-                    <path d="M7 21a1 1 0 1 0 2 0 1 1 0 1 0 -2 0" strokeWidth="2"></path>
-                    <path d="M18 21a1 1 0 1 0 2 0 1 1 0 1 0 -2 0" strokeWidth="2"></path>
-                    <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95 -1.57l1.65 -7.43H5.12" strokeWidth="2"></path>
-                  </svg>
+              <a
+                href="https://smartstore.naver.com/gmall"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className={`flex gap-[5px] items-center h-[30px] border rounded-[30px] px-[15px] transition-colors duration-300 ${isMenuOpen || isMobileMenuOpen ? "border-black-primary" : "border-white"
+                  }`}>
+                  <div className="relative w-[22px] h-[22px] flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke={isMenuOpen ? "#434343" : "#ffffff"} strokeLinecap="round" strokeLinejoin="round" id="Shopping-Cart--Streamline-Lucide" height="16" width="16">
+                      <desc>
+                        Shopping Cart Streamline Icon: https://streamlinehq.com
+                      </desc>
+                      <path d="M7 21a1 1 0 1 0 2 0 1 1 0 1 0 -2 0" strokeWidth="2"></path>
+                      <path d="M18 21a1 1 0 1 0 2 0 1 1 0 1 0 -2 0" strokeWidth="2"></path>
+                      <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95 -1.57l1.65 -7.43H5.12" strokeWidth="2"></path>
+                    </svg>
+                  </div>
+                  <p className={`text-[15px] font-extrabold transition-colors duration-300 ${isMenuOpen || isMobileMenuOpen ? "text-black-primary" : "text-white"
+                    }`}>
+                    지테크몰
+                  </p>
                 </div>
-                <p className={`text-[15px] font-extrabold transition-colors duration-300 ${
-                  isMenuOpen || isMobileMenuOpen ? "text-black-primary" : "text-white"
-                }`}>
-                  지테크몰
-                </p>
-              </div>
               </a>
-              <div className={`flex gap-[5px] items-center h-[30px] border rounded-[30px] px-[15px] transition-colors duration-300 ${
-                isMenuOpen || isMobileMenuOpen ? "border-black-primary" : "border-white"
-              }`}>
-                <p className={`text-[15px] font-extrabold transition-colors duration-300 ${
-                  isMenuOpen || isMobileMenuOpen ? "text-black-primary" : "text-white"
+              <div className={`flex gap-[5px] items-center h-[30px] border rounded-[30px] px-[15px] transition-colors duration-300 ${isMenuOpen || isMobileMenuOpen ? "border-black-primary" : "border-white"
                 }`}>
+                <p className={`text-[15px] font-extrabold transition-colors duration-300 ${isMenuOpen || isMobileMenuOpen ? "text-black-primary" : "text-white"
+                  }`}>
                   KOR
                 </p>
               </div>
@@ -137,22 +131,20 @@ export default function Nav() {
           </div>
 
           {/* 데스크톱 구분선 */}
-          <div 
-            className={`hidden lg:block w-full h-[1px] transition-all duration-500 ${
-              isMenuOpen ? "bg-[#ccccca] opacity-100" : "bg-transparent opacity-0"
-            }`}
+          <div
+            className={`hidden lg:block w-full h-[1px] transition-all duration-500 ${isMenuOpen ? "bg-[#ccccca] opacity-100" : "bg-transparent opacity-0"
+              }`}
           />
 
           {/* 데스크톱 서브메뉴 */}
           <div
-            className={`hidden lg:block overflow-hidden transition-all duration-500 ${
-              isMenuOpen ? "max-h-100 opacity-100" : "max-h-0 opacity-0"
-            }`}
+            className={`hidden lg:block overflow-hidden transition-all duration-500 ${isMenuOpen ? "max-h-100 opacity-100" : "max-h-0 opacity-0"
+              }`}
           >
             <div className="flex justify-center gap-12 xl:gap-40 pt-6 pb-14">
               {menuItems.map((item) => (
-                <div 
-                  key={item.name} 
+                <div
+                  key={item.name}
                   className="flex flex-col gap-6 items-center w-20 xl:w-24 group"
                   onMouseEnter={() => setHoveredMenu(item.name)}
                   onMouseLeave={() => setHoveredMenu(null)}
@@ -173,9 +165,8 @@ export default function Nav() {
 
           {/* 모바일 메뉴 */}
           <div
-            className={`lg:hidden overflow-hidden transition-all duration-300 ${
-              isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-            }`}
+            className={`lg:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+              }`}
           >
             <div className="px-4 py-4 space-y-4">
               {menuItems.map((item, menuIndex) => (
