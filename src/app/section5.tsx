@@ -217,7 +217,7 @@ export default function Section5() {
             </motion.h2>
             <motion.p
               variants={textVariants}
-              className="text-sm md:text-base lg:text-lg mb-8 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+              className="text-sm md:text-base mb-8 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
             >
               궁금한 점이 있으신가요?
             </motion.p>

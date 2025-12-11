@@ -18,7 +18,7 @@ export default function ReleaseCard({
 }: ReleaseCardProps) {
   return (
     <div 
-      className="group w-full border-t border-gray-primary py-[70px] px-[80px] cursor-pointer hover:bg-gray-secondary transition-colors"
+      className="w-full border-t border-gray-primary py-[70px] px-[80px] cursor-pointer"
       onClick={onClick}
     >
       <div className="flex gap-25 items-center">
@@ -46,7 +46,7 @@ export default function ReleaseCard({
             src={image}
             alt={title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
       </div>

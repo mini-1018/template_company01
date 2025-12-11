@@ -17,9 +17,9 @@ export default function Button({
 }: ButtonProps) {
   // 크기별 클래스 맵핑
   const sizeClasses = {
-    sm: "px-6 py-2 text-xs md:text-sm",
-    md: "px-8 py-2.5 text-sm md:text-base",
-    lg: "px-15 py-2 text-lg md:text-xl",
+    sm: "px-6 py-2 text-xs",
+    md: "px-8 py-2.5 text-sm",
+    lg: "px-15 py-2 text-base",
   };
 
   const baseClasses =

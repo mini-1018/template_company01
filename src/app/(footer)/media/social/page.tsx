@@ -21,7 +21,7 @@ export default function SocialPage() {
       title: "친환경 자원 순환 브랜드 코다",
       socialLinks: [
         { platform: "blog" as const, url: "https://blog.naver.com/gtech_official" },
-        { platform: "instagram" as const, url: "https://www.instagram.com/gtech_international/" },
+        { platform: "instagram" as const, url: "https://www.instagram.com/coda_recycle/" },
         { platform: "youtube" as const, url: "https://www.youtube.com/@Gtech-international" },
       ],
     },
