@@ -21,12 +21,6 @@ const socialIcons = {
   youtube: "/images/media/social/sns_03.png",
 };
 
-const socialColors = {
-  blog: "text-green-500",
-  instagram: "text-pink-500",
-  youtube: "text-red-600",
-};
-
 export default function SocialCard({ 
   brandLogo, 
   brandName, 
@@ -54,11 +48,7 @@ export default function SocialCard({
         <div className="w-full md:w-1/2 bg-gray-secondary flex flex-col items-center justify-center p-12 md:p-20 gap-8">
           {/* 타이틀 - 호버된 플랫폼 색상으로 변경 */}
           <h3 
-            className={`text-xl md:text-[30px] font-bold text-center transition-colors duration-300 ${
-              hoveredPlatform 
-                ? socialColors[hoveredPlatform as keyof typeof socialColors]
-                : "text-blue-secondary"
-            }`}
+            className="text-xl md:text-[30px] font-bold text-center text-blue-secondary"
           >
             {title}
             <span className="text-[30px] text-bold text-black-primary"> SNS 바로가기</span>
