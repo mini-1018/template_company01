@@ -14,18 +14,21 @@ export default function Section1() {
     {
       type: "video" as const,
       src: "/video/main_section_01_01.webm",
+      titleEN: "Recognized for Quality",
       title: "품질인정",
       description: "기술력과 품질로 인정받는 기업",
     },
     {
       type: "video" as const,
       src: "/video/main_section_01_02.webm",
+      titleEN: "Value Management",
       title: "가치경영",
       description: "인공지능을 통한 브랜드 가치경영",
     },
     {
       type: "video" as const,
       src: "/video/main_section_01_03.webm",
+      titleEN: "Technology Advancement",
       title: "기술강화",
       description: "고정밀 원천 기술에 대한 핵심사업 강화",
     },
@@ -39,11 +42,11 @@ export default function Section1() {
 
     const titleTimer = setTimeout(() => {
       setShowTitle(true);
-    }, 800);
+    }, 500);
 
     const descriptionTimer = setTimeout(() => {
       setShowDescription(true);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(titleTimer);
@@ -148,12 +151,17 @@ export default function Section1() {
       {/* 콘텐츠 */}
       <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center px-8 md:px-16 lg:px-32 xl:px-48 text-white">
         <div className="max-w-4xl">
-          <h1
-            className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 lg:mb-10 transition-all duration-1000 ease-out ${showTitle ? "opacity-100 blur-0" : "opacity-0 blur-sm"
+          <div
+            className={`transition-all duration-1000 ease-out ${showTitle ? "opacity-100 blur-0" : "opacity-0 blur-sm"
               }`}
           >
-            {slides[currentIndex].title}
-          </h1>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 md:mb-3 lg:mb-4">
+              {slides[currentIndex].titleEN}
+            </h2>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 lg:mb-10">
+              {slides[currentIndex].title}
+            </h1>
+          </div>
           <p
             className={`text-base md:text-lg lg:text-xl xl:text-2xl transition-all duration-1000 ease-out ${showDescription ? "opacity-100 blur-0" : "opacity-0 blur-sm"
               }`}
@@ -227,7 +235,7 @@ export default function Section1() {
         </div>
 
         {/* 도트 네비게이션 */}
-        <div className="absolute bottom-8 right-8 md:right-16 flex gap-2">
+        <div className="absolute bottom-8 right-8 md:right-16 gap-2 hidden sm:flex">
           {slides.map((_, index) => (
             <button
               key={index}

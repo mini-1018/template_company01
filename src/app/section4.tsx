@@ -14,27 +14,27 @@ export default function Section4() {
     {
       title: "재활용품 무인회수기",
       subtitle: "GRC700",
-      image: "/images/home/main_product_01.png",
+      image: "/images/home/main_product_01.jpg",
     },
     {
       title: "재활용품 무인회수기",
       subtitle: "GRC700 (ESG전용)",
-      image: "/images/home/main_product_02.png",
+      image: "/images/home/main_product_01.jpg",
     },
     {
       title: "음식물 종량기",
       subtitle: "GRC700",
-      image: "/images/home/main_product_03.png",
+      image: "/images/home/main_product_01.jpg",
     },
     {
       title: "음식물 수거 차량 RFID 결제 시스템",
       subtitle: "GRC700",
-      image: "/images/home/main_product_04.png",
+      image: "/images/home/main_product_01.jpg",
     },
     {
       title: "재활용 IoT 저울",
       subtitle: "GRC700",
-      image: "/images/home/main_product_05.png",
+      image: "/images/home/main_product_01.jpg",
     },
   ];
 

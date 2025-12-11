@@ -145,7 +145,7 @@ export default function Home() {
         className="h-screen overflow-hidden bg-black touch-none"
       >
         {/* 가이드바 */}
-        <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
+        <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden sm:block">
           <nav className="flex flex-col items-end">
             {sections.map((section, index) => (
               <button

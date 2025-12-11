@@ -36,7 +36,7 @@ export default function Business() {
       <div className="w-full max-w-[1426px] mx-auto px-8 md:px-10 lg:px-12">
 
         {/* 헤더 */}
-        <MainHeader text={"주식회사 지테크인터내셔날은\n4대 사업군을 기반으로 지속 가능한 미래 가치를 만들어 갑니다."}/>
+        <MainHeader text={"지테크인터내셔날은 4대 사업군을 기반으로 \n 지속 가능한 미래 가치를 만들어 갑니다."}/>
 
         {/* 사업 카드 그리드 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[50px] justify-items-center">
