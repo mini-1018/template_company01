@@ -13,13 +13,13 @@ export default function Section1() {
   const slides = [
     {
       type: "video" as const,
-      src: "/video/main_section_01_01.webm",
+      src: "/video/main_section_01_01.mp4",
       title: "품질인정",
       description: "기술력과 품질로 인정받는 기업",
     },
     {
       type: "video" as const,
-      src: "/video/main_section_01_02.webm",
+      src: "/video/main_section_01_02.mp4",
       title: "가치경영",
       description: "인공지능을 통한 브랜드 가치경영",
     },
@@ -54,8 +54,6 @@ export default function Section1() {
   // 동영상 제어 및 프로그레스 업데이트
   useEffect(() => {
     const currentVideo = videoRefs.current[currentIndex];
-    console.dir(currentVideo);
-
 
     if (currentVideo) {
       // 동영상 처음부터 재생
@@ -142,7 +140,7 @@ export default function Section1() {
               <source src={slide.src} type="video/webm" />
             </video>
             {/* 오버레이 */}
-            {/* <div className="absolute inset-0 bg-black/30" /> */}
+            <div className="absolute inset-0 bg-black/30" />
           </motion.div>
         ))}
       </div>
