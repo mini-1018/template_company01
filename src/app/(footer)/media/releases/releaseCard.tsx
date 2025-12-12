@@ -6,7 +6,7 @@ interface ReleaseCardProps {
   content: string;
   date: string;
   image: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 export default function ReleaseCard({ 

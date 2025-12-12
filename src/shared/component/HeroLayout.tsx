@@ -22,7 +22,20 @@ export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
   const router = useRouter();
   const [isSticky, setIsSticky] = useState(false);
 
-  const currentTab = tabs.find(tab => pathname === tab.path) || tabs[0];
+  // pathname과 정확히 일치하거나, /media/releases/[id] 같은 하위 경로도 처리
+  const currentTab = tabs.find(tab => {
+    if (pathname === tab.path) return true;
+    // /media/releases/1 같은 동적 경로 처리
+    if (pathname.startsWith(tab.path + '/')) return true;
+    return false;
+  }) || tabs[0];
+
+    // 현재 탭인지 확인하는 함수
+    const isActiveTab = (tabPath: string) => {
+      if (pathname === tabPath) return true;
+      if (pathname.startsWith(tabPath + '/')) return true;
+      return false;
+    };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,15 +84,18 @@ export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
             <div key={tab.id} className="flex-1 flex items-center justify-center">
               <button
                 onClick={() => router.push(tab.path)}
-                className="relative px-8 py-4 text-sm md:text-base font-extrabold transition-colors whitespace-nowrap cursor-pointer group"
+                className="relative px-8 py-4 text-sm md:text-[20px] font-extrabold transition-colors whitespace-nowrap cursor-pointer group"
               >
                 <span className="text-black-primary">
                   {tab.label}
                 </span>
                 {/* 텍스트 너비에 맞춘 밑줄 */}
                 <span
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-blue-secondary transition-all duration-300 ${pathname === tab.path ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-                    }`}
+                  className={`absolute bottom-0 left-0 right-0 h-1 bg-blue-secondary transition-all duration-300 ${
+                    isActiveTab(tab.path)
+                      ? 'opacity-100 scale-x-100'
+                      : 'opacity-0 scale-x-0'
+                  }`}
                 />
               </button>
             </div>

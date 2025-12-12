@@ -17,7 +17,7 @@ export default function Section3() {
       icon: "/images/home/main_section_03_area_01.png",
       text: "신체를 측정하는 기술을 기반으로 신장 체중 자동 측정기는 물론 손소독기ㆍ동물용 체중계 등으로 사업분야를 넓히고 있습니다.",
       bgImage: "/images/home/main_section_03_01.jpg",
-      href: "/business/healthcare",
+      href: "/product/healthcare",
     },
     {
       title: "2",
@@ -25,7 +25,7 @@ export default function Section3() {
       icon: "/images/home/main_section_03_area_02.png",
       text: "농업ㆍ수산업ㆍ축산업 현장에서 ICT 기술을 접목하여 계량 장비를 자동화ㆍ최적화 함으로써 생산효율을 높이는데 힘쓰고 있습니다.",
       bgImage: "/images/home/main_section_03_02.jpg",
-      href: "/business/agriculture",
+      href: "/product/smartfarm",
     },
     {
       title: "3",
@@ -33,7 +33,7 @@ export default function Section3() {
       icon: "/images/home/main_section_03_area_03.png",
       text: "반도체 생산 라인ㆍ공항용 스케일 등 정밀한 중량을 측정하는 자동화 라인을 구축하고 기술지원하여 만족도를 높이고 있습니다.",
       bgImage: "/images/home/main_section_03_03.jpg",
-      href: "/business/industrial",
+      href: "/product/industrial",
     },
     {
       title: "4",
@@ -41,7 +41,7 @@ export default function Section3() {
       icon: "/images/home/main_section_03_area_04.png",
       text: "무게 측정 기술 기반으로 AI 인공지능 및 ICT 기술을 더해 재활용품 무인회수기, 음식물 종량기 등 지자체에서 관리하기 용이한 친환경 제품을 갖추고 있습니다.",
       bgImage: "/images/home/main_section_03_04.jpg",
-      href: "/business/eco-friendly",
+      href: "/product/environmental",
     },
   ];
 

@@ -4,10 +4,12 @@ import MainHeader from "@/src/shared/component/MainHeader";
 import ReleaseCard from "./releaseCard";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ReleasesPage() {
     const [visibleCount, setVisibleCount] = useState(5);
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
 
     const releases = [
         {
@@ -106,6 +108,10 @@ export default function ReleasesPage() {
         },
     ];
 
+    const handleReleaseClick = (id: number) => {
+        router.push(`/media/releases/${id}`);
+    }
+
     const handleLoadMore = async () => {
         setIsLoading(true);
 
@@ -133,7 +139,7 @@ export default function ReleasesPage() {
                             content={release.content}
                             date={release.date}
                             image={release.image}
-                            onClick={() => console.log(`Release ${release.id} clicked`)}
+                            onClick={() => handleReleaseClick(release.id)}
                         />
                     ))}
                 </div>
