@@ -15,7 +15,7 @@ export default function Button({
   showArrow = false,
   size = "lg",
 }: ButtonProps) {
-  // 크기별 클래스 맵핑
+
   const sizeClasses = {
     sm: "px-6 py-2 text-xs",
     md: "px-8 py-2.5 text-sm",
@@ -47,7 +47,6 @@ export default function Button({
     </>
   );
 
-  // href가 있으면 Link, 없으면 button
   if (href) {
     return (
       <Link href={href} className={`${baseClasses} ${sizeClasses[size]}`}>

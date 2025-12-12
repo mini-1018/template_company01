@@ -21,16 +21,16 @@ export default function Section1() {
     {
       type: "video" as const,
       src: "/video/main_section_01_02.webm",
-      titleEN: "Value Management",
-      title: "가치경영",
-      description: "인공지능을 통한 브랜드 가치경영",
+      titleEN: "Technology Advancement",
+      title: "기술강화",
+      description: "고정밀 원천 기술에 대한 핵심사업 강화",
     },
     {
       type: "video" as const,
       src: "/video/main_section_01_03.webm",
-      titleEN: "Technology Advancement",
-      title: "기술강화",
-      description: "고정밀 원천 기술에 대한 핵심사업 강화",
+      titleEN: "Value Management",
+      title: "가치경영",
+      description: "인공지능을 통한 브랜드 가치경영",
     },
   ];
 
