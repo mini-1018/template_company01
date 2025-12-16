@@ -1,5 +1,6 @@
 import MainHeader from "@/src/shared/component/MainHeader";
 import SocialCard from "./socialCard";
+import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 
 export default function SocialPage() {
   const brands = [
@@ -31,7 +32,9 @@ export default function SocialPage() {
     <>
         <div>
             {/* 헤더 */}
-            <MainHeader text={"지테크인터내셔날의 흥미로운 소식과 \n 다양한 활동 소식을 한 곳에서 확인하실 수 있습니다."}/>
+            <FadeUpOnView>
+              <MainHeader text={"지테크인터내셔날의 흥미로운 소식과 \n 다양한 활동 소식을 한 곳에서 확인하실 수 있습니다."}/>
+            </FadeUpOnView>
     
             <div className="max-w-[1440px] mx-auto flex flex-col gap-20">
               {brands.map((brand) => (

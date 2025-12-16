@@ -78,6 +78,7 @@
   --color-black-primary: #434343;
   --color-gray-primary: #CCCCCA;
   --color-gray-secondary: #F0F0F0;
+  --color-red-primary: #e03636;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -133,4 +134,37 @@ body {
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
   opacity: 0;
+}
+
+
+/* 모든 체크박스 공통 스타일 */
+input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  position: relative;
+}
+
+/* 체크됐을 때 */
+input[type="checkbox"]:checked {
+  background-color: #36a9e1;
+  border-color: #36a9e1;
+}
+
+/* 체크 아이콘 (SVG) */
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;   /* 크기 지정 */
+  height: 20px;  /* 크기 지정 */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'><path fill-rule='evenodd' d='M16.704 5.292a1 1 0 010 1.416l-8.25 8.25a1 1 0 01-1.416 0l-4.25-4.25a1 1 0 111.416-1.416L8 12.586l7.296-7.294a1 1 0 011.408 0z' clip-rule='evenodd'/></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
 }

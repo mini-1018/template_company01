@@ -6,6 +6,7 @@ import RVM from "./RVM";
 import FWS from "./FWS";
 import VFWS from "./VFWS";
 import IOTW from "./IOTW";
+import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 
 const environmentalProducts = [
     {id: "무인회수기", tab: "재활용품 무인회수기", component: <RVM />},
@@ -27,7 +28,9 @@ export default function Environmental() {
     return (
     <div>
         {/* 헤더 */}
-        <MainHeader text={"무게 측정 기술 기반으로 AI 인공지능 및 ICT 기술을 더해 재활용품 무인회수기 및\n 음식물 종량기 등 지자체에서 관리하기 용이한 친환경 제품을 갖추고 있습니다."}/>
+        <FadeUpOnView>
+            <MainHeader text={"무게 측정 기술 기반으로 AI 인공지능 및 ICT 기술을 더해 재활용품 무인회수기 및\n 음식물 종량기 등 지자체에서 관리하기 용이한 친환경 제품을 갖추고 있습니다."}/>
+        </FadeUpOnView>
 
         <div className="max-w-[1440px] mx-auto">
             <ContentTabs 

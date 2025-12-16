@@ -51,20 +51,20 @@ export default function Nav() {
               {menuItems.map((item) => (
                 <div
                   key={item.name}
-                  className="relative w-20 xl:w-24 group"
+                  className="relative w-20 xl:w-24 flex justify-center group"
                   onMouseEnter={() => setHoveredMenu(item.name)}
                   onMouseLeave={() => setHoveredMenu(null)}
                 >
-                  <button
-                    className={`text-base xl:text-[20px] font-extrabold transition-colors duration-300 relative w-full ${isMenuOpen
+                  <button className="relative inline-block">
+                    <span className={`text-base xl:text-[20px] font-extrabold transition-colors duration-300 ${isMenuOpen
                         ? "text-black-primary hover:text-blue-primary"
                         : "text-white hover:text-gray-200"
-                      }`}
-                  >
-                    {item.name}
-                    {/* 밑줄 효과 */}
+                      }`}>
+                      {item.name}
+                    </span>
+                    {/* 밑줄 효과 - 텍스트 너비에 맞춤 */}
                     <span
-                      className={`absolute -bottom-[26px] left-1/2 -translate-x-1/2 w-16 h-1.5 bg-blue-primary transition-transform duration-300 ${hoveredMenu === item.name ? "scale-x-100" : "scale-x-0"
+                      className={`absolute -bottom-[26px] left-0 right-0 h-1.5 bg-blue-primary transition-all duration-300 ${hoveredMenu === item.name ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
                         }`}
                     />
                   </button>

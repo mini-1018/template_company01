@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ContentTabs from "@/src/shared/component/ContentTab";
 import MainHeader from "@/src/shared/component/MainHeader";
+import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 
 const industrialProducts = [
     { id: "인디케이터", tab: "인디케이터", component: "" },
@@ -24,7 +25,9 @@ export default function Industrial() {
     return (
         <div>
             {/* 헤더 */}
-            <MainHeader text={"반도체 생산 라인 · 공항용 스케일 등 정밀한 중량을 측정하는 \n 자동화 라인을 구축하고 기술 지원하여 만족도를 높이고 있습니다."} />
+            <FadeUpOnView>
+                <MainHeader text={"반도체 생산 라인 · 공항용 스케일 등 정밀한 중량을 측정하는 \n 자동화 라인을 구축하고 기술 지원하여 만족도를 높이고 있습니다."} />
+            </FadeUpOnView>
 
             <div className="max-w-[1440px] mx-auto">
                 <ContentTabs

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ContentTabs from "@/src/shared/component/ContentTab";
 import MainHeader from "@/src/shared/component/MainHeader";
+import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 
 const smartFarmProducts = [
     { id: "과일 선별기", tab: "과일 선별기", component: "" },
@@ -24,7 +25,9 @@ export default function SmartFarm() {
     return (
         <div>
             {/* 헤더 */}
-            <MainHeader text={"농업 · 수산업 · 축산업 현장에서 정보통신기술(ICT)을 접목하여 \n 계량장비를 자동화 · 최적화 함으로써 생산효율을 높이는데 힘쓰고 있습니다."} />
+            <FadeUpOnView>
+                <MainHeader text={"농업 · 수산업 · 축산업 현장에서 정보통신기술(ICT)을 접목하여 \n 계량장비를 자동화 · 최적화 함으로써 생산효율을 높이는데 힘쓰고 있습니다."} />
+            </FadeUpOnView>
 
             <div className="max-w-[1440px] mx-auto">
                 <ContentTabs

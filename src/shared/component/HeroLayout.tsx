@@ -84,14 +84,14 @@ export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
             <div key={tab.id} className="flex-1 flex items-center justify-center">
               <button
                 onClick={() => router.push(tab.path)}
-                className="relative px-8 py-4 text-sm md:text-[20px] font-extrabold transition-colors whitespace-nowrap cursor-pointer group"
+                className="relative py-4 text-sm md:text-[20px] font-extrabold transition-colors whitespace-nowrap cursor-pointer group"
               >
                 <span className="text-black-primary">
                   {tab.label}
                 </span>
                 {/* 텍스트 너비에 맞춘 밑줄 */}
                 <span
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-blue-secondary transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 right-0 h-1.5 bg-blue-secondary transition-all duration-300 ${
                     isActiveTab(tab.path)
                       ? 'opacity-100 scale-x-100'
                       : 'opacity-0 scale-x-0'

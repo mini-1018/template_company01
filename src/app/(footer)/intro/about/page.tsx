@@ -16,7 +16,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div>
-      <MainHeader text={"융복합 측정기술 전문기업 지테크인터내셔날이\n나아갈 길과 책임을 담고 있습니다."}/>
+      <FadeUpOnView>
+        <MainHeader text={"융복합 측정기술 전문기업 지테크인터내셔날이\n나아갈 길과 책임을 담고 있습니다."}/>
+      </FadeUpOnView>
       {/* CEO 메시지 섹션 - 16:9 비율 */}
       <section className="relative w-full aspect-video">
         {/* 배경 이미지 */}

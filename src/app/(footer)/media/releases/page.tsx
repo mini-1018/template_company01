@@ -5,6 +5,7 @@ import ReleaseCard from "./releaseCard";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 
 export default function ReleasesPage() {
     const [visibleCount, setVisibleCount] = useState(5);
@@ -15,7 +16,7 @@ export default function ReleasesPage() {
         {
             id: 1,
             title: "한성우 (주)지테크인터내셔날 대표, 의정부시에 미술 소장품 기증",
-            content: `용현산업단지 기업인협의회 명예회장인 한성우 ㈜지테크인터내셔날 대표가 미술 소장품을 의정부시에 기증했다.
+            content: `용현산업단지 기업인협의회 명예회장인 한성우 ㈜지테크인터내셔날 대표가 미술 소장품을 의정부시에 기증했다. 
 
             지난 16일 전달된 작품은 한국 현대미술계에서 활발히 활동 중인 한귀원 작가의 대표작 ‘축복의 땅’이다.
 
@@ -31,7 +32,7 @@ export default function ReleasesPage() {
 
             의정부=안유신 기자 ays@kihoilbo.co.kr
 
-            출처 : 기호일보(https://www.kihoilbo.co.kr/news/articleView.html?idxno=1144308)
+            출처 : 기호일보 (www.kihoilbo.co.kr/news/articleView.html?idxno=1144308)
             `,
             date: "2025-05-18",
             image: "/images/media/releases/release01.png"
@@ -129,7 +130,9 @@ export default function ReleasesPage() {
         <>
             <div>
                 {/* 헤더 */}
-                <MainHeader text={"지테크인터내셔날의 흥미로운 소식과 \n 다양한 활동 소식을 한 곳에서 확인하실 수 있습니다."} />
+                <FadeUpOnView>
+                    <MainHeader text={"지테크인터내셔날의 흥미로운 소식과 \n 다양한 활동 소식을 한 곳에서 확인하실 수 있습니다."} />
+                </FadeUpOnView>
 
                 <div className="max-w-[1440px] mx-auto border-b border-gray-primary">
                     {visibleReleases.map((release) => (

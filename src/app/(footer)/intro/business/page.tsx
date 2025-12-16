@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import MainHeader from "../../../../shared/component/MainHeader";
+import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 
 export default function Business() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -36,7 +37,9 @@ export default function Business() {
       <div className="w-full max-w-[1426px] mx-auto px-8 md:px-10 lg:px-12">
 
         {/* 헤더 */}
-        <MainHeader text={"지테크인터내셔날은 4대 사업군을 기반으로 \n 지속 가능한 미래 가치를 만들어 갑니다."}/>
+        <FadeUpOnView>
+          <MainHeader text={"지테크인터내셔날은 4대 사업군을 기반으로 \n 지속 가능한 미래 가치를 만들어 갑니다."}/>
+        </FadeUpOnView>
 
         {/* 사업 카드 그리드 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[50px] justify-items-center">

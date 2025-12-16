@@ -7,6 +7,7 @@ import EnterprisePerformance from "./EnterprisePerformance";
 import HospitalPerformance from "./HospitalPerformance";
 import GlobalPerformance from "./GlobalPerformance";
 import MainHeader from "../../../../shared/component/MainHeader";
+import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 
 const performance = [
   { id: "government", tab: "공공기관", component : <GovernmentPerformance /> },
@@ -30,7 +31,9 @@ export default function Performance() {
     return (
     <div>
         {/* 헤더 */}
-        <MainHeader text={"공공기관 및 지자체와 기업 및 병원 등\n국 · 내외 다양한 곳에서 설치 및 운영중에 있습니다."}/>
+        <FadeUpOnView>
+            <MainHeader text={"공공기관 및 지자체와 기업 및 병원 등\n국 · 내외 다양한 곳에서 설치 및 운영중에 있습니다."}/>
+        </FadeUpOnView>
 
         <div className="max-w-[1440px] mx-auto">
             <ContentTabs 

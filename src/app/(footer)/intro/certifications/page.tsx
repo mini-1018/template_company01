@@ -100,35 +100,37 @@ export default function Certification() {
     <div>
 
       {/* 헤더 */}
-      <MainHeader text={"전체 인력의 25%를 연구개발에 투입하여\n안정적이고 검증된 기술 경쟁력을 유지하고 있습니다."}/>
-      
+      <FadeUpOnView>
+        <MainHeader text={"전체 인력의 25%를 연구개발에 투입하여\n안정적이고 검증된 기술 경쟁력을 유지하고 있습니다."} />
+      </FadeUpOnView>
+
       <div className="w-full max-w-[1440px] mx-auto">
         {/* 인증서 그리드 */}
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-x-4 md:gap-y-[125px]">
           {certificates.map((cert, index) => (
             <FadeUpOnView key={index} delay={index * 0.1}>
-            <div 
-              key={index}
-              className="flex flex-col items-center group cursor-pointer"
-            >
-              {/* 인증서 이미지 */}
-              <div className="relative w-[300px] h-[400px] overflow-hidden transition-transform duration-300 group-hover:scale-105 border-gray-primary border">
-                <Image
-                  src={cert.image}
-                  alt={cert.name}
-                  fill
-                  className="object-cover"
-                />
-                {/* border-gray-primary border-1 */}
+              <div
+                key={index}
+                className="flex flex-col items-center group cursor-pointer"
+              >
+                {/* 인증서 이미지 */}
+                <div className="relative w-[300px] h-[400px] overflow-hidden transition-transform duration-300 group-hover:scale-105 border-gray-primary border">
+                  <Image
+                    src={cert.image}
+                    alt={cert.name}
+                    fill
+                    className="object-cover"
+                  />
+                  {/* border-gray-primary border-1 */}
+                </div>
+
+                {/* 인증서 이름 */}
+                <div className="mt-4 h-[60px] flex items-start justify-center">
+                  <h3 className="text-center text-base md:text-[20px] text-black-primary whitespace-pre-line leading-relaxed">
+                    {cert.name}
+                  </h3>
+                </div>
               </div>
-              
-              {/* 인증서 이름 */}
-              <div className="mt-4 h-[60px] flex items-start justify-center">
-                <h3 className="text-center text-base md:text-[20px] text-black-primary whitespace-pre-line leading-relaxed">
-                  {cert.name}
-                </h3>
-              </div>
-            </div>
             </FadeUpOnView>
           ))}
         </div>
