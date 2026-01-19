@@ -19,7 +19,7 @@ const performance = [
 
 
 export default function Performance() {
-    const [activeTab, setActiveTab] = useState("local");
+    const [activeTab, setActiveTab] = useState("enterprise");
 
     const currentContent = performance.find(item => item.id === activeTab);
 
