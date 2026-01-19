@@ -61,7 +61,7 @@ export default function ContactPage() {
         {/* 문의유형 */}
         <div className="grid grid-cols-10 border-b border-gray-primary">
           <div className="col-span-2 px-12 py-8 bg-gray-secondary flex items-center">
-            <span className="text-[25px] text-black-primary">
+            <span className="text-[25px] font-bold text-black-primary">
               문의유형 <span className="text-blue-secondary">*</span>
             </span>
           </div>
@@ -93,7 +93,7 @@ export default function ContactPage() {
         {/* 제목 */}
         <div className="grid grid-cols-10 border-b border-gray-primary">
           <div className="col-span-2 px-12 py-8 bg-gray-secondary flex items-center">
-            <span className="text-[25px] text-black-primary">
+            <span className="text-[25px] font-bold text-black-primary">
               제목 <span className="text-blue-secondary">*</span>
             </span>
           </div>
@@ -122,7 +122,7 @@ export default function ContactPage() {
         {/* 문의내용 */}
         <div className="grid grid-cols-10 border-b border-gray-primary">
           <div className="col-span-2 px-12 py-8 bg-gray-secondary flex items-center pt-8">
-            <span className="text-[25px] text-black-primary">
+            <span className="text-[25px] font-bold text-black-primary">
               문의내용 <span className="text-blue-secondary">*</span>
             </span>
           </div>
@@ -150,7 +150,7 @@ export default function ContactPage() {
         {/* 이름 */}
         <div className="grid grid-cols-10 border-b border-gray-primary">
           <div className="col-span-2 px-12 py-8 bg-gray-secondary flex items-center">
-            <span className="text-[25px] text-black-primary">
+            <span className="text-[25px] font-bold text-black-primary">
               이름 <span className="text-blue-secondary">*</span>
             </span>
           </div>
@@ -179,7 +179,7 @@ export default function ContactPage() {
         {/* 연락처 */}
         <div className="grid grid-cols-10 border-b border-gray-primary">
           <div className="col-span-2 px-12 py-8 bg-gray-secondary flex items-center">
-            <span className="text-[25px] text-black-primary">
+            <span className="text-[25px] font-bold text-black-primary">
               연락처 <span className="text-blue-secondary">*</span>
             </span>
           </div>
@@ -208,7 +208,7 @@ export default function ContactPage() {
         {/* 이메일 */}
         <div className="grid grid-cols-10 border-b border-gray-primary">
           <div className="col-span-2 px-12 py-8 bg-gray-secondary flex items-center">
-            <span className="text-[25px] text-black-primary">
+            <span className="text-[25px] font-bold text-black-primary">
               이메일 <span className="text-blue-secondary">*</span>
             </span>
           </div>
@@ -237,7 +237,7 @@ export default function ContactPage() {
         {/* 첨부파일 */}
         <div className="grid grid-cols-10 border-b border-gray-primary">
           <div className="col-span-2 px-12 py-8 bg-gray-secondary flex items-center pt-8">
-            <span className="text-[25px] text-black-primary">첨부파일</span>
+            <span className="text-[25px] font-bold text-black-primary">첨부파일</span>
           </div>
           <div className="col-span-8 px-12 py-5">
             <div>
@@ -292,12 +292,12 @@ export default function ContactPage() {
         {/* 개인정보취급방침 */}
         <div className="grid grid-cols-10">
           <div className="col-span-2 px-12 py-8 bg-gray-secondary flex items-center pt-8">
-            <span className="text-[25px] text-black-primary">
+            <span className="text-[25px] font-bold text-black-primary tracking-tighter">
               개인정보취급방침 <span className="text-blue-secondary">*</span>
             </span>
           </div>
           <div className="col-span-8 px-12 py-5 flex flex-col justify-center">
-            <div className="bg-gray-100 p-6 mb-4">
+            <div className="bg-gray-100 p-6 mb-4 h-[200px] overflow-y-auto">
               <div className="text-[18px] text-black-primary leading-relaxed">
                 <p className="mb-4 font-semibold">개인정보 수집 및 이용 안내</p>
                 <p className="mb-6">문의사항 답변을 위한 개인정보 수집 및 이용에 관한 동의</p>

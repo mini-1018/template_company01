@@ -1,0 +1,23 @@
+제품명				
+				
+재활용품 무인회수기		Reverse vending machine		
+음식물 종량기		Billing system for food waste		
+음식물 수거차량 RFID 결제 시스템		Vehicle billing system for food waste		
+IOT 자원계측 시스템				
+				
+신장 체중 자동 측정기		WEIGHT AND HEIGHT MEASURING SYSTEM		
+환자용 측정기		WHEEL CHAIR SCALE		
+손소독기		HAND SANITIZER		
+기타		ETC		
+				
+과일선별기				
+자동 톤백 저울				
+파렛트 저울				
+농업 저울				
+축산업 저울				
+				
+인디케이터				
+로드셀				
+고정밀 로드셀				
+발란스 저울				
+플랫폼 저울				

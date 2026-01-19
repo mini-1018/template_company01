@@ -1,5 +1,6 @@
 'use client';
 
+import Dropdown from '@/src/shared/component/Dropdown';
 import { useState } from 'react';
 
 export default function Manuals() {
@@ -7,6 +8,7 @@ export default function Manuals() {
   const [category, setCategory] = useState('전체');
   const [searchTerm, setSearchTerm] = useState(''); // 입력 중인 검색어
   const [actualSearchTerm, setActualSearchTerm] = useState(''); // 실제 검색에 사용되는 검색어
+  const categories = ['전체', '친환경', '헬스케어', '농축산', '산업용']; // 검색 드롭다운 카테고리
 
   // 샘플 데이터
   const posts = [
@@ -49,12 +51,6 @@ export default function Manuals() {
     }
   };
 
-  // 카테고리 변경 핸들러
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCategory(e.target.value);
-    setCurrentPage(1);
-  };
-
   const renderPageNumbers = () => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -79,24 +75,21 @@ export default function Manuals() {
     <div className="max-w-[1440px] mx-auto">
       {/* 검색 영역 */}
       <div className="mb-6 flex justify-end items-center gap-2">
-        <select
+          <Dropdown
           value={category}
-          onChange={handleCategoryChange}
-          className="px-4 py-2 border border-gray-primary text-[25px] focus:outline-none focus:ring-2 focus:ring-blue-secondary"
-        >
-          <option>전체</option>
-          <option>친환경</option>
-          <option>헬스케어</option>
-          <option>농축산</option>
-          <option>산업용</option>
-        </select>
+          onChange={(value) => {
+            setCategory(value);
+            setCurrentPage(1);
+          }}
+          options={categories}
+        />
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="제목 검색"
-          className="px-4 py-2 h-[50px] border border-gray-primary text-[25px] focus:outline-none focus:ring-2 focus:ring-blue-secondary"
+          className="px-4 py-2 h-[50px] border border-gray-primary text-[25px] focus:outline-none focus:ring-2 focus:ring-blue-secondary hover:border-blue-secondary"
         />
         <button 
           onClick={executeSearch}

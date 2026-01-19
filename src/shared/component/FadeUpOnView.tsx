@@ -4,12 +4,14 @@ import { useRef, useEffect, useState, PropsWithChildren } from "react";
 interface FadeUpOnViewProps extends PropsWithChildren {
   delay?: number; // ms 단위
   y?: number;     // px 단위
+  duration?: number; // ms 단위
 }
 
 export default function FadeUpOnView({
   children,
   delay = 0,
   y = 50,
+  duration = 700,
 }: FadeUpOnViewProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -33,7 +35,7 @@ export default function FadeUpOnView({
         transitionDelay: `${delay}ms`,
         transform: inView ? "translateY(0)" : `translateY(${y}px)`,
       }}
-      className={`transition-all duration-700 ease-out
+      className={`transition-all duration-${duration} ease-out
         ${inView ? "opacity-100" : "opacity-0"}
       `}
     >
