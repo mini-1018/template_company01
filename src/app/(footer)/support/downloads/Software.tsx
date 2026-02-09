@@ -6,15 +6,43 @@ import { useState } from 'react';
 export default function Software() {
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState('전체');
-  const [searchTerm, setSearchTerm] = useState(''); // 입력 중인 검색어
-  const [actualSearchTerm, setActualSearchTerm] = useState(''); // 실제 검색에 사용되는 검색어
-  const categories = ['전체', '친환경', '헬스케어', '농축산', '산업용']; // 검색 드롭다운 카테고리
+  const [searchTerm, setSearchTerm] = useState('');
+  const [actualSearchTerm, setActualSearchTerm] = useState('');
+  const [expandedId, setExpandedId] = useState<number | null>(null);
+  const categories = ['전체', '친환경', '헬스케어', '농축산', '산업용'];
 
   // 샘플 데이터
   const posts = [
-    { id: 29, category: '친환경', title: '재활용품 무인회수기 소프트웨어', date: '2025-12-11' },
-    { id: 28, category: '헬스케어', title: '신장 체중 자동 측정기 (GL-150R) 소프트웨어', date: '2025-12-11' },
-    { id: 27, category: '농축산', title: '포도 조합 선별기 소프트웨어', date: '2025-12-11' },
+    {
+      id: 29,
+      category: '친환경',
+      title: '재활용품 무인회수기 소프트웨어',
+      date: '2025-12-11',
+      fileSize: '15.3MB',
+      version: 'v2.1.0',
+      description: '재활용품 무인회수기 제어 소프트웨어',
+      downloadUrl: '/software/recycle-machine-v2.1.0.exe'
+    },
+    {
+      id: 28,
+      category: '헬스케어',
+      title: '신장 체중 자동 측정기 (GL-150R) 소프트웨어',
+      date: '2025-12-11',
+      fileSize: '8.7MB',
+      version: 'v1.5.3',
+      description: 'GL-150R 모델 데이터 관리 및 분석 소프트웨어',
+      downloadUrl: '/software/gl-150r-v1.5.3.exe'
+    },
+    {
+      id: 27,
+      category: '농축산',
+      title: '포도 조합 선별기 소프트웨어',
+      date: '2025-12-11',
+      fileSize: '12.1MB',
+      version: 'v3.0.2',
+      description: '포도 선별기 운영 및 품질 관리 소프트웨어',
+      downloadUrl: '/software/grape-sorter-v3.0.2.exe'
+    },
     { id: 26, category: '친환경', title: '재활용품 무인회수기 소프트웨어', date: '2025-12-11' },
     { id: 25, category: '헬스케어', title: '신장 체중 자동 측정기 (GL-150R) 소프트웨어', date: '2025-12-11' },
     { id: 24, category: '농축산', title: '포도 조합 선별기 소프트웨어', date: '2025-12-11' },
@@ -26,7 +54,7 @@ export default function Software() {
     { id: 18, category: '친환경', title: '재활용품 무인회수기 소프트웨어', date: '2025-12-11' },
   ];
 
-  // 필터링된 게시물 - actualSearchTerm 사용
+  // 필터링된 게시물
   const filteredPosts = posts.filter((post) => {
     const matchesCategory = category === '전체' || post.category === category;
     const matchesSearch = post.title.toLowerCase().includes(actualSearchTerm.toLowerCase());
@@ -57,6 +85,10 @@ export default function Software() {
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
     setCurrentPage(1);
+  };
+
+  const toggleExpand = (id: number) => {
+    setExpandedId(expandedId === id ? null : id);
   };
 
   const renderPageNumbers = () => {
@@ -130,24 +162,66 @@ export default function Software() {
         {/* 테이블 바디 */}
         {currentPosts.length > 0 ? (
           currentPosts.map((post, index) => (
-            <div
-              key={post.id}
-              className={`grid grid-cols-12 border-b border-gray-primary hover:bg-gray-secondary transition-colors cursor-pointer ${
-                index === currentPosts.length - 1 ? 'border-b-0' : ''
-              }`}
-            >
-              <div className="col-span-1 px-6 py-4 text-center text-[25px] text-black-primary">
-                {post.id}
+            <div key={post.id}>
+              <div
+                onClick={() => toggleExpand(post.id)}
+                className={`grid grid-cols-12 border-b border-gray-primary hover:bg-gray-secondary transition-colors cursor-pointer ${
+                  index === currentPosts.length - 1 && expandedId !== post.id ? 'border-b-0' : ''
+                }`}
+              >
+                <div className="col-span-1 px-6 py-4 text-center text-[25px] text-black-primary flex items-center justify-center">
+                  {post.id}
+                </div>
+                <div className="col-span-2 px-6 py-4 text-center text-[25px] text-black-primary flex items-center justify-center">
+                  {post.category}
+                </div>
+                <div className="col-span-6 px-6 py-4 text-[25px] text-black-primary flex items-center">
+                  {post.title}
+                  <svg
+                    className={`w-5 h-5 ml-2 transition-transform ${expandedId === post.id ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+                <div className="col-span-3 px-6 py-4 text-center text-[25px] text-black-primary flex items-center justify-center">
+                  {post.date}
+                </div>
               </div>
-              <div className="col-span-2 px-6 py-4 text-center text-[25px] text-black-primary">
-                {post.category}
-              </div>
-              <div className="col-span-6 px-6 py-4 text-[25px] text-black-primary">
-                {post.title}
-              </div>
-              <div className="col-span-3 px-6 py-4 text-center text-[25px] text-black-primary">
-                {post.date}
-              </div>
+
+              {/* 확장 영역 */}
+              {expandedId === post.id && (
+                <div className="bg-gray-100 border-b border-gray-primary px-12 py-6">
+                  <div className="grid grid-cols-12 gap-4">
+                    <div className="col-span-8">
+                      <p className="text-[20px] text-gray-600 mb-4">{post.description}</p>
+                      <div className="flex items-center gap-4 text-[18px] text-gray-500">
+                        <span>파일 크기: {post.fileSize}</span>
+                        <span>•</span>
+                        <span>버전: {post.version}</span>
+                        <span>•</span>
+                        <span>Windows 10/11</span>
+                      </div>
+                    </div>
+                    {post.downloadUrl && (
+                      <div className="col-span-4 flex items-center justify-end">
+                        <a
+                          href={post.downloadUrl}
+                          download
+                          className="px-8 py-3 bg-blue-secondary text-white text-[20px] hover:bg-blue-600 transition-colors flex items-center gap-2"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                          </svg>
+                          다운로드
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           ))
         ) : (

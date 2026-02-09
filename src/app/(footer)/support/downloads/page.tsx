@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import ContentTabs from "@/src/shared/component/ContentTab";
 import MainHeader from "@/src/shared/component/MainHeader";
 import Catalogs from "./Catalogs";
@@ -9,20 +10,37 @@ import Software from "./Software";
 import FadeUpOnView from "@/src/shared/component/FadeUpOnView";
 
 const downloadsTab = [
-    {id: "카탈로그", tab: "카탈로그", component: <Catalogs />},
-    {id: "사용설명서", tab: "사용설명서", component: <Manuals />},
-    {id: "소프트웨어", tab: "소프트웨어", component: <Software />},
+    {id: "catalog", tab: "카탈로그", component: <Catalogs />},
+    {id: "manual", tab: "사용설명서", component: <Manuals />},
+    {id: "software", tab: "소프트웨어", component: <Software />},
 ]  
 
 
 export default function DownloadsPage() {
-    const [activeTab, setActiveTab] = useState("카탈로그");
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const tabParam = searchParams.get('tab');
+    
+    const [activeTab, setActiveTab] = useState(tabParam || "catalog");
+
+    // URL 쿼리 파라미터와 동기화
+    useEffect(() => {
+        if (tabParam && downloadsTab.some(tab => tab.id === tabParam)) {
+            setActiveTab(tabParam);
+        }
+    }, [tabParam]);
+
+    // 탭 변경 시 URL 업데이트
+    const handleTabChange = (tabId: string) => {
+        setActiveTab(tabId);
+        router.push(`/support/downloads?tab=${tabId}`, { scroll: false });
+    };
 
     const currentContent = downloadsTab.find(item => item.id === activeTab);
 
     const tabs = downloadsTab.map(tab => ({
-    id: tab.id,
-    label: tab.tab
+        id: tab.id,
+        label: tab.tab
     }));
 
     return (
@@ -33,7 +51,7 @@ export default function DownloadsPage() {
             <ContentTabs
                 tabs={tabs}
                 activeTab={activeTab}
-                onTabChange={setActiveTab}
+                onTabChange={handleTabChange}
                 className="mb-24"
             />
 
