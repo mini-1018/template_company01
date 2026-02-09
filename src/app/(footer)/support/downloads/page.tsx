@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import ContentTabs from "@/src/shared/component/ContentTab";
 import MainHeader from "@/src/shared/component/MainHeader";
@@ -15,22 +15,19 @@ const downloadsTab = [
     {id: "software", tab: "소프트웨어", component: <Software />},
 ]  
 
-
-export default function DownloadsPage() {
+function DownloadsContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const tabParam = searchParams.get('tab');
     
     const [activeTab, setActiveTab] = useState(tabParam || "catalog");
 
-    // URL 쿼리 파라미터와 동기화
     useEffect(() => {
         if (tabParam && downloadsTab.some(tab => tab.id === tabParam)) {
             setActiveTab(tabParam);
         }
     }, [tabParam]);
 
-    // 탭 변경 시 URL 업데이트
     const handleTabChange = (tabId: string) => {
         setActiveTab(tabId);
         router.push(`/support/downloads?tab=${tabId}`, { scroll: false });
@@ -59,5 +56,13 @@ export default function DownloadsPage() {
                 {currentContent?.component}
             </div>
         </div>
+    );
+}
+
+export default function DownloadsPage() {
+    return (
+        <Suspense>
+            <DownloadsContent />
+        </Suspense>
     );
 }
