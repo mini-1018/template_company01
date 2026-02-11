@@ -33,11 +33,11 @@ export default function FadeUpOnView({
       ref={ref}
       style={{
         transitionDelay: `${delay}ms`,
+        transitionDuration: `${duration}ms`,
         transform: inView ? "translateY(0)" : `translateY(${y}px)`,
+        opacity: inView ? 1 : 0,
       }}
-      className={`transition-all duration-${duration} ease-out
-        ${inView ? "opacity-100" : "opacity-0"}
-      `}
+      className="transition-all ease-out"
     >
       {children}
     </div>

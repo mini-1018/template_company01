@@ -1,7 +1,7 @@
 import ProductCard from "../ProductCard";
 
 const vfws = [
-    { src: "/images/product/product_test.jpg", title: "차량용 RFID", content: "GRC700" },
+    { id: "GRC700", category: "environmental", src: "/images/product/product_test.jpg", title: "차량용 RFID", content: "GRC700" },
 ]
 
 

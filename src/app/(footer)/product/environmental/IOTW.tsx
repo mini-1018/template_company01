@@ -1,7 +1,7 @@
 import ProductCard from "../ProductCard";
 
 const iotw = [
-    { src: "/images/product/product_test.jpg", title: "IOT 자원계측 시스템", content: "GRC700" },
+    { id: "GRC700", category: "environmental", src: "/images/product/product_test.jpg", title: "IOT 자원계측 시스템", content: "GRC700" },
 ]
 
 

@@ -51,13 +51,13 @@ export default function Dropdown({ value, onChange, options, className = '' }: D
 
       {/* 드롭다운 메뉴 */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-primary shadow-lg z-10">
+        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-primary shadow-lg z-10 ">
           {options.map((option) => (
             <button
               key={option}
               onClick={() => handleSelect(option)}
-              className={`w-full px-4 py-3 text-[25px] text-left ${
-                value === option ? 'bg-blue-secondary text-white' : 'text-black-primary hover:bg-gray-secondary transition-colors'
+              className={`w-full px-4 text-[25px] text-left ${
+                value === option ? 'bg-blue-secondary text-white min-w-[150px] h-[50px]' : 'text-black-primary hover:bg-gray-secondary transition-colors min-w-[150px] h-[50px]'
               }`}
             >
               {option}
