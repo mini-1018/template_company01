@@ -86,7 +86,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                     />
                 </div>
             </section>
-            <div className="max-w-[1440px] mx-auto mb-16 flex flex-col">
+            <div className="max-w-[1440px] mx-auto flex flex-col">
                 <div className="border border-text-primary"></div>
                 <div className="w-full flex justify-center mt-30">
                     <Image
