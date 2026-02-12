@@ -1,7 +1,13 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
 
 export default function Footer() {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
   const footerLinks = [
     { label: "이용약관", href: "/intro/outline" },
     { label: "개인정보처리방침", href: "/privacy" },
@@ -22,6 +28,29 @@ export default function Footer() {
     { href: "https://www.instagram.com/gtech__official", icon: "/images/icon/insta.svg", alt: "Instagram" },
   ];
 
+  const relatedSites = [
+    { label: "CODA", href: "https://www.coda.ai.kr/" },
+    { label: "지테크몰", href: "https://smartstore.naver.com/gmall" },
+    { label: "나라장터", href: "https://shop.g2b.go.kr" },
+  ];
+
+  // 외부 클릭 감지
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleSiteClick = (href: string) => {
+    window.open(href, '_blank', 'noopener,noreferrer');
+    setIsDropdownOpen(false);
+  };
+
   return (
     <footer className="w-full bg-white border-t border-[#ccccca]">
       {/* SNS Channel Section */}
@@ -35,8 +64,8 @@ export default function Footer() {
                 <Link 
                   href={social.href} 
                   className="block hover:opacity-70 transition-opacity"
-                  target={social.href.startsWith('http') ? "_blank" : undefined}
-                  rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image 
                     src={social.icon} 
@@ -52,7 +81,7 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="w-full pt-15 pb-25 ">
+      <div className="w-full pt-15 pb-25">
         <div className="max-w-[1440px] mx-auto px-4 lg:px-0">
           <div className="flex flex-col gap-7">
             {/* Top Section - Logo, Links, Related Sites */}
@@ -90,27 +119,38 @@ export default function Footer() {
               </div>
 
               {/* Related Sites Dropdown */}
-              <div className="relative">
-                <label htmlFor="related-sites" className="sr-only">
-                  관련사이트 선택
-                </label>
-                <select
-                  id="related-sites"
-                  className="w-[127px] h-9 px-3 border border-[#ccccca] text-[#434343] text-sm appearance-none cursor-pointer focus:outline-2 focus:outline-offset-2 focus:outline-[#434343]"
-                  defaultValue=""
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="w-[127px] h-9 px-3 border border-[#ccccca] bg-white text-[#434343] text-sm text-left flex items-center justify-between hover:border-[#999] transition-colors"
+                  aria-label="관련사이트 선택"
+                  aria-expanded={isDropdownOpen}
                 >
-                  <option value="" disabled>관련사이트</option>
-                  <option value="site1">사이트 1</option>
-                  <option value="site2">사이트 2</option>
-                </select>
-                <svg 
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-2.5 h-2.5 pointer-events-none" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+                  <span>관련사이트</span>
+                  <svg 
+                    className={`w-2.5 h-2.5 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* Dropdown Menu */}
+                {isDropdownOpen && (
+                  <div className="absolute bottom-full left-0 mb-0 w-[127px] bg-white border border-[#ccccca] border-b-0 shadow-lg">
+                    {relatedSites.map((site, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleSiteClick(site.href)}
+                        className="w-full px-3 h-9 text-left text-[#434343] text-sm hover:bg-[#f0f0f0] transition-colors border-b border-[#ccccca]"
+                      >
+                        {site.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
