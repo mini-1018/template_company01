@@ -12,12 +12,12 @@ interface Tab {
   image: string;
 }
 
-interface HeroLayoutProps {
+interface HeroImageWithTabsProps {
   tabs: Tab[];
   children: ReactNode;
 }
 
-export default function HeroLayout({ tabs, children }: HeroLayoutProps) {
+export default function HeroImageWithTabs({ tabs, children }: HeroImageWithTabsProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [isSticky, setIsSticky] = useState(false);

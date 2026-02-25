@@ -9,10 +9,10 @@ export default function Footer() {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const footerLinks = [
-    { label: "이용약관", href: "/intro/outline" },
-    { label: "개인정보처리방침", href: "/privacy" },
-    { label: "이메일무단수집거부", href: "/terms" },
-    { label: "위치안내", href: "/terms" },
+    { label: "이용약관", href: "https://sites.google.com/view/coda-service-terms-of-use/%ED%99%88", blank: true },
+    { label: "개인정보처리방침", href: "https://sites.google.com/view/coda-privacy/%ED%99%88", blank: true },
+    { label: "이메일무단수집거부", href: "/content/email-prohibit", blank: false },
+    { label: "위치안내", href: "/intro/location", blank: false },
   ];
 
   const companyInfo = [
@@ -106,6 +106,8 @@ export default function Footer() {
                         <Link
                           href={link.href}
                           className="text-black-primary text-sm hover:underline focus:outline-2 focus:outline-offset-2 focus:outline-black-primary"
+                          target={link.blank ? "_blank" : "_self"}
+                          rel={link.blank ? "noopener noreferrer" : undefined}
                         >
                           {link.label}
                         </Link>

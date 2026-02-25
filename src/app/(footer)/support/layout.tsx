@@ -1,4 +1,4 @@
-import HeroLayout from "@/src/shared/component/HeroLayout";
+import HeroImageWithTabs from "@/src/shared/component/HeroImageWithTabs";
 
 const supportTabs = [
   { id: "downloads", label: "다운로드", sub: "Downloads", path: "/support/downloads", image: "/images/subtop/subtop_04_01.jpg" },
@@ -6,5 +6,5 @@ const supportTabs = [
 ];
 
 export default function SupportLayout({ children }: { children: React.ReactNode }) {
-  return <HeroLayout tabs={supportTabs}>{children}</HeroLayout>;
+  return <HeroImageWithTabs tabs={supportTabs}>{children}</HeroImageWithTabs>;
 }

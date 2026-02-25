@@ -1,4 +1,4 @@
-import HeroLayout from "@/src/shared/component/HeroLayout";
+import HeroImageWithTabs from "@/src/shared/component/HeroImageWithTabs";
 
 const introTabs = [
   { id: "about", label: "개요", sub: "About Us", path: "/intro/about", image: "/images/subtop/subtop_01_01.jpg" },
@@ -10,5 +10,5 @@ const introTabs = [
 ];
 
 export default function IntroLayout({ children }: { children: React.ReactNode }) {
-  return <HeroLayout tabs={introTabs}>{children}</HeroLayout>;
+  return <HeroImageWithTabs tabs={introTabs}>{children}</HeroImageWithTabs>;
 }

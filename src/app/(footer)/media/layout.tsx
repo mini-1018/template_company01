@@ -1,4 +1,4 @@
-import HeroLayout from "@/src/shared/component/HeroLayout";
+import HeroImageWithTabs from "@/src/shared/component/HeroImageWithTabs";
 
 const mediaTabs = [
   { id: "press", label: "보도자료", sub: "Press Releases", path: "/media/releases", image: "/images/subtop/subtop_03_01.jpg" },
@@ -6,5 +6,5 @@ const mediaTabs = [
 ];
 
 export default function MediaLayout({ children }: { children: React.ReactNode }) {
-  return <HeroLayout tabs={mediaTabs}>{children}</HeroLayout>;
+  return <HeroImageWithTabs tabs={mediaTabs}>{children}</HeroImageWithTabs>;
 }

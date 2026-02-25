@@ -1,4 +1,4 @@
-import HeroLayout from "@/src/shared/component/HeroLayout";
+import HeroImageWithTabs from "@/src/shared/component/HeroImageWithTabs";
 
 const productTabs = [
   { id: "environmental", label: "친환경", sub: "Environmental Systems", path: "/product/environmental", image: "/images/subtop/subtop_02_01.jpg" },
@@ -8,5 +8,5 @@ const productTabs = [
 ];
 
 export default function ProductsLayout({ children }: { children: React.ReactNode }) {
-  return <HeroLayout tabs={productTabs}>{children}</HeroLayout>;
+  return <HeroImageWithTabs tabs={productTabs}>{children}</HeroImageWithTabs>;
 }
