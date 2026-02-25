@@ -81,7 +81,7 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="w-full pt-15 pb-25">
+      <div className="w-full pt-15 pb-50">
         <div className="max-w-[1440px] mx-auto px-4 lg:px-0 flex justify-between">
           <div className="flex flex-col gap-7">
             {/* Top Section - Logo, Links, Related Sites */}
@@ -185,7 +185,7 @@ export default function Footer() {
 
               {/* Dropdown Menu */}
               {isDropdownOpen && (
-                <div className="absolute bottom-full left-0 mb-0 w-[152px] bg-white border border-[#ccccca] border-b-0 shadow-lg">
+                <div className="absolute w-[152px] bg-white border border-[#ccccca] border-b-0 shadow-lg">
                   {relatedSites.map((site, index) => (
                     <button
                       key={index}

@@ -124,7 +124,7 @@ export default function Section5() {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="h-[65%] relative flex flex-col md:flex-row"
+        className="h-[60%] relative flex flex-col md:flex-row"
       >
         {/* 왼쪽 - 미디어 */}
         <motion.div
