@@ -23,9 +23,9 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { href: "https://blog.naver.com/gtech", icon: "/images/icon/blog.svg", alt: "Blog" },
+    { href: "https://blog.naver.com/gtech_official", icon: "/images/icon/blog.svg", alt: "Blog" },
     { href: "https://www.youtube.com/@Gtech-international", icon: "/images/icon/youtube.svg", alt: "YouTube" },
-    { href: "https://www.instagram.com/gtech__official", icon: "/images/icon/insta.svg", alt: "Instagram" },
+    { href: "https://www.instagram.com/gtech_international", icon: "/images/icon/insta.svg", alt: "Instagram" },
   ];
 
   const relatedSites = [
@@ -66,7 +66,7 @@ export default function Footer() {
     <footer className="w-full bg-white border-t border-[#ccccca]">
       {/* SNS Channel Section */}
       <div className="w-full bg-white border-b border-[#ccccca]">
-        <div className="max-w-[1440px] mx-auto px-4 lg:px-0 h-[62px] flex items-center gap-10 justify-end">
+        <div className="max-w-[1440px] mx-auto px-4 lg:px-0 h-[62px] flex items-center gap-6 justify-end">
           {badges.map((badge, index) => (
             <Image
               key={index}
