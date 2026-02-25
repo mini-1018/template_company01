@@ -105,7 +105,7 @@ export default function Footer() {
                       <li key={index} className="flex items-center gap-2">
                         <Link
                           href={link.href}
-                          className="text-black-primary text-sm hover:underline focus:outline-2 focus:outline-offset-2 focus:outline-black-primary"
+                          className="text-black-primary text-sm"
                           target={link.blank ? "_blank" : "_self"}
                           rel={link.blank ? "noopener noreferrer" : undefined}
                         >
