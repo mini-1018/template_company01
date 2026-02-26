@@ -5,7 +5,7 @@ export default function HospitalPerformance() {
     return (
     <div className="flex justify-center">
         <Image
-        src="/images/intro/performance/performance_04_01.png"
+        src="/images/intro/performance/performance_05_01.png"
         alt="Hospital Performance"
         width={1209}
         height={926} 

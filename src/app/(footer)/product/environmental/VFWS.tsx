@@ -1,7 +1,7 @@
 import ProductCard from "../ProductCard";
 
 const vfws = [
-    { id: "GRC700", category: "environmental", src: "/images/product/product_test.jpg", title: "차량용 RFID", content: "GRC700" },
+  { id: "GRC900", category: "environmental", src: "/images/product/product_test.jpg", title: "재활용품 무인회수기(압축형)", content: "GRC900" },
 ]
 
 

@@ -1,7 +1,7 @@
 import ProductCard from "../ProductCard";
 
 const iotw = [
-    { id: "GRC700", category: "environmental", src: "/images/product/product_test.jpg", title: "IOT 자원계측 시스템", content: "GRC700" },
+  { id: "GRC900", category: "environmental", src: "/images/product/product_test.jpg", title: "재활용품 무인회수기(압축형)", content: "GRC900" },
 ]
 
 

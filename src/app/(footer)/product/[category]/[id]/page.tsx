@@ -74,31 +74,22 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             </section>
 
             {/* 제품 상세 이미지 섹션 */}
-            <section className="max-w-[1440px] mx-auto mb-32">
-
-                {/* 상세 이미지 */}
-                <div className="relative w-full">
-                    <Image
-                        src={product.productImage}
-                        alt={`${product.name} 상세`}
-                        fill
-                        className="object-contain"
-                    />
+            <section className="max-w-[1440px] mx-auto">
+                <div className="flex flex-col">
+                    {product.detailImages.map((imagePath, index) => (
+                        <div key={index} className="w-full flex justify-center">
+                            <Image
+                                src={imagePath}
+                                alt={`${product.name} 상세 이미지 ${index + 1}`}
+                                width={0}
+                                height={0}
+                                className="w-auto h-auto"
+                                unoptimized
+                            />
+                        </div>
+                    ))}
                 </div>
             </section>
-            <div className="max-w-[1440px] mx-auto flex flex-col">
-                <div className="border border-text-primary"></div>
-                <div className="w-full flex justify-center mt-30">
-                    <Image
-                        src={product.detailImage}
-                        alt={`${product.name} 상세`}
-                        width={0}
-                        height={0}
-                        className="w-auto h-auto"
-                        unoptimized
-                    />
-                </div>
-            </div>
         </div>
     );
 }
