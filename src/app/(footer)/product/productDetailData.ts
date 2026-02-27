@@ -29,7 +29,11 @@ const productDetailData: ProductDetail[] = [
     ],
     thumbnail: "/images/product/product_test.jpg",
     productImage: "/images/product/product_test.jpg",
-    detailImages: Array.from({ length: 10 }, (_, i) => `/images/product/grc900/GRC900_${String(i + 1).padStart(2, '0')}.jpg`),
+    detailImages: [
+      "/images/product/product_intro1.png",
+      ...Array.from({ length: 10 }, (_, i) => `/images/product/grc900/GRC900_${String(i + 1).padStart(2, '0')}.jpg`),
+      "/images/product/product_outro1.png"
+    ],
   },
 ];
 

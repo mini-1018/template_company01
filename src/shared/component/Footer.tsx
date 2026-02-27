@@ -64,9 +64,9 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-white border-t border-[#ccccca]">
-      {/* SNS Channel Section */}
+      {/* badges */}
       <div className="w-full bg-white border-b border-[#ccccca]">
-        <div className="max-w-[1440px] mx-auto px-4 lg:px-0 h-[62px] flex items-center gap-6 justify-end">
+        <div className="max-w-[1440px] mx-auto px-4 lg:px-0 h-[62px] flex items-center gap-6.5 justify-end">
           {badges.map((badge, index) => (
             <Image
               key={index}
